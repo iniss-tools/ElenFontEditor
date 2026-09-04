@@ -250,12 +250,15 @@ public partial class FMain : Form
 
     private void FMain_Load(object sender, EventArgs e)
     {
-        if (GlobData.Config.Startup == StartupType.LastProject)
-        {
-            var path = AppRegistry.GetLastProject();
-            if (File.Exists(path)) 
-                OpenFile(path);
-        }
+        AppRegistry.RegisterJumpList("Posledné súbory");
+
+        //cesta k suboru zadana ako argument ma prednost pred poslednym otvorenym suborom
+        var path = Utils.GetProjectPathFromArgs();
+        if (path is null && GlobData.Config.Startup == StartupType.LastProject)
+            path = AppRegistry.GetLastProject();
+
+        if (File.Exists(path))
+            OpenFile(path);
     }
 
     private void OnOpenFile(FontsFile file, bool newFile = false)
