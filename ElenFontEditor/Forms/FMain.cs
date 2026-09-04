@@ -147,8 +147,14 @@ public partial class FMain : Form
         }
     }
 
+    /// <summary>
+    ///     Naplní menu naposledy otvorenými súbormi zoradenými od naposledy otvoreného.
+    /// </summary>
     private void SetRecentFiles()
     {
+        tsmimRecent.DropDownItems.Clear();
+        tssbRecent.DropDownItems.Clear();
+
         var recent = AppRegistry.GetOpenedProjects();
         foreach (var item in recent)
         {
@@ -157,6 +163,9 @@ public partial class FMain : Form
 
             mitemA.Click += (_, _) => OpenFile(item.Path);
             mitemB.Click += (_, _) => OpenFile(item.Path);
+
+            mitemA.ApplyThemeAndFont();
+            mitemB.ApplyThemeAndFont();
 
             tsmimRecent.DropDownItems.Add(mitemA);
             tssbRecent.DropDownItems.Add(mitemB);
@@ -216,6 +225,7 @@ public partial class FMain : Form
 
         AppRegistry.SetUsageOfProject(pathname);
         AppRegistry.SetLastProject(pathname);
+        SetRecentFiles();
 
         if (newFile)
         {
@@ -250,7 +260,7 @@ public partial class FMain : Form
 
     private void FMain_Load(object sender, EventArgs e)
     {
-        AppRegistry.RegisterJumpList("Posledné súbory");
+        AppRegistry.RegisterJumpList(GlobalResources.RRecentFiles);
 
         //cesta k suboru zadana ako argument ma prednost pred poslednym otvorenym suborom
         var path = Utils.GetProjectPathFromArgs();
