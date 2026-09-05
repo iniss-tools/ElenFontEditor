@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Windows.Forms;
-using ElenFontEditor.XML;
+﻿using ElenFontEditor.XML;
 using ExControls;
 using ToolsCore;
 using ToolsCore.Forms;

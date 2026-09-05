@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Windows.Forms;
-using ElenFontEditor.Entities;
+﻿using ElenFontEditor.Entities;
 using ToolsCore.Tools;
 
 namespace ElenFontEditor.Forms;

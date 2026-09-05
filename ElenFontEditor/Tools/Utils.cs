@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ElenFontEditor.Tools;
+﻿namespace ElenFontEditor.Tools;
 
 public static class Utils
 {

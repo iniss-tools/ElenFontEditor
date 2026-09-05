@@ -1,5 +1,4 @@
-﻿using System;
-using ExControls;
+﻿using ExControls;
 
 namespace ElenFontEditor.Entities;
 

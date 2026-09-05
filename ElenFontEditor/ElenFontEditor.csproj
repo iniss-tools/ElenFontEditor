@@ -8,6 +8,7 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<ApplicationIcon>fnt.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<LangVersion>default</LangVersion>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="fnt.ico" />

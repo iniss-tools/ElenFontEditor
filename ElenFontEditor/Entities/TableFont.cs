@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ElenFontEditor.Entities;
+﻿namespace ElenFontEditor.Entities;
 
 public class TableFont
 {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using ElenFontEditor.Entities;
+﻿using ElenFontEditor.Entities;
 using ElenFontEditor.Properties;
 using ElenFontEditor.Tools;
 using ToolsCore;

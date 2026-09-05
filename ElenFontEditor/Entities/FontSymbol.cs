@@ -1,6 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Globalization;
+﻿using System.Globalization;
 using ElenFontEditor.Tools;
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
