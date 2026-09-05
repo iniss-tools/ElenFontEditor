@@ -9,8 +9,8 @@ namespace ElenFontEditor.Forms;
 
 public partial class FAppSettings : FAppSettingsBase
 {
-    public new ElenFontEditorConfig Config => base.Config as ElenFontEditorConfig;
-    public new Styles<ElenFontEditorStyle> Styles => base.Styles as Styles<ElenFontEditorStyle>;
+    public new ElenFontEditorConfig Config => (ElenFontEditorConfig)base.Config;
+    public new Styles<ElenFontEditorStyle> Styles => (Styles<ElenFontEditorStyle>)base.Styles;
 
     protected override IList<CmdShortcut> DefaultShortcuts => new AppShortcuts().GetValues();
     protected override IList<DesktopColumn> DefaultColumns => new DesktopColumns().GetValues();
@@ -49,16 +49,16 @@ public partial class FAppSettings : FAppSettingsBase
     protected override void SaveData()
     {
         GlobData.Config = Config;
-        GlobData.UsingStyle = UsingStyle as ElenFontEditorStyle;
+        GlobData.UsingStyle = (ElenFontEditorStyle)UsingStyle;
         GlobSettings.UsingStyle = UsingStyle;
         GlobData.Styles = Styles;
         
-        var configsDir = Utils.CombinePath(Application.StartupPath, ToolsCore.FileConsts.CONFIG_PATH);
+        var configsDir = Utils.CombinePath(Application.StartupPath, ToolsCore.FileConsts.CONFIG_PATH)!;
         if (!Directory.Exists(configsDir))
             Directory.CreateDirectory(configsDir);
 
-        Styles<ElenFontEditorStyle>.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_STYLES), GlobData.Styles);
-        XmlSerialization.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG), GlobData.Config);
+        Styles<ElenFontEditorStyle>.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_STYLES)!, GlobData.Styles);
+        XmlSerialization.WriteData(Utils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, GlobData.Config);
     }
 
     /// <inheritdoc />

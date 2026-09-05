@@ -1,16 +1,17 @@
 ﻿using System.ComponentModel;
+using System.Globalization;
 using ElenFontEditor.Entities;
 using ExControls;
-
+// ReSharper disable UnusedMember.Global
 // ReSharper disable MemberCanBePrivate.Global
 
 namespace ElenFontEditor.Controls;
 
 public sealed partial class SymbolEditor : UserControl
 {
-    private FontSymbol _symbol;
+    private FontSymbol? _symbol;
 
-    public event EventHandler SymbolChanged;
+    public event EventHandler? SymbolChanged;
 
     private readonly Font _defaultHeaderFont = new(@"Segoe UI", 16);
 
@@ -25,7 +26,7 @@ public sealed partial class SymbolEditor : UserControl
     private Color _borderColor;
     private Font _headerFont;
 
-    public SymbolEditorCell[] Clipboard { get; private set; }
+    public SymbolEditorCell[]? Clipboard { get; private set; }
 
     public SymbolEditor()
     {
@@ -133,6 +134,7 @@ public sealed partial class SymbolEditor : UserControl
         {
             if (Equals(_headerFont, value))
                 return;
+            // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
             _headerFont = value ?? _defaultHeaderFont;
             Invalidate();
         }
@@ -143,17 +145,17 @@ public sealed partial class SymbolEditor : UserControl
         return !Equals(_headerFont, _defaultHeaderFont);
     }
 
-    public SymbolEditorCellCollection Cells { get; private set; }
+    public SymbolEditorCellCollection Cells { get; private set; } = null!;
 
     public int RowSize => Height / (Cells.RowsCount + 1);
     public int ColumnSize => Width / (Cells.ColumnsCount + 1);
 
-    public void SetEditingSymbol(FontSymbol original)
+    public void SetEditingSymbol(FontSymbol? original)
     {
-        if (original is not null) 
+        if (original is not null)
             _symbol = original;
 
-        Cells = new SymbolEditorCellCollection(_symbol.Rows + 1, _symbol.Columns * 8 + 1);
+        Cells = new SymbolEditorCellCollection(_symbol!.Rows + 1, _symbol.Columns * 8 + 1);
 
         var rowSize = RowSize;
         var colSize = ColumnSize;
@@ -220,9 +222,9 @@ public sealed partial class SymbolEditor : UserControl
                 if (cell.IsColumnHeader ^ cell.IsRowHeader)
                 {
                     if (cell.IsColumnHeader)
-                        g.DrawString((cell.Column + 1).ToString(), _headerFont, borderString, cell.Bounds);
+                        g.DrawString((cell.Column + 1).ToString(CultureInfo.InvariantCulture), _headerFont, borderString, cell.Bounds);
                     else if (cell.IsRowHeader) 
-                        g.DrawString((cell.Row + 1).ToString(), _headerFont, borderString, cell.Bounds);
+                        g.DrawString((cell.Row + 1).ToString(CultureInfo.InvariantCulture), _headerFont, borderString, cell.Bounds);
                 }
                 g.DrawRectangle(borderPen, cell.Bounds);
             }
@@ -238,7 +240,7 @@ public sealed partial class SymbolEditor : UserControl
         }
     }
 
-    public SymbolEditorCell GetCellFromPosition(int x, int y)
+    public SymbolEditorCell? GetCellFromPosition(int x, int y)
     {
         if (_symbol == null)
             return null;
@@ -274,7 +276,7 @@ public sealed partial class SymbolEditor : UserControl
     public void InvertSelected()
     {
         foreach (SymbolEditorCell cell in Cells)
-            if (cell.Selected && !cell.IsColumnHeader && !cell.IsRowHeader)
+            if (cell.Selected && cell is { IsColumnHeader: false, IsRowHeader: false })
                 cell.Value = !cell.Value;
         Invalidate();
     }
@@ -367,6 +369,9 @@ public sealed partial class SymbolEditor : UserControl
         }
 
         var cell = GetCellFromPosition(e.X, e.Y);
+        if (cell is null)
+            return;
+
         var selected = cell.Selected;
 
         if (ModifierKeys != Keys.Control)
@@ -480,7 +485,7 @@ public sealed partial class SymbolEditor : UserControl
     private void OnHeaderSelect(SymbolEditorCell cell)
     {
         cell.Selected = !cell.Selected;
-        if (cell.IsColumnHeader && cell.IsRowHeader)
+        if (cell is { IsColumnHeader: true, IsRowHeader: true })
         {
             foreach (SymbolEditorCell c in Cells)
                 c.Selected = cell.Selected;

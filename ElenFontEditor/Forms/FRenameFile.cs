@@ -16,7 +16,7 @@ public partial class FRenameFile : Form
         _file = file;
     }
 
-    private void bSave_Click(object sender, System.EventArgs e)
+    private void bSave_Click(object sender, EventArgs e)
     {
         var newName = tbNewName.Text;
         if (string.IsNullOrEmpty(newName))
@@ -56,7 +56,7 @@ public partial class FRenameFile : Form
         DialogResult = DialogResult.OK;
     }
 
-    private void bStorno_Click(object sender, System.EventArgs e)
+    private void bStorno_Click(object sender, EventArgs e)
     {
         DialogResult = DialogResult.Cancel;
     }

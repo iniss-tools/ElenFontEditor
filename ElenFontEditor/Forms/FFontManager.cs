@@ -51,7 +51,7 @@ public partial class FFontManager : Form
         if (e.ColumnIndex != 1 && e.ColumnIndex != 2)
             return;
 
-        if (!int.TryParse(e.FormattedValue.ToString(), out var val))
+        if (!int.TryParse(e.FormattedValue!.ToString(), out var val))
         {
             e.Cancel = true;
             return;

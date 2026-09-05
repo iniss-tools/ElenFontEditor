@@ -5,7 +5,7 @@ namespace ElenFontEditor;
 
 public static class GlobData
 {
-    public static ElenFontEditorConfig Config;
-    public static Styles<ElenFontEditorStyle> Styles;
-    public static ElenFontEditorStyle UsingStyle;
+    public static ElenFontEditorConfig Config = null!;
+    public static Styles<ElenFontEditorStyle> Styles = null!;
+    public static ElenFontEditorStyle UsingStyle = null!;
 }
