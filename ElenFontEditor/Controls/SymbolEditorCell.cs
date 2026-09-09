@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace ElenFontEditor.Controls;
+﻿namespace ElenFontEditor.Controls;
 
 public class SymbolEditorCell
 {

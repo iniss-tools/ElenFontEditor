@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 
 namespace ElenFontEditor.Controls;
 
@@ -53,9 +52,9 @@ public class SymbolEditorCellCollection : ICollection
     private void CheckBounds(int row, int col)
     {
         if (row < -1 || row >= RowsCount)
-            throw new IndexOutOfRangeException($"Index of row must be in the range -1 <= X < {RowsCount}.");
+            throw new ArgumentOutOfRangeException($"Index of row must be in the range -1 <= X < {RowsCount}.");
 
         if (col < -1 || col >= ColumnsCount)
-            throw new IndexOutOfRangeException($"Index of column must be in the range -1 <= X < {ColumnsCount}.");
+            throw new ArgumentOutOfRangeException($"Index of column must be in the range -1 <= X < {ColumnsCount}.");
     }
 }

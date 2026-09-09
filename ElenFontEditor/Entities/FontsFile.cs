@@ -1,27 +1,24 @@
-﻿using System;
-using ExControls;
+﻿using ExControls;
 
 namespace ElenFontEditor.Entities;
 
 public class FontsFile
 {
-    private string name;
+    public string PathName { get; set; } = null!;
 
-    public string PathName { get; set; }
     public string Name
     {
-        get => name;
+        get;
         set
         {
-            if (value == name)
+            if (value == field)
                 return;
-            if (value == null)
-                throw new ArgumentNullException(nameof(value));
+            ArgumentNullException.ThrowIfNull(value);
             if (value.Length > 32)
                 throw new ArgumentException("File name must be shorter than 33 characters.");
-            name = value;
+            field = value;
         }
-    }
+    } = null!;
 
     public ExBindingList<TableFont> Fonts { get; }
 

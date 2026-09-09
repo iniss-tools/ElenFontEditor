@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using ElenFontEditor.Entities;
 
 namespace ElenFontEditor.Tools;
@@ -79,8 +76,7 @@ internal static class ElenBinParser
 
     public static void SaveFile(FontsFile file)
     {
-        if (file is null)
-            throw new ArgumentNullException(nameof(file));
+        ArgumentNullException.ThrowIfNull(file);
         if (file.Fonts.Count > 16)
             throw new FormatException("Count of fonts must be smaller than 17 (max is 16).");
 
@@ -124,8 +120,7 @@ internal static class ElenBinParser
 
     private static string ReadText(byte[] array)
     {
-        if (array is null)
-            throw new ArgumentNullException(nameof(array));
+        ArgumentNullException.ThrowIfNull(array);
 
         var nameArr = new byte[array.Length];
         Array.Copy(array, nameArr, array.Length);

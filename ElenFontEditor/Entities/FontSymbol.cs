@@ -1,6 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Globalization;
+﻿using System.Globalization;
 using ElenFontEditor.Tools;
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
@@ -26,14 +24,14 @@ public class FontSymbol
         {
             CheckBounds(row, column);
             if (offset is < 0 or > 7)
-                throw new IndexOutOfRangeException("Offset of byte is out of bounds (0 <= X <= 7).");
+                throw new ArgumentOutOfRangeException("Offset of byte is out of bounds (0 <= X <= 7).");
             return Data[row][column][offset];
         }
         set
         {
             CheckBounds(row, column);
             if (offset is < 0 or > 7)
-                throw new IndexOutOfRangeException("Offset of byte is out of bounds (0 <= X <= 7).");
+                throw new ArgumentOutOfRangeException("Offset of byte is out of bounds (0 <= X <= 7).");
             Data[row][column][offset] = value;
         }
     }
@@ -68,6 +66,7 @@ public class FontSymbol
         Columns = original.Columns;
         Font = original.Font;
         Index = original.Index;
+        Char = original.Char;
         Data = (bool[][][]) original.Data.Clone();
     }
 
@@ -109,10 +108,10 @@ public class FontSymbol
     private void CheckBounds(int row, int col)
     {
         if (row < 0 || row >= Rows)
-            throw new IndexOutOfRangeException($"Index of row must be in the range 0 <= X < {Rows}.");
+            throw new ArgumentOutOfRangeException($"Index of row must be in the range 0 <= X < {Rows}.");
 
         if (col < 0 || col >= Columns)
-            throw new IndexOutOfRangeException($"Index of column must be in the range 0 <= X < {Columns}.");
+            throw new ArgumentOutOfRangeException($"Index of column must be in the range 0 <= X < {Columns}.");
     }
 
     public FontSymbol Clone() => new(this);

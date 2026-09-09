@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace ElenFontEditor.Entities;
+﻿namespace ElenFontEditor.Entities;
 
 public class TableFont
 {
-    private string _name;
+    private string _name = null!;
     private int _maxWidth;
 
     public string Name

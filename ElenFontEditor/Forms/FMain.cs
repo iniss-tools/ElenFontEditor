@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using ElenFontEditor.Entities;
+﻿using ElenFontEditor.Entities;
 using ElenFontEditor.Properties;
 using ElenFontEditor.Tools;
 using ToolsCore;
@@ -14,9 +11,8 @@ namespace ElenFontEditor.Forms;
 
 public partial class FMain : Form
 {
-    private FontsFile _openedFile;
-    private bool _saved = true;
-    private FontSymbol _editingSymbol;
+    private FontsFile? _openedFile;
+    private FontSymbol? _editingSymbol;
 
     public FMain()
     {
@@ -93,7 +89,7 @@ public partial class FMain : Form
         SetCol(cRowCount, columns.RowCount);
         SetCol(cColCount, columns.ColCount);
 
-        dgvSymbols.Columns[dgvSymbols.Columns.Count - 1].AutoSizeMode = GlobData.Config.FitLastColumn
+        dgvSymbols.Columns[^1].AutoSizeMode = GlobData.Config.FitLastColumn
             ? DataGridViewAutoSizeColumnMode.Fill
             : DataGridViewAutoSizeColumnMode.None;
     }
@@ -134,18 +130,18 @@ public partial class FMain : Form
 
     private bool Saved
     {
-        get => _saved;
+        get;
         set
         {
-            if (_saved == value)
+            if (field == value)
                 return;
-            if (value) 
+            if (value)
                 base.Text = base.Text.Replace("*", "");
             else
                 base.Text += @"*";
-            _saved = value;
+            field = value;
         }
-    }
+    } = true;
 
     /// <summary>
     ///     Naplní menu naposledy otvorenými súbormi zoradenými od naposledy otvoreného.
@@ -180,7 +176,7 @@ public partial class FMain : Form
             if (result != DialogResult.OK) 
                 return;
 
-            if (Path.GetFileNameWithoutExtension(dialogSaveNewFile.FileName)?.Length > 32)
+            if (Path.GetFileNameWithoutExtension(dialogSaveNewFile.FileName).Length > 32)
             {
                 Utils.ShowError(Resources.FMain_FileName_Length);
                 continue;
@@ -283,16 +279,16 @@ public partial class FMain : Form
     {
         SaveCurrentSymbol();
         Saved = true;
-        ElenBinParser.SaveFile(_openedFile);
+        ElenBinParser.SaveFile(_openedFile!);
     }
 
     private void ShowFontManager()
     {
         SaveCurrentSymbol();
-        var fmanager = new FFontManager(_openedFile);
+        var fmanager = new FFontManager(_openedFile!);
         if (fmanager.ShowDialog(this) == DialogResult.OK)
         {
-            _openedFile.Fonts.ResetBindings();
+            _openedFile!.Fonts.ResetBindings();
             var index = tscomboFonts.SelectedIndex;
             tscomboFonts.SelectedIndex = -1;
             tscomboFonts.SelectedIndex = index;
@@ -302,7 +298,7 @@ public partial class FMain : Form
     private void ShowRenameFile()
     {
         SaveCurrentSymbol();
-        var oldPath = _openedFile.PathName;
+        var oldPath = _openedFile!.PathName;
         var frename = new FRenameFile(_openedFile);
         if (frename.ShowDialog(this) == DialogResult.OK)
         {
@@ -344,7 +340,7 @@ public partial class FMain : Form
         if (tscomboFonts.SelectedIndex == -1)
             return;
 
-        dgvSymbols.DataSource = _openedFile.Fonts[tscomboFonts.SelectedIndex].Symbols;
+        dgvSymbols.DataSource = _openedFile!.Fonts[tscomboFonts.SelectedIndex].Symbols;
     }
 
     private void tsmiNew_Click(object sender, EventArgs e) => ShowNew();
@@ -414,7 +410,7 @@ public partial class FMain : Form
 
     private void FMain_KeyDown(object sender, KeyEventArgs e)
     {
-        if (e.Control && e.KeyCode == Keys.V)
+        if (e is { Control: true, KeyCode: Keys.V })
         {
             symbolEditor.Paste();
             e.Handled = true;
