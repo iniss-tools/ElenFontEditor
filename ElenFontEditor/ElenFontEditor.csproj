@@ -9,9 +9,26 @@
 		<ApplicationIcon>fnt.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<LangVersion>default</LangVersion>
+		<!-- Orezanie výstupu pre inštalátor - rovnako ako v GVDEditor.csproj.
+		     Bez RID kopíruje SDK do runtimes\ aj natívne knižnice pre Android, Linux a macOS.
+		     AppendRuntimeIdentifierToOutputPath=false: inak by výstup skončil v podpriečinku
+		     win-x64 a rozbil cesty v ElenFontEditorInstaller.iss. -->
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<SelfContained>false</SelfContained>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<!-- Slovenčina je v hlavnej zostave, preložená je len čeština. -->
+		<SatelliteResourceLanguages>cs</SatelliteResourceLanguages>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="fnt.ico" />
+		<!-- Licencie sú v koreni repozitára, spoločné pre celý projekt.
+		     Link určuje, kam sa skopírujú vo výstupe - bez neho by skončili v jeho koreni. -->
+		<Content Include="..\Licences\GPLv3.txt" Link="Licences\GPLv3.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="..\Licences\LICENCE.txt" Link="Licences\LICENCE.txt">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj" />
