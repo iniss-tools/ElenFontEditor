@@ -37,12 +37,10 @@ public partial class FAppSettings : FAppSettingsBase
     /// <inheritdoc />
     protected override bool OnSaving()
     {
-        base.OnSaving();
-
         Config.Shortcuts.SetValues(Shortcuts);
         Config.DesktopCols.SetValues(Columns);
         Config.StrictMode = cboxStrictMode.Checked;
-        return true;
+        return base.OnSaving();
     }
 
     /// <inheritdoc />
