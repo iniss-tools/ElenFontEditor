@@ -17,7 +17,7 @@ public record ElenFontEditorConfig : ConfigBase
     ///     Klávesové skratky pre akcie na pracovnej ploche programu.
     /// </summary>
     [XmlElement("Shortcuts")] 
-    public AppShortcuts Shortcuts { get; set; } = new();
+    public ShortcutMap Shortcuts { get; set; } = new();
 
     /// <summary>
     ///     Nacitat data v striktnom rezime (vacsia kontrola dat pri otvarani suboru).
@@ -27,4 +27,21 @@ public record ElenFontEditorConfig : ConfigBase
 
     /// <inheritdoc />
     public override string LinkAppSettingsGuide => "";
+
+    /// <summary>
+    /// Kopia nastaveni (okno Nastavenia programu) - skratky a stlpce sa nesmu zdielat s povodnymi.
+    /// </summary>
+    protected ElenFontEditorConfig(ElenFontEditorConfig original) : base(original)
+    {
+        DesktopCols = original.DesktopCols with { };
+        Shortcuts = original.Shortcuts.Clone();
+        StrictMode = original.StrictMode;
+    }
+
+    /// <summary>
+    /// Predvolene nastavenia.
+    /// </summary>
+    public ElenFontEditorConfig()
+    {
+    }
 }

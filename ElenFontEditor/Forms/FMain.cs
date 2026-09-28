@@ -2,6 +2,7 @@
 using ElenFontEditor.Properties;
 using ElenFontEditor.Tools;
 using ToolsCore;
+using ToolsCore.Commands;
 using ToolsCore.Forms;
 using ToolsCore.Tools;
 using ToolsCore.XML;
@@ -11,6 +12,7 @@ namespace ElenFontEditor.Forms;
 
 public partial class FMain : Form
 {
+    private readonly CommandSet _commands = new();
     private FontsFile? _openedFile;
     private FontSymbol? _editingSymbol;
 
@@ -44,7 +46,9 @@ public partial class FMain : Form
                 throw new ArgumentOutOfRangeException();
         }
 
-        InitShortcuts();
+        CreateCommands();
+        _commands.ApplyShortcuts(GlobData.Config.Shortcuts);
+        UpdateCommandStates();
         InitColumns();
         SetColumnsAutoWidth();
 
@@ -59,17 +63,33 @@ public partial class FMain : Form
         }
     }
 
-    private void InitShortcuts()
+    /// <summary>
+    /// Prikazy hlavneho okna naviazane naraz na tlacidlo aj polozku ponuky.
+    /// </summary>
+    private void CreateCommands()
     {
-        var shortcuts = GlobData.Config.Shortcuts;
-
-        tsmimNew.ShortcutKeys = shortcuts.New;
-        tsmimOpen.ShortcutKeys = shortcuts.Open;
-        tsmimSave.ShortcutKeys = shortcuts.Save;
-        tsmimFontManager.ShortcutKeys = shortcuts.FontManager;
-        tsmimRenameFile.ShortcutKeys = shortcuts.RenameFile;
-        tsmimAppSettings.ShortcutKeys = shortcuts.AppSettings;
+        Func<bool> opened = () => _openedFile is not null;
+        _commands.Add(EfeCommands.New, ShowNew).Bind(tsmimNew, tsbNew);
+        _commands.Add(EfeCommands.Open, () => OpenFile()).Bind(tsmimOpen, tsbOpen);
+        _commands.Add(EfeCommands.Save, DoSave, opened).Bind(tsmimSave, tsbSave);
+        _commands.Add(EfeCommands.FontManager, ShowFontManager, opened).Bind(tsmimFontManager, tsbFontManager);
+        _commands.Add(EfeCommands.RenameFile, ShowRenameFile, opened).Bind(tsmimRenameFile, tsbRenameFile);
+        _commands.Add(EfeCommands.AppSettings, ShowAppSettings).Bind(tsmimAppSettings, tsbAppSettings);
+        _commands.Add(EfeCommands.InfoApp, ShowInfoApp).Bind(tsmimInfoApp, tsbInfoApp);
     }
+
+    /// <summary>
+    /// Povoli prikazy podla toho, ci je otvoreny subor pisiem.
+    /// </summary>
+    private void UpdateCommandStates()
+    {
+        _commands.UpdateStates();
+        tsmiEdit.Enabled = _openedFile is not null;
+        tscomboFonts.Enabled = _openedFile is not null;
+    }
+
+    protected override bool ProcessCmdKey(ref Message msg, Keys keyData) =>
+        _commands.ProcessShortcut(keyData) || base.ProcessCmdKey(ref msg, keyData);
 
     private void InitColumns()
     {
@@ -116,7 +136,7 @@ public partial class FMain : Form
 
         this.ApplyThemeAndFonts();
         InitColumns();
-        InitShortcuts();
+        _commands.ApplyShortcuts(GlobData.Config.Shortcuts);
         SetColumnsAutoWidth();
         Invalidate(true);
         AppInit.MsgBoxStyleInit(GlobData.UsingStyle, GlobData.Config);
@@ -269,7 +289,7 @@ public partial class FMain : Form
 
     private void OnOpenFile(FontsFile file, bool newFile = false)
     {
-        InitGUI(true);
+        UpdateCommandStates();
         base.Text = Application.ProductName + @" - " + file.PathName;
         tscomboFonts.ComboBox.DataSource = file.Fonts;
         if (newFile) Saved = false;
@@ -323,17 +343,6 @@ public partial class FMain : Form
         finfo.ShowDialog(this);
     }
 
-    private void InitGUI(bool opened)
-    {
-        tsmimSave.Enabled = opened;
-        tsbSave.Enabled = opened;
-        tsmimFontManager.Enabled = opened;
-        tsbFontManager.Enabled = opened;
-        tsmiEdit.Enabled = opened;
-        tscomboFonts.Enabled = opened;
-        tsmimRenameFile.Enabled = opened;
-        tsbRenameFile.Enabled = opened;
-    }
 
     private void tscomboFonts_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -343,20 +352,6 @@ public partial class FMain : Form
         dgvSymbols.DataSource = _openedFile!.Fonts[tscomboFonts.SelectedIndex].Symbols;
     }
 
-    private void tsmiNew_Click(object sender, EventArgs e) => ShowNew();
-    private void tsbNew_Click(object sender, EventArgs e) => ShowNew();
-    private void tsmiOpen_Click(object sender, EventArgs e) => OpenFile();
-    private void tsbOpen_Click(object sender, EventArgs e) => OpenFile();
-    private void tsmiSave_Click(object sender, EventArgs e) => DoSave();
-    private void tsbSave_Click(object sender, EventArgs e) => DoSave();
-    private void tsmiFontManager_Click(object sender, EventArgs e) => ShowFontManager();
-    private void tsbFontManager_Click(object sender, EventArgs e) => ShowFontManager();
-    private void tsbRenameFile_Click(object sender, EventArgs e) => ShowRenameFile();
-    private void tsmiRenameFile_Click(object sender, EventArgs e) => ShowRenameFile();
-    private void tsmiAppSettings_Click(object sender, EventArgs e) => ShowAppSettings();
-    private void tsbAppSettings_Click(object sender, EventArgs e) => ShowAppSettings();
-    private void tsmiInfoApp_Click(object sender, EventArgs e) => ShowInfoApp();
-    private void tsbInfoApp_Click(object sender, EventArgs e) => ShowInfoApp();
 
     private void FMain_FormClosing(object sender, FormClosingEventArgs e)
     {

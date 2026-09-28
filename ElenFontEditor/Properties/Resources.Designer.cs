@@ -114,5 +114,59 @@ namespace ElenFontEditor.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nový.
+        /// </summary>
+        internal static string Cmd_New {
+            get {
+                return ResourceManager.GetString("Cmd_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otvoriť.
+        /// </summary>
+        internal static string Cmd_Open {
+            get {
+                return ResourceManager.GetString("Cmd_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uložiť.
+        /// </summary>
+        internal static string Cmd_Save {
+            get {
+                return ResourceManager.GetString("Cmd_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Správa písiem.
+        /// </summary>
+        internal static string Cmd_FontManager {
+            get {
+                return ResourceManager.GetString("Cmd_FontManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Premenovať súbor.
+        /// </summary>
+        internal static string Cmd_RenameFile {
+            get {
+                return ResourceManager.GetString("Cmd_RenameFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavenia programu.
+        /// </summary>
+        internal static string Cmd_AppSettings {
+            get {
+                return ResourceManager.GetString("Cmd_AppSettings", resourceCulture);
+            }
+        }
     }
 }

@@ -136,4 +136,22 @@
   <data name="AboutAppDescription" xml:space="preserve">
     <value>Tento program slúži na generovanie binárnych súborov pre tabule ELEN.</value>
   </data>
+  <data name="Cmd_New" xml:space="preserve">
+    <value>Nový</value>
+  </data>
+  <data name="Cmd_Open" xml:space="preserve">
+    <value>Otvoriť</value>
+  </data>
+  <data name="Cmd_Save" xml:space="preserve">
+    <value>Uložiť</value>
+  </data>
+  <data name="Cmd_FontManager" xml:space="preserve">
+    <value>Správa písiem</value>
+  </data>
+  <data name="Cmd_RenameFile" xml:space="preserve">
+    <value>Premenovať súbor</value>
+  </data>
+  <data name="Cmd_AppSettings" xml:space="preserve">
+    <value>Nastavenia programu</value>
+  </data>
 </root>
