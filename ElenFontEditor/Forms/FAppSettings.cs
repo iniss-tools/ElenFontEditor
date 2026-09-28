@@ -48,7 +48,6 @@ public partial class FAppSettings : FAppSettingsBase
     {
         GlobData.Config = Config;
         GlobData.UsingStyle = (ElenFontEditorStyle)UsingStyle;
-        GlobSettings.UsingStyle = UsingStyle;
         GlobData.Styles = Styles;
         
         var configsDir = ToolsCore.AppPaths.ConfigDir;
