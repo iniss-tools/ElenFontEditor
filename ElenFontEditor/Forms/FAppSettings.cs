@@ -1,6 +1,5 @@
 ﻿using ElenFontEditor.XML;
 using ExControls;
-using ToolsCore;
 using ToolsCore.Forms;
 using ToolsCore.Tools;
 using ToolsCore.XML;
