@@ -22,17 +22,6 @@ public record DesktopColumns()
         [nameof(ColCount)] = ("Počet stĺpcov", 5, 50, true)
     };
 
-    #region Fields
-
-    private DesktopColumn _index = InitColumn(nameof(Index));
-    private DesktopColumn _char = InitColumn(nameof(Char));
-    private DesktopColumn _symbol = InitColumn(nameof(Symbol));
-    private DesktopColumn _width = InitColumn(nameof(Width));
-    private DesktopColumn _rowCount = InitColumn(nameof(RowCount));
-    private DesktopColumn _colCount = InitColumn(nameof(ColCount));
-
-    #endregion
-
     #region Properties
 
     /// <summary>
@@ -41,13 +30,13 @@ public record DesktopColumns()
     [XmlElement("Index")]
     public DesktopColumn Index
     {
-        get => _index ??= InitColumn(nameof(Index));
+        get => field ??= InitColumn(nameof(Index));
         set
         {
-            _index = value;
-            AssignColumnProps(ref _index, nameof(Index));
+            field = value;
+            AssignColumnProps(ref field, nameof(Index));
         }
-    }
+    } = InitColumn(nameof(Index));
 
     /// <summary>
     ///     
@@ -55,13 +44,13 @@ public record DesktopColumns()
     [XmlElement("Char")]
     public DesktopColumn Char
     {
-        get => _char ??= InitColumn(nameof(Char));
+        get => field ??= InitColumn(nameof(Char));
         set
         {
-            _char = value;
-            AssignColumnProps(ref _char, nameof(Char));
+            field = value;
+            AssignColumnProps(ref field, nameof(Char));
         }
-    }
+    } = InitColumn(nameof(Char));
 
     /// <summary>
     ///     
@@ -69,13 +58,13 @@ public record DesktopColumns()
     [XmlElement("Symbol")]
     public DesktopColumn Symbol
     {
-        get => _symbol ??= InitColumn(nameof(Symbol));
+        get => field ??= InitColumn(nameof(Symbol));
         set
         {
-            _symbol = value;
-            AssignColumnProps(ref _symbol, nameof(Symbol));
+            field = value;
+            AssignColumnProps(ref field, nameof(Symbol));
         }
-    }
+    } = InitColumn(nameof(Symbol));
 
     /// <summary>
     ///     
@@ -83,13 +72,13 @@ public record DesktopColumns()
     [XmlElement("Width")]
     public DesktopColumn Width
     {
-        get => _width ??= InitColumn(nameof(Width));
+        get => field ??= InitColumn(nameof(Width));
         set
         {
-            _width = value;
-            AssignColumnProps(ref _width, nameof(Width));
+            field = value;
+            AssignColumnProps(ref field, nameof(Width));
         }
-    }
+    } = InitColumn(nameof(Width));
 
     /// <summary>
     ///     
@@ -97,13 +86,13 @@ public record DesktopColumns()
     [XmlElement("RowCount")]
     public DesktopColumn RowCount
     {
-        get => _rowCount ??= InitColumn(nameof(RowCount));
+        get => field ??= InitColumn(nameof(RowCount));
         set
         {
-            _rowCount = value;
-            AssignColumnProps(ref _rowCount, nameof(RowCount));
+            field = value;
+            AssignColumnProps(ref field, nameof(RowCount));
         }
-    }
+    } = InitColumn(nameof(RowCount));
 
     /// <summary>
     ///     
@@ -111,13 +100,13 @@ public record DesktopColumns()
     [XmlElement("ColCount")]
     public DesktopColumn ColCount
     {
-        get => _colCount ??= InitColumn(nameof(ColCount));
+        get => field ??= InitColumn(nameof(ColCount));
         set
         {
-            _colCount = value;
-            AssignColumnProps(ref _colCount, nameof(ColCount));
+            field = value;
+            AssignColumnProps(ref field, nameof(ColCount));
         }
-    }
+    } = InitColumn(nameof(ColCount));
 
     #endregion
 
@@ -145,7 +134,7 @@ public record DesktopColumns()
     private static DesktopColumn InitColumn(string propname)
         => new(Props[propname].name, propname, Props[propname].order, Props[propname].minWidth, Props[propname].visible);
 
-    private static void AssignColumnProps(ref DesktopColumn obj, string propname)
+    private static void AssignColumnProps(ref DesktopColumn? obj, string propname)
     {
         if (obj is null)
         {
@@ -158,19 +147,15 @@ public record DesktopColumns()
         }
     }
     
-    // Every property setter below unconditionally assigns its backing field before this constructor
-    // exits (see the "set" accessors above), but Roslyn's per-constructor flow analysis doesn't credit
-    // assignment performed indirectly through a property setter call - it only sees `this` escaping into
-    // a method call and forgets the field's null-state. All backing fields are genuinely never null here.
-#pragma warning disable CS8618
+    // kopia stlpca uz ma nazov a priznaky z Props (priradil ich setter povodnej instancie) - staci kopirovat polia;
+    // inicializatory poli sa v kopirovacom konstruktore recordu nespustaju, preto sa kopiruje vsetko
     protected DesktopColumns(DesktopColumns original)
     {
-        Index = original.Index with { };
-        Char = original.Char with { };
-        Symbol = original.Symbol with { };
-        Width = original.Width with { };
-        RowCount = original.RowCount with { };
-        ColCount = original.ColCount with { };
+        if (original.Index != null) Index = original.Index with { };
+        if (original.Char != null) Char = original.Char with { };
+        if (original.Symbol != null) Symbol = original.Symbol with { };
+        if (original.Width != null) Width = original.Width with { };
+        if (original.RowCount != null) RowCount = original.RowCount with { };
+        if (original.ColCount != null) ColCount = original.ColCount with { };
     }
-#pragma warning restore CS8618
 }
