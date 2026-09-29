@@ -53,8 +53,8 @@ public partial class FAppSettings : FAppSettingsBase
         if (!Directory.Exists(configsDir))
             Directory.CreateDirectory(configsDir);
 
-        Styles<ElenFontEditorStyle>.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_STYLES)!, GlobData.Styles);
-        XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FILE_CONFIG)!, GlobData.Config);
+        Styles<ElenFontEditorStyle>.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FileStyles)!, GlobData.Styles);
+        XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FileConfig)!, GlobData.Config);
     }
 
     /// <inheritdoc />
