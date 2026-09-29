@@ -4,6 +4,7 @@ using ElenFontEditor.Tools;
 using ToolsCore;
 using ToolsCore.Commands;
 using ToolsCore.Forms;
+using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
 using ToolsCore.XML;
 using Utils = ToolsCore.Tools.Utils;
