@@ -124,7 +124,6 @@ namespace ElenFontEditor.Forms
             this.tsmimNew.Name = "tsmimNew";
             this.tsmimNew.Size = new System.Drawing.Size(121, 22);
             this.tsmimNew.Text = "&Nový...";
-            this.tsmimNew.Click += new System.EventHandler(this.tsmiNew_Click);
             // 
             // tsmimOpen
             // 
@@ -132,7 +131,6 @@ namespace ElenFontEditor.Forms
             this.tsmimOpen.Name = "tsmimOpen";
             this.tsmimOpen.Size = new System.Drawing.Size(121, 22);
             this.tsmimOpen.Text = "&Otvoriť";
-            this.tsmimOpen.Click += new System.EventHandler(this.tsmiOpen_Click);
             // 
             // tsmimRecent
             // 
@@ -153,7 +151,6 @@ namespace ElenFontEditor.Forms
             this.tsmimSave.Name = "tsmimSave";
             this.tsmimSave.Size = new System.Drawing.Size(121, 22);
             this.tsmimSave.Text = "&Uložiť";
-            this.tsmimSave.Click += new System.EventHandler(this.tsmiSave_Click);
             // 
             // tsmiEdit
             // 
@@ -173,7 +170,6 @@ namespace ElenFontEditor.Forms
             this.tsmimFontManager.Name = "tsmimFontManager";
             this.tsmimFontManager.Size = new System.Drawing.Size(181, 22);
             this.tsmimFontManager.Text = "&Správa písiem";
-            this.tsmimFontManager.Click += new System.EventHandler(this.tsmiFontManager_Click);
             // 
             // toolStripSeparator6
             // 
@@ -187,7 +183,6 @@ namespace ElenFontEditor.Forms
             this.tsmimRenameFile.Name = "tsmimRenameFile";
             this.tsmimRenameFile.Size = new System.Drawing.Size(181, 22);
             this.tsmimRenameFile.Text = "&Premenovať súbor...";
-            this.tsmimRenameFile.Click += new System.EventHandler(this.tsmiRenameFile_Click);
             // 
             // tsmiSettings
             // 
@@ -203,7 +198,6 @@ namespace ElenFontEditor.Forms
             this.tsmimAppSettings.Name = "tsmimAppSettings";
             this.tsmimAppSettings.Size = new System.Drawing.Size(197, 22);
             this.tsmimAppSettings.Text = "Nastavenia &programu...";
-            this.tsmimAppSettings.Click += new System.EventHandler(this.tsmiAppSettings_Click);
             // 
             // tsmiHelp
             // 
@@ -219,7 +213,6 @@ namespace ElenFontEditor.Forms
             this.tsmimInfoApp.Name = "tsmimInfoApp";
             this.tsmimInfoApp.Size = new System.Drawing.Size(138, 22);
             this.tsmimInfoApp.Text = "&O programe";
-            this.tsmimInfoApp.Click += new System.EventHandler(this.tsmiInfoApp_Click);
             // 
             // toolStripMain
             // 
@@ -256,7 +249,6 @@ namespace ElenFontEditor.Forms
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.Size = new System.Drawing.Size(24, 24);
             this.tsbNew.Text = "Nový súbor...";
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // tsbOpen
             // 
@@ -266,7 +258,6 @@ namespace ElenFontEditor.Forms
             this.tsbOpen.Name = "tsbOpen";
             this.tsbOpen.Size = new System.Drawing.Size(24, 24);
             this.tsbOpen.Text = "Otvoriť";
-            this.tsbOpen.Click += new System.EventHandler(this.tsbOpen_Click);
             // 
             // tssbRecent
             // 
@@ -291,7 +282,6 @@ namespace ElenFontEditor.Forms
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(24, 24);
             this.tsbSave.Text = "Uložiť";
-            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // toolStripSeparator5
             // 
@@ -306,7 +296,6 @@ namespace ElenFontEditor.Forms
             this.tsbAppSettings.Name = "tsbAppSettings";
             this.tsbAppSettings.Size = new System.Drawing.Size(24, 24);
             this.tsbAppSettings.Text = "Nastavenia programu";
-            this.tsbAppSettings.Click += new System.EventHandler(this.tsbAppSettings_Click);
             // 
             // tsbInfoApp
             // 
@@ -316,7 +305,6 @@ namespace ElenFontEditor.Forms
             this.tsbInfoApp.Name = "tsbInfoApp";
             this.tsbInfoApp.Size = new System.Drawing.Size(24, 24);
             this.tsbInfoApp.Text = "Informácie o programe";
-            this.tsbInfoApp.Click += new System.EventHandler(this.tsbInfoApp_Click);
             // 
             // toolStripSeparator3
             // 
@@ -332,7 +320,6 @@ namespace ElenFontEditor.Forms
             this.tsbRenameFile.Name = "tsbRenameFile";
             this.tsbRenameFile.Size = new System.Drawing.Size(24, 24);
             this.tsbRenameFile.Text = "Premenovať súbor";
-            this.tsbRenameFile.Click += new System.EventHandler(this.tsbRenameFile_Click);
             // 
             // tsbFontManager
             // 
@@ -343,7 +330,6 @@ namespace ElenFontEditor.Forms
             this.tsbFontManager.Name = "tsbFontManager";
             this.tsbFontManager.Size = new System.Drawing.Size(24, 24);
             this.tsbFontManager.Text = "Správa písiem";
-            this.tsbFontManager.Click += new System.EventHandler(this.tsbFontManager_Click);
             // 
             // toolStripSeparator4
             // 

@@ -2,7 +2,7 @@
 
 namespace ElenFontEditor.Controls;
 
-public class SymbolEditorCellCollection : ICollection
+public class SymbolEditorCellCollection : ICollection, IReadOnlyCollection<SymbolEditorCell>
 {
     private readonly SymbolEditorCell[,] _cells;
 
@@ -26,6 +26,9 @@ public class SymbolEditorCellCollection : ICollection
 
     /// <inheritdoc />
     public IEnumerator GetEnumerator() => _cells.GetEnumerator();
+
+    /// <inheritdoc />
+    IEnumerator<SymbolEditorCell> IEnumerable<SymbolEditorCell>.GetEnumerator() => _cells.Cast<SymbolEditorCell>().GetEnumerator();
 
     /// <inheritdoc />
     public void CopyTo(Array array, int index) => _cells.CopyTo(array,index);

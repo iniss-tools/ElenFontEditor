@@ -7,8 +7,7 @@ internal static class ElenBinParser
 {
     public static FontsFile LoadFile(string pathname)
     {
-        if (string.IsNullOrEmpty(pathname))
-            throw new ArgumentNullException(nameof(pathname));
+        ArgumentException.ThrowIfNullOrEmpty(pathname);
         if (!File.Exists(pathname))
             throw new FileNotFoundException($"File {pathname} was not found.");
 
@@ -138,8 +137,7 @@ internal static class ElenBinParser
 
     private static byte[] WriteText(string text, int size)
     {
-        if (string.IsNullOrEmpty(text))
-            throw new ArgumentNullException(nameof(text));
+        ArgumentException.ThrowIfNullOrEmpty(text);
         if (text.Length > size)
             throw new ArgumentException($"String length must be shorter than {size}.");
 

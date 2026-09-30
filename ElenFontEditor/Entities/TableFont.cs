@@ -2,36 +2,32 @@
 
 public class TableFont
 {
-    private string _name = null!;
-    private int _maxWidth;
-
     public string Name
     {
-        get => _name;
+        get;
         set
         {
-            if (value == _name)
+            if (value == field)
                 return;
-            if (value is null)
-                throw new ArgumentNullException(nameof(value));
+            ArgumentNullException.ThrowIfNull(value);
             if (value.Length > 20)
                 throw new ArgumentException("Font name must be less than 21 characters.");
-            _name = value;
+            field = value;
         }
-    }
+    } = null!;
 
     public int MaxWidth
     {
-        get => _maxWidth;
+        get;
         set
         {
-            if (value == _maxWidth)
+            if (value == field)
                 return;
             if (value < 0)
                 throw new ArgumentException("Font max width cannot be less than 0.");
             if (value > 20)
                 throw new ArgumentException("Font max width cannot be more than 20.");
-            _maxWidth = value;
+            field = value;
         }
     }
 

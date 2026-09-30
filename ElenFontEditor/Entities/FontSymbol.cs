@@ -24,14 +24,14 @@ public class FontSymbol
         {
             CheckBounds(row, column);
             if (offset is < 0 or > 7)
-                throw new ArgumentOutOfRangeException("Offset of byte is out of bounds (0 <= X <= 7).");
+                throw new ArgumentOutOfRangeException(nameof(offset), offset, "Offset of byte is out of bounds (0 <= X <= 7).");
             return Data[row][column][offset];
         }
         set
         {
             CheckBounds(row, column);
             if (offset is < 0 or > 7)
-                throw new ArgumentOutOfRangeException("Offset of byte is out of bounds (0 <= X <= 7).");
+                throw new ArgumentOutOfRangeException(nameof(offset), offset, "Offset of byte is out of bounds (0 <= X <= 7).");
             Data[row][column][offset] = value;
         }
     }
