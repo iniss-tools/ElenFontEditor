@@ -1,4 +1,5 @@
 ﻿using ElenFontEditor.Entities;
+using ExControls;
 using ElenFontEditor.Properties;
 using ElenFontEditor.Tools;
 using ToolsCore;
@@ -11,7 +12,7 @@ using Utils = ToolsCore.Tools.Utils;
 
 namespace ElenFontEditor.Forms;
 
-public partial class FMain : Form
+public partial class FMain : ExForm
 {
     private readonly CommandSet _commands = new();
     private FontsFile? _openedFile;

@@ -33,6 +33,7 @@ namespace ElenFontEditor.Forms
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMain));
+            this.titleBar = new ExControls.ExTitleBar();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,6 +80,7 @@ namespace ElenFontEditor.Forms
             this.cColCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableSymbolBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.symbolEditor = new ElenFontEditor.Controls.SymbolEditor();
+            this.titleBar.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
@@ -90,19 +92,28 @@ namespace ElenFontEditor.Forms
             ((System.ComponentModel.ISupportInitialize)(this.tableSymbolBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
+            // titleBar
+            // 
+            this.titleBar.Controls.Add(this.menuStripMain);
+            this.titleBar.Location = new System.Drawing.Point(0, 0);
+            this.titleBar.Name = "titleBar";
+            this.titleBar.Size = new System.Drawing.Size(1007, 32);
+            this.titleBar.TabIndex = 0;
+            // 
             // menuStripMain
             // 
             this.menuStripMain.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStripMain.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiFile,
             this.tsmiEdit,
             this.tsmiSettings,
             this.tsmiHelp});
-            this.menuStripMain.Location = new System.Drawing.Point(0, 0);
+            this.menuStripMain.Location = new System.Drawing.Point(36, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStripMain.Size = new System.Drawing.Size(1007, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(260, 32);
             this.menuStripMain.TabIndex = 0;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -234,7 +245,7 @@ namespace ElenFontEditor.Forms
             this.toolStripSeparator4,
             this.tslFont,
             this.tscomboFonts});
-            this.toolStripMain.Location = new System.Drawing.Point(0, 24);
+            this.toolStripMain.Location = new System.Drawing.Point(0, 32);
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
             this.toolStripMain.Size = new System.Drawing.Size(1007, 27);
@@ -387,7 +398,7 @@ namespace ElenFontEditor.Forms
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 51);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 59);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -399,7 +410,7 @@ namespace ElenFontEditor.Forms
             // 
             this.splitContainer1.Panel2.Controls.Add(this.symbolEditor);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
-            this.splitContainer1.Size = new System.Drawing.Size(1007, 418);
+            this.splitContainer1.Size = new System.Drawing.Size(1007, 410);
             this.splitContainer1.SplitterDistance = 296;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -530,16 +541,19 @@ namespace ElenFontEditor.Forms
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.toolStripMain);
-            this.Controls.Add(this.menuStripMain);
+            this.Controls.Add(this.titleBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "FMain";
             this.Text = "ElenFontEditor";
+            this.UseCompositedPainting = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
             this.Load += new System.EventHandler(this.FMain_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FMain_KeyDown);
+            this.titleBar.ResumeLayout(false);
+            this.titleBar.PerformLayout();
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.toolStripMain.ResumeLayout(false);
@@ -559,6 +573,7 @@ namespace ElenFontEditor.Forms
 
         #endregion
 
+        private ExControls.ExTitleBar titleBar;
         private System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem tsmiFile;
         private System.Windows.Forms.ToolStripMenuItem tsmimNew;
