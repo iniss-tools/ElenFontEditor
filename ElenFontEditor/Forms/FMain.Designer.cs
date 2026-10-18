@@ -36,31 +36,31 @@ namespace ElenFontEditor.Forms
             this.titleBar = new ExControls.ExTitleBar();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmimNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmimOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmimRecent = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimNew = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmimOpen = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmimRecent = new ToolsCore.Icons.IconToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmimSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimSave = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmimFontManager = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimFontManager = new ToolsCore.Icons.IconToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmimRenameFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimRenameFile = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmimAppSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimAppSettings = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmimInfoApp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimInfoApp = new ToolsCore.Icons.IconToolStripMenuItem();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbOpen = new System.Windows.Forms.ToolStripButton();
-            this.tssbRecent = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsbNew = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbOpen = new ToolsCore.Icons.IconToolStripButton();
+            this.tssbRecent = new ToolsCore.Icons.IconToolStripDropDownButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbSave = new ToolsCore.Icons.IconToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbAppSettings = new System.Windows.Forms.ToolStripButton();
-            this.tsbInfoApp = new System.Windows.Forms.ToolStripButton();
+            this.tsbAppSettings = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbInfoApp = new ToolsCore.Icons.IconToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbRenameFile = new System.Windows.Forms.ToolStripButton();
-            this.tsbFontManager = new System.Windows.Forms.ToolStripButton();
+            this.tsbRenameFile = new ToolsCore.Icons.IconToolStripButton();
+            this.tsbFontManager = new ToolsCore.Icons.IconToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tslFont = new System.Windows.Forms.ToolStripLabel();
             this.tscomboFonts = new ExControls.ExToolStripComboBox();
@@ -131,22 +131,23 @@ namespace ElenFontEditor.Forms
             // 
             // tsmimNew
             // 
-            this.tsmimNew.Image = global::ToolsCore.GlobalResources.create;
             this.tsmimNew.Name = "tsmimNew";
+            this.tsmimNew.IconName = "document";
+            this.tsmimNew.IconBadge = "add";
             this.tsmimNew.Size = new System.Drawing.Size(121, 22);
             this.tsmimNew.Text = "&Nový...";
             // 
             // tsmimOpen
             // 
-            this.tsmimOpen.Image = global::ToolsCore.GlobalResources.open;
             this.tsmimOpen.Name = "tsmimOpen";
+            this.tsmimOpen.IconName = "folder-open";
             this.tsmimOpen.Size = new System.Drawing.Size(121, 22);
             this.tsmimOpen.Text = "&Otvoriť";
             // 
             // tsmimRecent
             // 
-            this.tsmimRecent.Image = global::ToolsCore.GlobalResources.recent_gvds;
             this.tsmimRecent.Name = "tsmimRecent";
+            this.tsmimRecent.IconName = "history";
             this.tsmimRecent.Size = new System.Drawing.Size(121, 22);
             this.tsmimRecent.Text = "&Nedávne";
             // 
@@ -158,8 +159,8 @@ namespace ElenFontEditor.Forms
             // tsmimSave
             // 
             this.tsmimSave.Enabled = false;
-            this.tsmimSave.Image = global::ToolsCore.GlobalResources.save;
             this.tsmimSave.Name = "tsmimSave";
+            this.tsmimSave.IconName = "save";
             this.tsmimSave.Size = new System.Drawing.Size(121, 22);
             this.tsmimSave.Text = "&Uložiť";
             // 
@@ -177,8 +178,8 @@ namespace ElenFontEditor.Forms
             // tsmimFontManager
             // 
             this.tsmimFontManager.Enabled = false;
-            this.tsmimFontManager.Image = global::ToolsCore.GlobalResources.font;
             this.tsmimFontManager.Name = "tsmimFontManager";
+            this.tsmimFontManager.IconName = "text-font";
             this.tsmimFontManager.Size = new System.Drawing.Size(181, 22);
             this.tsmimFontManager.Text = "&Správa písiem";
             // 
@@ -190,8 +191,8 @@ namespace ElenFontEditor.Forms
             // tsmimRenameFile
             // 
             this.tsmimRenameFile.Enabled = false;
-            this.tsmimRenameFile.Image = global::ToolsCore.GlobalResources.rename;
             this.tsmimRenameFile.Name = "tsmimRenameFile";
+            this.tsmimRenameFile.IconName = "rename";
             this.tsmimRenameFile.Size = new System.Drawing.Size(181, 22);
             this.tsmimRenameFile.Text = "&Premenovať súbor...";
             // 
@@ -205,8 +206,8 @@ namespace ElenFontEditor.Forms
             // 
             // tsmimAppSettings
             // 
-            this.tsmimAppSettings.Image = global::ToolsCore.GlobalResources.app_settings;
             this.tsmimAppSettings.Name = "tsmimAppSettings";
+            this.tsmimAppSettings.IconName = "settings";
             this.tsmimAppSettings.Size = new System.Drawing.Size(197, 22);
             this.tsmimAppSettings.Text = "Nastavenia &programu...";
             // 
@@ -220,8 +221,8 @@ namespace ElenFontEditor.Forms
             // 
             // tsmimInfoApp
             // 
-            this.tsmimInfoApp.Image = global::ToolsCore.GlobalResources.info_app;
             this.tsmimInfoApp.Name = "tsmimInfoApp";
+            this.tsmimInfoApp.IconName = "info";
             this.tsmimInfoApp.Size = new System.Drawing.Size(138, 22);
             this.tsmimInfoApp.Text = "&O programe";
             // 
@@ -255,27 +256,25 @@ namespace ElenFontEditor.Forms
             // tsbNew
             // 
             this.tsbNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNew.Image = global::ToolsCore.GlobalResources.create;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
+            this.tsbNew.IconName = "document";
+            this.tsbNew.IconBadge = "add";
             this.tsbNew.Size = new System.Drawing.Size(24, 24);
             this.tsbNew.Text = "Nový súbor...";
             // 
             // tsbOpen
             // 
             this.tsbOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbOpen.Image = global::ToolsCore.GlobalResources.open;
-            this.tsbOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbOpen.Name = "tsbOpen";
+            this.tsbOpen.IconName = "folder-open";
             this.tsbOpen.Size = new System.Drawing.Size(24, 24);
             this.tsbOpen.Text = "Otvoriť";
             // 
             // tssbRecent
             // 
             this.tssbRecent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tssbRecent.Image = global::ToolsCore.GlobalResources.recent_gvds;
-            this.tssbRecent.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tssbRecent.Name = "tssbRecent";
+            this.tssbRecent.IconName = "history";
             this.tssbRecent.Size = new System.Drawing.Size(33, 24);
             this.tssbRecent.Text = "Nedávne";
             // 
@@ -288,9 +287,8 @@ namespace ElenFontEditor.Forms
             // 
             this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbSave.Enabled = false;
-            this.tsbSave.Image = global::ToolsCore.GlobalResources.save;
-            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
+            this.tsbSave.IconName = "save";
             this.tsbSave.Size = new System.Drawing.Size(24, 24);
             this.tsbSave.Text = "Uložiť";
             // 
@@ -302,18 +300,16 @@ namespace ElenFontEditor.Forms
             // tsbAppSettings
             // 
             this.tsbAppSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAppSettings.Image = global::ToolsCore.GlobalResources.app_settings;
-            this.tsbAppSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAppSettings.Name = "tsbAppSettings";
+            this.tsbAppSettings.IconName = "settings";
             this.tsbAppSettings.Size = new System.Drawing.Size(24, 24);
             this.tsbAppSettings.Text = "Nastavenia programu";
             // 
             // tsbInfoApp
             // 
             this.tsbInfoApp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbInfoApp.Image = global::ToolsCore.GlobalResources.info_app;
-            this.tsbInfoApp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbInfoApp.Name = "tsbInfoApp";
+            this.tsbInfoApp.IconName = "info";
             this.tsbInfoApp.Size = new System.Drawing.Size(24, 24);
             this.tsbInfoApp.Text = "Informácie o programe";
             // 
@@ -326,9 +322,8 @@ namespace ElenFontEditor.Forms
             // 
             this.tsbRenameFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbRenameFile.Enabled = false;
-            this.tsbRenameFile.Image = global::ToolsCore.GlobalResources.rename;
-            this.tsbRenameFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRenameFile.Name = "tsbRenameFile";
+            this.tsbRenameFile.IconName = "rename";
             this.tsbRenameFile.Size = new System.Drawing.Size(24, 24);
             this.tsbRenameFile.Text = "Premenovať súbor";
             // 
@@ -336,9 +331,8 @@ namespace ElenFontEditor.Forms
             // 
             this.tsbFontManager.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbFontManager.Enabled = false;
-            this.tsbFontManager.Image = global::ToolsCore.GlobalResources.font;
-            this.tsbFontManager.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFontManager.Name = "tsbFontManager";
+            this.tsbFontManager.IconName = "text-font";
             this.tsbFontManager.Size = new System.Drawing.Size(24, 24);
             this.tsbFontManager.Text = "Správa písiem";
             // 
@@ -576,20 +570,20 @@ namespace ElenFontEditor.Forms
         private ExControls.ExTitleBar titleBar;
         private System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem tsmiFile;
-        private System.Windows.Forms.ToolStripMenuItem tsmimNew;
-        private System.Windows.Forms.ToolStripMenuItem tsmimOpen;
-        private System.Windows.Forms.ToolStripMenuItem tsmimRecent;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimNew;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimOpen;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimRecent;
         private System.Windows.Forms.ToolStripMenuItem tsmiEdit;
         private System.Windows.Forms.ToolStripMenuItem tsmiHelp;
-        private System.Windows.Forms.ToolStripMenuItem tsmimInfoApp;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimInfoApp;
         private System.Windows.Forms.ToolStrip toolStripMain;
-        private System.Windows.Forms.ToolStripButton tsbNew;
-        private System.Windows.Forms.ToolStripButton tsbOpen;
-        private System.Windows.Forms.ToolStripMenuItem tsmimFontManager;
+        private ToolsCore.Icons.IconToolStripButton tsbNew;
+        private ToolsCore.Icons.IconToolStripButton tsbOpen;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimFontManager;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel tslFont;
         private ExControls.ExToolStripComboBox tscomboFonts;
-        private System.Windows.Forms.ToolStripButton tsbFontManager;
+        private ToolsCore.Icons.IconToolStripButton tsbFontManager;
         private System.Windows.Forms.StatusStrip statusStripMain;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgvSymbols;
@@ -598,21 +592,21 @@ namespace ElenFontEditor.Forms
         private SymbolEditor symbolEditor;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem tsmimSave;
-        private System.Windows.Forms.ToolStripButton tsbAppSettings;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimSave;
+        private ToolsCore.Icons.IconToolStripButton tsbAppSettings;
         private System.Windows.Forms.ToolStripMenuItem tsmiSettings;
-        private System.Windows.Forms.ToolStripMenuItem tsmimAppSettings;
-        private System.Windows.Forms.ToolStripButton tsbInfoApp;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimAppSettings;
+        private ToolsCore.Icons.IconToolStripButton tsbInfoApp;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton tsbSave;
+        private ToolsCore.Icons.IconToolStripButton tsbSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.OpenFileDialog dialogOpenBinFile;
         private System.Windows.Forms.BindingSource tableSymbolBindingSource;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem tsmimRenameFile;
-        private System.Windows.Forms.ToolStripButton tsbRenameFile;
-        private System.Windows.Forms.ToolStripDropDownButton tssbRecent;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimRenameFile;
+        private ToolsCore.Icons.IconToolStripButton tsbRenameFile;
+        private ToolsCore.Icons.IconToolStripDropDownButton tssbRecent;
         private System.Windows.Forms.SaveFileDialog dialogSaveNewFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn cIndex;
         private System.Windows.Forms.DataGridViewTextBoxColumn cName;
