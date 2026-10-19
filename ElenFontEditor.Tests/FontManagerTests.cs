@@ -109,8 +109,8 @@ public class FontManagerTests
 
     [TestMethod]
     [DataRow("1", TableFont.MaxWidthLimit, true)]
-    [DataRow("24", TableFont.MaxWidthLimit, true)]
-    [DataRow("25", TableFont.MaxWidthLimit, false)]
+    [DataRow("16", TableFont.MaxWidthLimit, true)]
+    [DataRow("17", TableFont.MaxWidthLimit, false)]
     [DataRow("20", TableFont.HeightLimit, true)]
     [DataRow("21", TableFont.HeightLimit, false)]
     [DataRow("0", TableFont.MaxWidthLimit, false)]
@@ -119,6 +119,21 @@ public class FontManagerTests
     public void SizeError_KontrolujeRozmer(string text, int max, bool valid)
     {
         Assert.AreEqual(valid, FontRules.SizeError(text, max) is null);
+    }
+
+    [TestMethod]
+    [DataRow("0", true)]
+    [DataRow("8", true)]
+    [DataRow("24", true)]
+    [DataRow("255", true)]
+    [DataRow("256", false)]
+    [DataRow("-1", false)]
+    [DataRow("", false)]
+    [DataRow("abc", false)]
+    public void SymbolWidthError_SirkaZnakuVJednomBajte(string text, bool valid)
+    {
+        // 0 = znak v pisme nie je, sirka moze byt vacsia ako sirka pisma (riadiace kody v suboroch vyrobcu maju 24)
+        Assert.AreEqual(valid, FontRules.SymbolWidthError(text) is null);
     }
 
     [TestMethod]

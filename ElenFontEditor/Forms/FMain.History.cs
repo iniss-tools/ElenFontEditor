@@ -66,8 +66,13 @@ public partial class FMain
     /// <summary>Dokonci rozpracovane upravy - rozpisanu bunku a cakajuci krok spat.</summary>
     private void FinishEdits()
     {
-        if (dgvSymbols.IsCurrentCellInEditMode)
+        // chybna hodnota rozpisanej bunky sa zahodi - bunka ostane s povodnou
+        if (dgvSymbols.IsCurrentCellInEditMode && !dgvSymbols.EndEdit())
+        {
+            dgvSymbols.CancelEdit();
             dgvSymbols.EndEdit();
+        }
+
         FlushCommit();
     }
 

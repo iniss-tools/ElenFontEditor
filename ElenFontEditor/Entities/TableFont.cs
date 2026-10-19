@@ -1,4 +1,6 @@
-﻿namespace ElenFontEditor.Entities;
+﻿using ToolsCore.Iniss.Elen;
+
+namespace ElenFontEditor.Entities;
 
 public class TableFont
 {
@@ -6,10 +8,10 @@ public class TableFont
     public const int NameMaxLength = 20;
 
     /// <summary>
-    /// Najvacsia sirka pisma v editore - tri matice po 8 bodoch. Subor sirku uklada v 1 bajte, realne pisma maju
-    /// najviac 16 bodov.
+    /// Najvacsia sirka pisma v editore - dve matice po 8 bodoch. INISS2 cita bitovu mapu len s 1 alebo 2 bajtmi na riadok
+    /// a realne pisma maju najviac 16 bodov; sirka jednotlivych znakov moze byt vacsia.
     /// </summary>
-    public const int MaxWidthLimit = 24;
+    public const int MaxWidthLimit = ElenFont.MaxSupportedWidth;
 
     /// <summary>Najvacsia vyska pisma v sprave pisiem (realne pisma maju najviac 20 bodov).</summary>
     public const int HeightLimit = 20;

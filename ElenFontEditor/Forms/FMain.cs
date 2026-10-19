@@ -396,6 +396,8 @@ public partial class FMain : ExForm
     private void FMain_FormClosing(object sender, FormClosingEventArgs e)
     {
         FinishEdits();
+        // chybna bunka (FinishEdits ju zahodil) nebrani zatvoreniu
+        e.Cancel = false;
         if (_openedFile == null || Saved)
             return;
 
@@ -446,6 +448,36 @@ public partial class FMain : ExForm
     {
         if (_editingSymbol is { } symbol)
             MarkChanged(string.Format(CultureInfo.CurrentCulture, Resources.History_EditSymbol, SymbolLabel(symbol), symbol.Font.Name));
+    }
+
+    private void dgvSymbols_CellValidating(object? sender, DataGridViewCellValidatingEventArgs e)
+    {
+        if (e.RowIndex < 0 || e.ColumnIndex != cWidth.Index)
+            return;
+
+        var error = FontRules.SymbolWidthError(e.FormattedValue?.ToString());
+        dgvSymbols.Rows[e.RowIndex].ErrorText = error ?? "";
+        e.Cancel = error != null;
+    }
+
+    private void dgvSymbols_CellParsing(object? sender, DataGridViewCellParsingEventArgs e)
+    {
+        if (e.RowIndex < 0 || e.ColumnIndex != cWidth.Index)
+            return;
+
+        // ukoncenie upravy prikazom (ulozenie, krok spat) validaciu bunky obide - chybny text sa nezapise,
+        // bunka ostane s povodnou sirkou
+        var text = e.Value?.ToString();
+        e.Value = FontRules.SymbolWidthError(text) is null
+            ? int.Parse(text!, NumberStyles.Integer, CultureInfo.CurrentCulture)
+            : dgvSymbols.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+        e.ParsingApplied = true;
+    }
+
+    private void dgvSymbols_CellEndEdit(object? sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex >= 0)
+            dgvSymbols.Rows[e.RowIndex].ErrorText = "";
     }
 
     private void dgvSymbols_CellValueChanged(object? sender, DataGridViewCellEventArgs e)

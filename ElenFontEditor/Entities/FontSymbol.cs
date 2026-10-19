@@ -9,6 +9,12 @@ namespace ElenFontEditor.Entities;
 
 public class FontSymbol
 {
+    /// <summary>
+    /// Najvacsia sirka znaku - subor ju uklada v 1 bajte. Moze byt vacsia ako sirka pisma (riadiace kody v suboroch
+    /// vyrobcu maju sirku 24).
+    /// </summary>
+    public const int WidthLimit = byte.MaxValue;
+
     public TableFont Font { get; }
     public int Index { get; }
     public string Char { get; }

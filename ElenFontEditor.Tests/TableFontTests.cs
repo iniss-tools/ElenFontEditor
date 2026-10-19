@@ -138,7 +138,8 @@ public class TableFontTests
     {
         var font = new TableFont { MaxWidth = TableFont.MaxWidthLimit };
 
-        Assert.AreEqual(3, font.MatriciesCount);
+        // dve matice - INISS2 cita najviac 2 bajty na riadok
+        Assert.AreEqual(2, font.MatriciesCount);
         Assert.ThrowsExactly<ArgumentException>(() => font.MaxWidth = TableFont.MaxWidthLimit + 1);
         Assert.ThrowsExactly<ArgumentException>(() => font.MaxWidth = -1);
     }

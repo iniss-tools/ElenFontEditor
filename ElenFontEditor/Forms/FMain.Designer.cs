@@ -445,6 +445,9 @@ namespace ElenFontEditor.Forms
             this.dgvSymbols.RowHeadersVisible = false;
             this.dgvSymbols.RowHeadersWidth = 51;
             this.dgvSymbols.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSymbols.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSymbols_CellEndEdit);
+            this.dgvSymbols.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dgvSymbols_CellParsing);
+            this.dgvSymbols.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSymbols_CellValidating);
             this.dgvSymbols.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSymbols_CellValueChanged);
             this.dgvSymbols.SelectionChanged += new System.EventHandler(this.dgvSymbols_SelectionChanged);
             // 

@@ -16,7 +16,9 @@ internal static class FontRules
     /// Chyba nazvu pisma alebo null. Medzery na okrajoch sa nerataju - okno ich oreze (subor ich na konci nezachova).
     /// </summary>
     /// <param name="name">nazov pisma</param>
-    /// <param name="otherNames">nazvy ostatnych pisiem suboru (subor rovnomenne pismo pri citani vynecha)</param>
+    /// <param name="otherNames">
+    /// nazvy ostatnych pisiem suboru - INISS2 si pisma pamata podla nazvu, rovnomenne pismo by dostalo sirky prveho
+    /// </param>
     public static string? NameError(string? name, IEnumerable<string> otherNames)
     {
         var text = name?.Trim() ?? "";
@@ -35,10 +37,17 @@ internal static class FontRules
     /// <summary>
     /// Chyba rozmeru pisma - sirka alebo vyska v bodoch od <see cref="MinSize" /> do <paramref name="max" /> - alebo null.
     /// </summary>
-    public static string? SizeError(string? text, int max) =>
-        int.TryParse(text, NumberStyles.Integer, CultureInfo.CurrentCulture, out var value) && value >= MinSize && value <= max
+    public static string? SizeError(string? text, int max) => RangeError(text, MinSize, max);
+
+    /// <summary>
+    /// Chyba sirky znaku - 0 (znak v pisme nie je) az <see cref="FontSymbol.WidthLimit" /> - alebo null.
+    /// </summary>
+    public static string? SymbolWidthError(string? text) => RangeError(text, 0, FontSymbol.WidthLimit);
+
+    private static string? RangeError(string? text, int min, int max) =>
+        int.TryParse(text, NumberStyles.Integer, CultureInfo.CurrentCulture, out var value) && value >= min && value <= max
             ? null
-            : string.Format(CultureInfo.CurrentCulture, Resources.FontManager_SizeRange, MinSize, max);
+            : string.Format(CultureInfo.CurrentCulture, Resources.FontManager_SizeRange, min, max);
 
     /// <summary>
     /// Prva chyba pisiem pred ulozenim alebo null.
