@@ -12,6 +12,8 @@ internal static class EfeCommands
     public static CommandInfo New => new("New", Resources.Cmd_New, Shortcut.CtrlShiftS);
     public static CommandInfo Open => new("Open", Resources.Cmd_Open, Shortcut.CtrlO);
     public static CommandInfo Save => new("Save", Resources.Cmd_Save, Shortcut.CtrlS);
+    public static CommandInfo Undo => new("Undo", Resources.Cmd_Undo, Shortcut.CtrlZ);
+    public static CommandInfo Redo => new("Redo", Resources.Cmd_Redo, Shortcut.CtrlY);
     public static CommandInfo FontManager => new("FontManager", Resources.Cmd_FontManager, Shortcut.F1);
     public static CommandInfo RenameFile => new("RenameFile", Resources.Cmd_RenameFile, Shortcut.F2);
     public static CommandInfo AppSettings => new("AppSettings", Resources.Cmd_AppSettings, Shortcut.CtrlShiftN);
@@ -22,5 +24,5 @@ internal static class EfeCommands
     /// <summary>
     /// Prikazy, ktorym sa v nastaveniach da zmenit skratka.
     /// </summary>
-    public static IReadOnlyList<CommandInfo> All => [New, Open, Save, FontManager, RenameFile, AppSettings];
+    public static IReadOnlyList<CommandInfo> All => [New, Open, Save, Undo, Redo, FontManager, RenameFile, AppSettings];
 }

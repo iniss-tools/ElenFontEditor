@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FAppSettings));
             this.exGroupBox2 = new ExControls.ExGroupBox();
             this.cboxStrictMode = new ExControls.ExCheckBox();
             this.pGeneral.SuspendLayout();
@@ -40,13 +41,13 @@
             // pConcreteGeneral
             // 
             this.pConcreteGeneral.Controls.Add(this.exGroupBox2);
-            this.pConcreteGeneral.Size = new System.Drawing.Size(521, 270);
+            resources.ApplyResources(this.pConcreteGeneral, "pConcreteGeneral");
             // 
             // optionsView
             // 
             this.optionsView.HeaderNodeNameVisible = true;
             this.optionsView.SearchBoxVisible = true;
-            this.optionsView.Size = new System.Drawing.Size(800, 440);
+            resources.ApplyResources(this.optionsView, "optionsView");
             // 
             // 
             // 
@@ -63,25 +64,17 @@
             // 
             // exGroupBox2
             // 
-            this.exGroupBox2.AutoSize = true;
+            resources.ApplyResources(this.exGroupBox2, "exGroupBox2");
             this.exGroupBox2.Controls.Add(this.cboxStrictMode);
-            this.exGroupBox2.Location = new System.Drawing.Point(0, 6);
             this.exGroupBox2.Name = "exGroupBox2";
-            this.exGroupBox2.Size = new System.Drawing.Size(521, 56);
-            this.exGroupBox2.TabIndex = 0;
             this.exGroupBox2.TabStop = false;
-            this.exGroupBox2.Text = "Program";
             // 
             // cboxStrictMode
             // 
-            this.cboxStrictMode.AutoSize = true;
+            resources.ApplyResources(this.cboxStrictMode, "cboxStrictMode");
             this.cboxStrictMode.BoxBackColor = System.Drawing.Color.White;
             this.cboxStrictMode.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxStrictMode.Location = new System.Drawing.Point(10, 20);
             this.cboxStrictMode.Name = "cboxStrictMode";
-            this.cboxStrictMode.Size = new System.Drawing.Size(293, 17);
-            this.cboxStrictMode.TabIndex = 0;
-            this.cboxStrictMode.Text = "Pri načítaní súboru použiť striktný režim (väčšia kontrola)";
             // 
             // FAppSettings
             // 

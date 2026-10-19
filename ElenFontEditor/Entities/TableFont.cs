@@ -2,6 +2,18 @@
 
 public class TableFont
 {
+    /// <summary>Najdlhsi nazov pisma - v subore ma 20 bajtov.</summary>
+    public const int NameMaxLength = 20;
+
+    /// <summary>
+    /// Najvacsia sirka pisma v editore - tri matice po 8 bodoch. Subor sirku uklada v 1 bajte, realne pisma maju
+    /// najviac 16 bodov.
+    /// </summary>
+    public const int MaxWidthLimit = 24;
+
+    /// <summary>Najvacsia vyska pisma v sprave pisiem (realne pisma maju najviac 20 bodov).</summary>
+    public const int HeightLimit = 20;
+
     public string Name
     {
         get;
@@ -10,8 +22,8 @@ public class TableFont
             if (value == field)
                 return;
             ArgumentNullException.ThrowIfNull(value);
-            if (value.Length > 20)
-                throw new ArgumentException("Font name must be less than 21 characters.");
+            if (value.Length > NameMaxLength)
+                throw new ArgumentException($"Font name must be less than {NameMaxLength + 1} characters.");
             field = value;
         }
     } = null!;
@@ -25,8 +37,8 @@ public class TableFont
                 return;
             if (value < 0)
                 throw new ArgumentException("Font max width cannot be less than 0.");
-            if (value > 20)
-                throw new ArgumentException("Font max width cannot be more than 20.");
+            if (value > MaxWidthLimit)
+                throw new ArgumentException($"Font max width cannot be more than {MaxWidthLimit}.");
             field = value;
         }
     }
@@ -41,46 +53,84 @@ public class TableFont
         Symbols = new FontSymbol[256];
     }
 
-    private TableFont(TableFont original, int newMaxWidth = -1, int newHeight = -1)
+    private TableFont(TableFont original)
     {
         Name = original.Name;
-        MaxWidth = newMaxWidth == -1 ? original.MaxWidth : newMaxWidth;
-        Height = newHeight == -1 ? original.Height : newHeight;
+        MaxWidth = original.MaxWidth;
+        Height = original.Height;
         IsProportional = original.IsProportional;
+        Symbols = (FontSymbol[]) original.Symbols.Clone();
+    }
 
-        if (newMaxWidth == -1 && newHeight == -1)
+    private TableFont(TableFont original, string name, int maxWidth, int height, bool isProportional)
+    {
+        Name = name;
+        MaxWidth = maxWidth;
+        Height = height;
+        IsProportional = isProportional;
+
+        var shrinks = maxWidth < original.MaxWidth;
+        Symbols = new FontSymbol[256];
+        for (var i = 0; i < Symbols.Length; i++)
         {
-            Symbols = (FontSymbol[]) original.Symbols.Clone();
-        }
-        else
-        {
-            Symbols = new FontSymbol[256];
-            for (var i = 0; i < Symbols.Length; i++)
+            var source = original.Symbols[i];
+            var symbol = new FontSymbol(i, source is null ? maxWidth : NewWidth(source.Width, original), this);
+            if (source is not null)
             {
-                var symbol = new FontSymbol(i, newMaxWidth, this);
-                for (var r = 0; r < symbol.Rows; r++)
+                for (var r = 0; r < Math.Min(symbol.Rows, source.Rows); r++)
                 {
-                    for (var c = 0; c < symbol.Columns; c++)
+                    for (var c = 0; c < Math.Min(symbol.Columns, source.Columns); c++)
                     {
-                        if (r >= original.Symbols[i].Rows || c >= original.Symbols[i].Columns)
-                        {
-                            symbol[r, c] = 0;
-                            continue;
-                        }
-
-                        for (var b = 0; b < 8; b++) 
-                            symbol[r, c, b] = original.Symbols[i].Data[r][c][b];
+                        // body za novou sirkou sa pri zuzeni zmazu, inak sa prenesu vsetky (aj za sirkou pisma)
+                        for (var b = 0; b < 8; b++)
+                            symbol[r, c, b] = source.Data[r][c][b] && (!shrinks || c * 8 + b < maxWidth);
                     }
                 }
-
-                Symbols[i] = symbol;
             }
+
+            Symbols[i] = symbol;
         }
     }
 
+    /// <summary>
+    /// Nove pismo s prazdnymi znakmi, kazdy so sirkou pisma.
+    /// </summary>
+    public static TableFont CreateEmpty(string name, int maxWidth, int height, bool isProportional)
+    {
+        var font = new TableFont { Name = name, MaxWidth = maxWidth, Height = height, IsProportional = isProportional };
+        for (var i = 0; i < font.Symbols.Length; i++)
+            font.Symbols[i] = new FontSymbol(i, maxWidth, font);
+        return font;
+    }
+
+    /// <summary>
+    /// Kopia pisma, ktora zdiela jeho znaky.
+    /// </summary>
     public TableFont Clone() => new(this);
 
-    public TableFont Clone(int newMaxWidth, int newHeight) => new(this, newMaxWidth, newHeight);
+    /// <summary>
+    /// Kopia pisma s inou sirkou a vyskou - znaky su nove objekty, body sa prenesu, kolko sa ich zmesti.
+    /// </summary>
+    public TableFont Clone(int newMaxWidth, int newHeight) => Clone(Name, newMaxWidth, newHeight, IsProportional);
+
+    /// <summary>
+    /// Kopia pisma s novymi vlastnostami - znaky su nove objekty, body sa prenesu, kolko sa ich zmesti. Sirky znakov
+    /// ostanu (aj vacsie ako sirka pisma), pri zuzeni pisma sa orezu; pevna sirka neproporcionalneho pisma ide so
+    /// sirkou pisma.
+    /// </summary>
+    public TableFont Clone(string name, int maxWidth, int height, bool isProportional) => new(this, name, maxWidth, height, isProportional);
 
     public override string ToString() => Name;
+
+    /// <summary>Sirka znaku v kopii pisma (<see cref="MaxWidth" /> a <see cref="IsProportional" /> uz su nove).</summary>
+    private int NewWidth(int width, TableFont original)
+    {
+        // znak sirky 0 v pisme nie je
+        if (width == 0)
+            return 0;
+        // neproporcionalne pismo ma pri vsetkych znakoch sirku pisma
+        if (!IsProportional && (original.IsProportional || width == original.MaxWidth))
+            return MaxWidth;
+        return MaxWidth < original.MaxWidth ? Math.Min(width, MaxWidth) : width;
+    }
 }

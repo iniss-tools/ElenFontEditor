@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="ElenFontEditor/ElenFontEditor.csproj" />
+  <Project Path="ElenFontEditor.Tests/ElenFontEditor.Tests.csproj" />
 </Solution>

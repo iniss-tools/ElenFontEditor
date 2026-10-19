@@ -1,4 +1,5 @@
-﻿using ElenFontEditor.Entities;
+﻿using System.Globalization;
+using ElenFontEditor.Entities;
 using ExControls;
 using ElenFontEditor.Properties;
 using ElenFontEditor.Tools;
@@ -17,6 +18,12 @@ public partial class FMain : ExForm
     private readonly CommandSet _commands = new();
     private FontsFile? _openedFile;
     private FontSymbol? _editingSymbol;
+
+    /// <summary>
+    /// Kde je otvoreny subor na disku (posledne otvoreny alebo ulozeny); null = novy subor este nie je ulozeny.
+    /// Premenovany subor sa tu zmaze az po ulozeni pod novym nazvom - premenovanie sa tak da vratit spat.
+    /// </summary>
+    private string? _diskPath;
 
     public FMain()
     {
@@ -51,6 +58,7 @@ public partial class FMain : ExForm
         CreateCommands();
         _commands.ApplyShortcuts(GlobData.Config.Shortcuts);
         UpdateCommandStates();
+        UpdateHistoryUi();
         InitColumns();
         SetColumnsAutoWidth();
 
@@ -74,6 +82,8 @@ public partial class FMain : ExForm
         _commands.Add(EfeCommands.New, ShowNew).Bind(tsmimNew, tsbNew);
         _commands.Add(EfeCommands.Open, () => OpenFile()).Bind(tsmimOpen, tsbOpen);
         _commands.Add(EfeCommands.Save, DoSave, opened).Bind(tsmimSave, tsbSave);
+        _commands.Add(EfeCommands.Undo, Undo, () => _history?.CanUndo == true).Bind(tsmimUndo, tssbUndo);
+        _commands.Add(EfeCommands.Redo, Redo, () => _history?.CanRedo == true).Bind(tsmimRedo, tssbRedo);
         _commands.Add(EfeCommands.FontManager, ShowFontManager, opened).Bind(tsmimFontManager, tsbFontManager);
         _commands.Add(EfeCommands.RenameFile, ShowRenameFile, opened).Bind(tsmimRenameFile, tsbRenameFile);
         _commands.Add(EfeCommands.AppSettings, ShowAppSettings).Bind(tsmimAppSettings, tsbAppSettings);
@@ -139,6 +149,7 @@ public partial class FMain : ExForm
         this.ApplyThemeAndFonts();
         InitColumns();
         _commands.ApplyShortcuts(GlobData.Config.Shortcuts);
+        UpdateHistoryUi();
         SetColumnsAutoWidth();
         Invalidate(true);
         AppInit.MsgBoxStyleInit(GlobData.UsingStyle, GlobData.Config);
@@ -157,13 +168,18 @@ public partial class FMain : ExForm
         {
             if (field == value)
                 return;
-            if (value)
-                base.Text = base.Text.Replace("*", "");
-            else
-                base.Text += @"*";
             field = value;
+            UpdateTitle();
         }
     } = true;
+
+    /// <summary>
+    /// Titulok okna: cesta k otvorenemu suboru a hviezdicka, ak ma neulozene zmeny.
+    /// </summary>
+    private void UpdateTitle() =>
+        base.Text = _openedFile is null
+            ? Application.ProductName
+            : Application.ProductName + @" - " + _openedFile.PathName + (Saved ? "" : @"*");
 
     /// <summary>
     ///     Naplní menu naposledy otvorenými súbormi zoradenými od naposledy otvoreného.
@@ -226,6 +242,7 @@ public partial class FMain : ExForm
 
     private void OpenFile(string pathname, bool newFile = false)
     {
+        FinishEdits();
         if (_openedFile != null && !Saved)
         {
             var result = Utils.ShowQuestion(Resources.FMain_SaveChanges, MessageBoxButtons.YesNoCancel);
@@ -291,42 +308,63 @@ public partial class FMain : ExForm
 
     private void OnOpenFile(FontsFile file, bool newFile = false)
     {
-        UpdateCommandStates();
-        base.Text = Application.ProductName + @" - " + file.PathName;
+        // znak z predchadzajuceho suboru sa uz nezapisuje
+        _editingSymbol = null;
         tscomboFonts.ComboBox.DataSource = file.Fonts;
-        if (newFile) Saved = false;
+        ShowFonts(0, 0);
+
+        _diskPath = newFile ? null : file.PathName;
+        StartHistory(saved: !newFile);
+        Saved = !newFile;
+        UpdateTitle();
+        UpdateCommandStates();
     }
 
     private void DoSave()
     {
+        FinishEdits();
         SaveCurrentSymbol();
+        var file = _openedFile!;
+        ElenBinParser.SaveFile(file);
+
+        // premenovany subor - povodny sa maze az teraz, ked je ulozeny novy
+        if (_diskPath is not null && !string.Equals(Path.GetFullPath(_diskPath), Path.GetFullPath(file.PathName), StringComparison.OrdinalIgnoreCase) &&
+            File.Exists(_diskPath))
+            File.Delete(_diskPath);
+        _diskPath = file.PathName;
+
+        _history?.MarkSaved();
         Saved = true;
-        ElenBinParser.SaveFile(_openedFile!);
     }
 
     private void ShowFontManager()
     {
+        FinishEdits();
         SaveCurrentSymbol();
+        var fontIndex = tscomboFonts.SelectedIndex;
+        var symbolIndex = dgvSymbols.CurrentCell?.RowIndex ?? -1;
+        var firstRow = dgvSymbols.FirstDisplayedScrollingRowIndex;
         var fmanager = new FFontManager(_openedFile!);
         if (fmanager.ShowDialog(this) == DialogResult.OK)
         {
             _openedFile!.Fonts.ResetBindings();
-            var index = tscomboFonts.SelectedIndex;
-            tscomboFonts.SelectedIndex = -1;
-            tscomboFonts.SelectedIndex = index;
+            ShowFonts(fontIndex, symbolIndex, firstRow);
+            MarkChanged(Resources.History_FontManager);
+            FlushCommit();
         }
     }
 
     private void ShowRenameFile()
     {
+        FinishEdits();
         SaveCurrentSymbol();
-        var oldPath = _openedFile!.PathName;
-        var frename = new FRenameFile(_openedFile);
+        var frename = new FRenameFile(_openedFile!, _diskPath);
         if (frename.ShowDialog(this) == DialogResult.OK)
         {
-            base.Text = Application.ProductName + @" - " + _openedFile.PathName;
-            Saved = false;
-            File.Delete(oldPath);
+            // povodny subor sa zmaze az pri ulozeni (DoSave)
+            UpdateTitle();
+            MarkChanged(Resources.History_RenameFile);
+            FlushCommit();
         }
     }
 
@@ -357,7 +395,8 @@ public partial class FMain : ExForm
 
     private void FMain_FormClosing(object sender, FormClosingEventArgs e)
     {
-        if (_openedFile == null || Saved) 
+        FinishEdits();
+        if (_openedFile == null || Saved)
             return;
 
         var result = Utils.ShowQuestion(Resources.FMain_SaveChanges, MessageBoxButtons.YesNoCancel);
@@ -403,7 +442,19 @@ public partial class FMain : ExForm
             tsslPosition.Text = @$"{cell.Row}:{cell.Column}";
     }
 
-    private void symbolEditor_SymbolChanged(object sender, EventArgs e) => Saved = false;
+    private void symbolEditor_SymbolChanged(object sender, EventArgs e)
+    {
+        if (_editingSymbol is { } symbol)
+            MarkChanged(string.Format(CultureInfo.CurrentCulture, Resources.History_EditSymbol, SymbolLabel(symbol), symbol.Font.Name));
+    }
+
+    private void dgvSymbols_CellValueChanged(object? sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex < 0 || e.ColumnIndex != cWidth.Index || dgvSymbols.Rows[e.RowIndex].DataBoundItem is not FontSymbol symbol)
+            return;
+
+        MarkChanged(string.Format(CultureInfo.CurrentCulture, Resources.History_SymbolWidth, SymbolLabel(symbol), symbol.Font.Name));
+    }
 
     private void FMain_KeyDown(object sender, KeyEventArgs e)
     {

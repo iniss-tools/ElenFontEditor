@@ -120,4 +120,85 @@
   <metadata name="configBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="pConcreteGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 270</value>
+  </data>
+  <data name="optionsView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 440</value>
+  </data>
+  <data name="exGroupBox2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="exGroupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 6</value>
+  </data>
+  <data name="exGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>521, 56</value>
+  </data>
+  <data name="exGroupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="exGroupBox2.Text" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="cboxStrictMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cboxStrictMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="cboxStrictMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 17</value>
+  </data>
+  <data name="cboxStrictMode.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cboxStrictMode.Text" xml:space="preserve">
+    <value>Pri načítaní súboru použiť striktný režim (väčšia kontrola)</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Name" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Type" xml:space="preserve">
+    <value>ExControls.ExGroupBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.Parent" xml:space="preserve">
+    <value>pConcreteGeneral</value>
+  </data>
+  <data name="&gt;&gt;exGroupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboxStrictMode.Name" xml:space="preserve">
+    <value>cboxStrictMode</value>
+  </data>
+  <data name="&gt;&gt;cboxStrictMode.Type" xml:space="preserve">
+    <value>ExControls.ExCheckBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cboxStrictMode.Parent" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;cboxStrictMode.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;AutoScaleDimensions.Name" xml:space="preserve">
+    <value>AutoScaleDimensions</value>
+  </data>
+  <data name="&gt;&gt;AutoScaleDimensions.Type" xml:space="preserve">
+    <value>System.Drawing.SizeF, System, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ClientSize.Name" xml:space="preserve">
+    <value>ClientSize</value>
+  </data>
+  <data name="&gt;&gt;ClientSize.Type" xml:space="preserve">
+    <value>System.Drawing.Size, System, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FAppSettings</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>ToolsCore.Forms.FAppSettingsBase, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

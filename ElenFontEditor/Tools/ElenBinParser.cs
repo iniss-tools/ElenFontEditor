@@ -50,6 +50,24 @@ internal static class ElenBinParser
             .ToList();
 
         new ElenFontFile(file.Name, fonts).Save(file.PathName);
+        MatchFileNameCase(file);
+    }
+
+    /// <summary>
+    /// Prepisany subor si na disku necha povodny nazov aj pri inej velkosti pismen (TEST.bin ulozeny ako test.bin) a
+    /// nazov v hlavicke by sa s menom suboru nezhodoval. Ak cesta zodpoveda nazvu v hlavicke, subor sa premenuje na nu.
+    /// </summary>
+    private static void MatchFileNameCase(FontsFile file)
+    {
+        var name = Path.GetFileName(file.PathName);
+        if (Path.GetFileNameWithoutExtension(name) != file.Name || Path.GetDirectoryName(file.PathName) is not { Length: > 0 } dir)
+            return;
+
+        var actual = Directory.EnumerateFiles(dir, name)
+            .Select(Path.GetFileName)
+            .FirstOrDefault(found => string.Equals(found, name, StringComparison.OrdinalIgnoreCase));
+        if (actual is not null && actual != name)
+            File.Move(Path.Combine(dir, actual), file.PathName);
     }
 
     private static byte[] GlyphData(FontSymbol symbol)

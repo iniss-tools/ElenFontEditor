@@ -4,6 +4,9 @@ namespace ElenFontEditor.Entities;
 
 public class FontsFile
 {
+    /// <summary>Najdlhsi nazov suboru - v hlavicke suboru ma 32 bajtov.</summary>
+    public const int NameMaxLength = 32;
+
     public string PathName { get; set; } = null!;
 
     public string Name
@@ -14,8 +17,8 @@ public class FontsFile
             if (value == field)
                 return;
             ArgumentNullException.ThrowIfNull(value);
-            if (value.Length > 32)
-                throw new ArgumentException("File name must be shorter than 33 characters.");
+            if (value.Length > NameMaxLength)
+                throw new ArgumentException($"File name must be shorter than {NameMaxLength + 1} characters.");
             field = value;
         }
     } = null!;

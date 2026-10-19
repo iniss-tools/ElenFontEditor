@@ -174,6 +174,17 @@ public sealed partial class SymbolEditor : UserControl
         Invalidate();
     }
 
+    /// <summary>
+    /// Zrusi upravovany znak (subor bez pisiem).
+    /// </summary>
+    public void ClearSymbol()
+    {
+        _symbol = null;
+        _mouseDown = false;
+        _dragging = false;
+        Invalidate();
+    }
+
     public void GetEditedSymbol()
     {
         if (_symbol == null)
@@ -261,31 +272,45 @@ public sealed partial class SymbolEditor : UserControl
 
     public void SelectAll()
     {
-        foreach (SymbolEditorCell cell in Cells) 
+        if (_symbol is null)
+            return;
+
+        foreach (SymbolEditorCell cell in Cells)
             cell.Selected = true;
         Invalidate();
     }
 
     public void DeselectAll()
     {
-        foreach (SymbolEditorCell cell in Cells) 
+        if (_symbol is null)
+            return;
+
+        foreach (SymbolEditorCell cell in Cells)
             cell.Selected = false;
         Invalidate();
     }
 
     public void InvertSelected()
     {
+        if (_symbol is null)
+            return;
+
         foreach (SymbolEditorCell cell in Cells)
             if (cell.Selected && cell is { IsColumnHeader: false, IsRowHeader: false })
                 cell.Value = !cell.Value;
+        OnSymbolChanged();
         Invalidate();
     }
 
     public void ClearSelection()
     {
+        if (_symbol is null)
+            return;
+
         foreach (SymbolEditorCell cell in Cells)
             if (cell.Selected)
                 cell.Value = false;
+        OnSymbolChanged();
         Invalidate();
     }
 
@@ -322,6 +347,11 @@ public sealed partial class SymbolEditor : UserControl
         }
 
         Clipboard = selectedCells;
+        if (resetValue)
+        {
+            OnSymbolChanged();
+            Invalidate();
+        }
     }
 
     public void Paste()
@@ -350,6 +380,7 @@ public sealed partial class SymbolEditor : UserControl
         }
         
         RecalulateCellsRectangle();
+        OnSymbolChanged();
         Invalidate();
     }
 

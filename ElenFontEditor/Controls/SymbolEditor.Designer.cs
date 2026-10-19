@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SymbolEditor));
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,56 +52,51 @@
             this.tsmiCut,
             this.tsmiPaste});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(195, 148);
+            resources.ApplyResources(this.contextMenu, "contextMenu");
             // 
             // tsmiSelectAll
             // 
             this.tsmiSelectAll.Name = "tsmiSelectAll";
             this.tsmiSelectAll.ShortcutKeyDisplayString = "Ctrl+A";
-            this.tsmiSelectAll.Size = new System.Drawing.Size(194, 22);
-            this.tsmiSelectAll.Text = "Označiť všetko";
+            resources.ApplyResources(this.tsmiSelectAll, "tsmiSelectAll");
             this.tsmiSelectAll.Click += new System.EventHandler(this.TsmiSelectAll_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(191, 6);
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // tsmiChangeState
             // 
             this.tsmiChangeState.Name = "tsmiChangeState";
             this.tsmiChangeState.ShortcutKeyDisplayString = "Enter";
-            this.tsmiChangeState.Size = new System.Drawing.Size(194, 22);
-            this.tsmiChangeState.Text = "Zmeniť stav";
+            resources.ApplyResources(this.tsmiChangeState, "tsmiChangeState");
             this.tsmiChangeState.Click += new System.EventHandler(this.TsmiChangeState_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(191, 6);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // tsmiCopy
             // 
             this.tsmiCopy.Name = "tsmiCopy";
             this.tsmiCopy.ShortcutKeyDisplayString = "Ctrl+C";
-            this.tsmiCopy.Size = new System.Drawing.Size(194, 22);
-            this.tsmiCopy.Text = "Kopírovať";
+            resources.ApplyResources(this.tsmiCopy, "tsmiCopy");
             this.tsmiCopy.Click += new System.EventHandler(this.TsmiCopy_Click);
             // 
             // tsmiCut
             // 
             this.tsmiCut.Name = "tsmiCut";
             this.tsmiCut.ShortcutKeyDisplayString = "Ctrl+X";
-            this.tsmiCut.Size = new System.Drawing.Size(194, 22);
-            this.tsmiCut.Text = "Vystrihnúť";
+            resources.ApplyResources(this.tsmiCut, "tsmiCut");
             this.tsmiCut.Click += new System.EventHandler(this.TsmiCut_Click);
             // 
             // tsmiPaste
             // 
             this.tsmiPaste.Name = "tsmiPaste";
             this.tsmiPaste.ShortcutKeyDisplayString = "Ctrl+V";
-            this.tsmiPaste.Size = new System.Drawing.Size(194, 22);
-            this.tsmiPaste.Text = "Prilepiť";
+            resources.ApplyResources(this.tsmiPaste, "tsmiPaste");
             this.tsmiPaste.Click += new System.EventHandler(this.TsmiPaste_Click);
             // 
             // SymbolEditor

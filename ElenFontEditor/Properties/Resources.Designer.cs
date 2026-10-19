@@ -168,5 +168,248 @@ namespace ElenFontEditor.Properties {
                 return ResourceManager.GetString("Cmd_AppSettings", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Späť.
+        /// </summary>
+        internal static string Cmd_Undo {
+            get {
+                return ResourceManager.GetString("Cmd_Undo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Znova.
+        /// </summary>
+        internal static string Cmd_Redo {
+            get {
+                return ResourceManager.GetString("Cmd_Redo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Späť: {0}.
+        /// </summary>
+        internal static string History_UndoFormat {
+            get {
+                return ResourceManager.GetString("History_UndoFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Znova: {0}.
+        /// </summary>
+        internal static string History_RedoFormat {
+            get {
+                return ResourceManager.GetString("History_RedoFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to úprava súboru.
+        /// </summary>
+        internal static string History_Change {
+            get {
+                return ResourceManager.GetString("History_Change", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to úprava znaku {0} v písme {1}.
+        /// </summary>
+        internal static string History_EditSymbol {
+            get {
+                return ResourceManager.GetString("History_EditSymbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to šírka znaku {0} v písme {1}.
+        /// </summary>
+        internal static string History_SymbolWidth {
+            get {
+                return ResourceManager.GetString("History_SymbolWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to „{0}“.
+        /// </summary>
+        internal static string History_SymbolChar {
+            get {
+                return ResourceManager.GetString("History_SymbolChar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to č. {0}.
+        /// </summary>
+        internal static string History_SymbolIndex {
+            get {
+                return ResourceManager.GetString("History_SymbolIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to správa písiem.
+        /// </summary>
+        internal static string History_FontManager {
+            get {
+                return ResourceManager.GetString("History_FontManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to premenovanie súboru.
+        /// </summary>
+        internal static string History_RenameFile {
+            get {
+                return ResourceManager.GetString("History_RenameFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov písma nemôže byť prázdny..
+        /// </summary>
+        internal static string FontManager_NameEmpty {
+            get {
+                return ResourceManager.GetString("FontManager_NameEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov písma môže mať najviac {0} znakov..
+        /// </summary>
+        internal static string FontManager_NameLength {
+            get {
+                return ResourceManager.GetString("FontManager_NameLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov písma môže obsahovať len znaky bez diakritiky..
+        /// </summary>
+        internal static string FontManager_NameAscii {
+            get {
+                return ResourceManager.GetString("FontManager_NameAscii", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo s názvom {0} už v súbore je..
+        /// </summary>
+        internal static string FontManager_NameDuplicate {
+            get {
+                return ResourceManager.GetString("FontManager_NameDuplicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zadajte celé číslo od {0} do {1}..
+        /// </summary>
+        internal static string FontManager_SizeRange {
+            get {
+                return ResourceManager.GetString("FontManager_SizeRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor môže mať najviac {0} písiem..
+        /// </summary>
+        internal static string FontManager_TooManyFonts {
+            get {
+                return ResourceManager.GetString("FontManager_TooManyFonts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov súboru nemôže byť prázdny..
+        /// </summary>
+        internal static string RenameFile_NameEmpty {
+            get {
+                return ResourceManager.GetString("RenameFile_NameEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nový názov súboru je rovnaký ako pôvodný..
+        /// </summary>
+        internal static string RenameFile_NameSame {
+            get {
+                return ResourceManager.GetString("RenameFile_NameSame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neplatná cesta k súboru..
+        /// </summary>
+        internal static string RenameFile_InvalidPath {
+            get {
+                return ResourceManager.GetString("RenameFile_InvalidPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Názov súboru obsahuje nepovolené znaky..
+        /// </summary>
+        internal static string RenameFile_InvalidChars {
+            get {
+                return ResourceManager.GetString("RenameFile_InvalidChars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index.
+        /// </summary>
+        internal static string Column_Index {
+            get {
+                return ResourceManager.GetString("Column_Index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Znak.
+        /// </summary>
+        internal static string Column_Char {
+            get {
+                return ResourceManager.GetString("Column_Char", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Symbol.
+        /// </summary>
+        internal static string Column_Symbol {
+            get {
+                return ResourceManager.GetString("Column_Symbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Šírka.
+        /// </summary>
+        internal static string Column_Width {
+            get {
+                return ResourceManager.GetString("Column_Width", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Počet riadkov.
+        /// </summary>
+        internal static string Column_RowCount {
+            get {
+                return ResourceManager.GetString("Column_RowCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Počet stĺpcov.
+        /// </summary>
+        internal static string Column_ColCount {
+            get {
+                return ResourceManager.GetString("Column_ColCount", resourceCulture);
+            }
+        }
     }
 }

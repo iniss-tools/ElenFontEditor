@@ -5225,4 +5225,751 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8=
 </value>
   </data>
+  <data name="titleBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="titleBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1007, 32</value>
+  </data>
+  <data name="titleBar.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="menuStripMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="menuStripMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 0</value>
+  </data>
+  <data name="menuStripMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 32</value>
+  </data>
+  <data name="menuStripMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="menuStripMain.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="tsmiFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="tsmiFile.Text" xml:space="preserve">
+    <value>&amp;Súbor</value>
+  </data>
+  <data name="tsmimNew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="tsmimNew.Text" xml:space="preserve">
+    <value>&amp;Nový...</value>
+  </data>
+  <data name="tsmimOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="tsmimOpen.Text" xml:space="preserve">
+    <value>&amp;Otvoriť</value>
+  </data>
+  <data name="tsmimRecent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="tsmimRecent.Text" xml:space="preserve">
+    <value>&amp;Nedávne</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 6</value>
+  </data>
+  <data name="tsmimSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="tsmimSave.Text" xml:space="preserve">
+    <value>&amp;Uložiť</value>
+  </data>
+  <data name="tsmiEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
+  </data>
+  <data name="tsmiEdit.Text" xml:space="preserve">
+    <value>&amp;Upraviť</value>
+  </data>
+  <data name="tsmimUndo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="tsmimUndo.Text" xml:space="preserve">
+    <value>Späť</value>
+  </data>
+  <data name="tsmimRedo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="tsmimRedo.Text" xml:space="preserve">
+    <value>Znova</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 6</value>
+  </data>
+  <data name="tsmimFontManager.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="tsmimFontManager.Text" xml:space="preserve">
+    <value>&amp;Správa písiem</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 6</value>
+  </data>
+  <data name="tsmimRenameFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="tsmimRenameFile.Text" xml:space="preserve">
+    <value>&amp;Premenovať súbor...</value>
+  </data>
+  <data name="tsmiSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 20</value>
+  </data>
+  <data name="tsmiSettings.Text" xml:space="preserve">
+    <value>&amp;Nastavenia</value>
+  </data>
+  <data name="tsmimAppSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
+  </data>
+  <data name="tsmimAppSettings.Text" xml:space="preserve">
+    <value>Nastavenia &amp;programu...</value>
+  </data>
+  <data name="tsmiHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
+  </data>
+  <data name="tsmiHelp.Text" xml:space="preserve">
+    <value>&amp;Pomocník</value>
+  </data>
+  <data name="tsmimInfoApp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 22</value>
+  </data>
+  <data name="tsmimInfoApp.Text" xml:space="preserve">
+    <value>&amp;O programe</value>
+  </data>
+  <data name="toolStripMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 32</value>
+  </data>
+  <data name="toolStripMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1007, 27</value>
+  </data>
+  <data name="toolStripMain.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="toolStripMain.Text" xml:space="preserve">
+    <value>toolStripMain</value>
+  </data>
+  <data name="tsbNew.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="tsbNew.Text" xml:space="preserve">
+    <value>Nový súbor...</value>
+  </data>
+  <data name="tsbOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="tsbOpen.Text" xml:space="preserve">
+    <value>Otvoriť</value>
+  </data>
+  <data name="tssbRecent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 24</value>
+  </data>
+  <data name="tssbRecent.Text" xml:space="preserve">
+    <value>Nedávne</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 27</value>
+  </data>
+  <data name="tsbSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="tsbSave.Text" xml:space="preserve">
+    <value>Uložiť</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 27</value>
+  </data>
+  <data name="tssbUndo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 24</value>
+  </data>
+  <data name="tssbUndo.Text" xml:space="preserve">
+    <value>Späť</value>
+  </data>
+  <data name="tssbRedo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 24</value>
+  </data>
+  <data name="tssbRedo.Text" xml:space="preserve">
+    <value>Znova</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 27</value>
+  </data>
+  <data name="tsbAppSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="tsbAppSettings.Text" xml:space="preserve">
+    <value>Nastavenia programu</value>
+  </data>
+  <data name="tsbInfoApp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="tsbInfoApp.Text" xml:space="preserve">
+    <value>Informácie o programe</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 27</value>
+  </data>
+  <data name="tsbRenameFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="tsbRenameFile.Text" xml:space="preserve">
+    <value>Premenovať súbor</value>
+  </data>
+  <data name="tsbFontManager.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="tsbFontManager.Text" xml:space="preserve">
+    <value>Správa písiem</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 27</value>
+  </data>
+  <data name="tslFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 24</value>
+  </data>
+  <data name="tslFont.Text" xml:space="preserve">
+    <value>Písmo:</value>
+  </data>
+  <data name="tscomboFonts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 24</value>
+  </data>
+  <data name="statusStripMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 469</value>
+  </data>
+  <data name="statusStripMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1007, 22</value>
+  </data>
+  <data name="statusStripMain.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="statusStripMain.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>937, 17</value>
+  </data>
+  <data name="tsslArray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 17</value>
+  </data>
+  <data name="tsslArray.Text" xml:space="preserve">
+    <value>Pole:</value>
+  </data>
+  <data name="tsslPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 17</value>
+  </data>
+  <data name="tsslPosition.Text" xml:space="preserve">
+    <value>0:0</value>
+  </data>
+  <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 59</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1007, 410</value>
+  </data>
+  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="dgvSymbols.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dgvSymbols.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="dgvSymbols.Size" type="System.Drawing.Size, System.Drawing">
+    <value>291, 408</value>
+  </data>
+  <data name="dgvSymbols.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="dialogOpenBinFile.Filter" xml:space="preserve">
+    <value>Bin. súbory|*.bin|Všetky súbory|*.*</value>
+  </data>
+  <data name="dialogOpenBinFile.Title" xml:space="preserve">
+    <value>Otvoriť binárny súbor</value>
+  </data>
+  <data name="dialogSaveNewFile.Filter" xml:space="preserve">
+    <value>Bin. súbory|*.bin</value>
+  </data>
+  <data name="dialogSaveNewFile.Title" xml:space="preserve">
+    <value>Zadajte názov nového súboru</value>
+  </data>
+  <data name="cName.HeaderText" xml:space="preserve">
+    <value>Znak</value>
+  </data>
+  <data name="cName.Width" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="cIndex.HeaderText" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="cIndex.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="cSymbol.HeaderText" xml:space="preserve">
+    <value>Symbol</value>
+  </data>
+  <data name="cSymbol.Width" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="cWidth.HeaderText" xml:space="preserve">
+    <value>Šírka</value>
+  </data>
+  <data name="cWidth.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="cRowCount.HeaderText" xml:space="preserve">
+    <value>Počet riadkov</value>
+  </data>
+  <data name="cRowCount.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="cColCount.HeaderText" xml:space="preserve">
+    <value>Počet stĺpcov</value>
+  </data>
+  <data name="symbolEditor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="symbolEditor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 5</value>
+  </data>
+  <data name="symbolEditor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>702, 408</value>
+  </data>
+  <data name="symbolEditor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>ElenFontEditor</value>
+  </data>
+  <data name="&gt;&gt;titleBar.Name" xml:space="preserve">
+    <value>titleBar</value>
+  </data>
+  <data name="&gt;&gt;titleBar.Type" xml:space="preserve">
+    <value>ExControls.ExTitleBar, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;titleBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;titleBar.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;menuStripMain.Name" xml:space="preserve">
+    <value>menuStripMain</value>
+  </data>
+  <data name="&gt;&gt;menuStripMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStripMain.Parent" xml:space="preserve">
+    <value>titleBar</value>
+  </data>
+  <data name="&gt;&gt;menuStripMain.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tsmiFile.Name" xml:space="preserve">
+    <value>tsmiFile</value>
+  </data>
+  <data name="&gt;&gt;tsmiFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmimNew.Name" xml:space="preserve">
+    <value>tsmimNew</value>
+  </data>
+  <data name="&gt;&gt;tsmimNew.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tsmimOpen.Name" xml:space="preserve">
+    <value>tsmimOpen</value>
+  </data>
+  <data name="&gt;&gt;tsmimOpen.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tsmimRecent.Name" xml:space="preserve">
+    <value>tsmimRecent</value>
+  </data>
+  <data name="&gt;&gt;tsmimRecent.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmimSave.Name" xml:space="preserve">
+    <value>tsmimSave</value>
+  </data>
+  <data name="&gt;&gt;tsmimSave.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tsmiEdit.Name" xml:space="preserve">
+    <value>tsmiEdit</value>
+  </data>
+  <data name="&gt;&gt;tsmiEdit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmimUndo.Name" xml:space="preserve">
+    <value>tsmimUndo</value>
+  </data>
+  <data name="&gt;&gt;tsmimUndo.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tsmimRedo.Name" xml:space="preserve">
+    <value>tsmimRedo</value>
+  </data>
+  <data name="&gt;&gt;tsmimRedo.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
+    <value>toolStripSeparator7</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmimFontManager.Name" xml:space="preserve">
+    <value>tsmimFontManager</value>
+  </data>
+  <data name="&gt;&gt;tsmimFontManager.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
+    <value>toolStripSeparator6</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmimRenameFile.Name" xml:space="preserve">
+    <value>tsmimRenameFile</value>
+  </data>
+  <data name="&gt;&gt;tsmimRenameFile.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tsmiSettings.Name" xml:space="preserve">
+    <value>tsmiSettings</value>
+  </data>
+  <data name="&gt;&gt;tsmiSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmimAppSettings.Name" xml:space="preserve">
+    <value>tsmimAppSettings</value>
+  </data>
+  <data name="&gt;&gt;tsmimAppSettings.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tsmiHelp.Name" xml:space="preserve">
+    <value>tsmiHelp</value>
+  </data>
+  <data name="&gt;&gt;tsmiHelp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmimInfoApp.Name" xml:space="preserve">
+    <value>tsmimInfoApp</value>
+  </data>
+  <data name="&gt;&gt;tsmimInfoApp.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripMain.Name" xml:space="preserve">
+    <value>toolStripMain</value>
+  </data>
+  <data name="&gt;&gt;toolStripMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStripMain.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tsbNew.Name" xml:space="preserve">
+    <value>tsbNew</value>
+  </data>
+  <data name="&gt;&gt;tsbNew.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tsbOpen.Name" xml:space="preserve">
+    <value>tsbOpen</value>
+  </data>
+  <data name="&gt;&gt;tsbOpen.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tssbRecent.Name" xml:space="preserve">
+    <value>tssbRecent</value>
+  </data>
+  <data name="&gt;&gt;tssbRecent.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripDropDownButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsbSave.Name" xml:space="preserve">
+    <value>tsbSave</value>
+  </data>
+  <data name="&gt;&gt;tsbSave.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
+    <value>toolStripSeparator8</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tssbUndo.Name" xml:space="preserve">
+    <value>tssbUndo</value>
+  </data>
+  <data name="&gt;&gt;tssbUndo.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripSplitButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tssbRedo.Name" xml:space="preserve">
+    <value>tssbRedo</value>
+  </data>
+  <data name="&gt;&gt;tssbRedo.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripSplitButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
+    <value>toolStripSeparator5</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsbAppSettings.Name" xml:space="preserve">
+    <value>tsbAppSettings</value>
+  </data>
+  <data name="&gt;&gt;tsbAppSettings.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tsbInfoApp.Name" xml:space="preserve">
+    <value>tsbInfoApp</value>
+  </data>
+  <data name="&gt;&gt;tsbInfoApp.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsbRenameFile.Name" xml:space="preserve">
+    <value>tsbRenameFile</value>
+  </data>
+  <data name="&gt;&gt;tsbRenameFile.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;tsbFontManager.Name" xml:space="preserve">
+    <value>tsbFontManager</value>
+  </data>
+  <data name="&gt;&gt;tsbFontManager.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripButton, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
+    <value>toolStripSeparator4</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tslFont.Name" xml:space="preserve">
+    <value>tslFont</value>
+  </data>
+  <data name="&gt;&gt;tslFont.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tscomboFonts.Name" xml:space="preserve">
+    <value>tscomboFonts</value>
+  </data>
+  <data name="&gt;&gt;tscomboFonts.Type" xml:space="preserve">
+    <value>ExControls.ExToolStripComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;statusStripMain.Name" xml:space="preserve">
+    <value>statusStripMain</value>
+  </data>
+  <data name="&gt;&gt;statusStripMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStripMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStripMain.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel3.Name" xml:space="preserve">
+    <value>toolStripStatusLabel3</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsslArray.Name" xml:space="preserve">
+    <value>tsslArray</value>
+  </data>
+  <data name="&gt;&gt;tsslArray.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsslPosition.Name" xml:space="preserve">
+    <value>tsslPosition</value>
+  </data>
+  <data name="&gt;&gt;tsslPosition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dgvSymbols.Name" xml:space="preserve">
+    <value>dgvSymbols</value>
+  </data>
+  <data name="&gt;&gt;dgvSymbols.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvSymbols.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;dgvSymbols.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dialogOpenBinFile.Name" xml:space="preserve">
+    <value>dialogOpenBinFile</value>
+  </data>
+  <data name="&gt;&gt;dialogOpenBinFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dialogSaveNewFile.Name" xml:space="preserve">
+    <value>dialogSaveNewFile</value>
+  </data>
+  <data name="&gt;&gt;dialogSaveNewFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cName.Name" xml:space="preserve">
+    <value>cName</value>
+  </data>
+  <data name="&gt;&gt;cName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cIndex.Name" xml:space="preserve">
+    <value>cIndex</value>
+  </data>
+  <data name="&gt;&gt;cIndex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cSymbol.Name" xml:space="preserve">
+    <value>cSymbol</value>
+  </data>
+  <data name="&gt;&gt;cSymbol.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cWidth.Name" xml:space="preserve">
+    <value>cWidth</value>
+  </data>
+  <data name="&gt;&gt;cWidth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cRowCount.Name" xml:space="preserve">
+    <value>cRowCount</value>
+  </data>
+  <data name="&gt;&gt;cRowCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cColCount.Name" xml:space="preserve">
+    <value>cColCount</value>
+  </data>
+  <data name="&gt;&gt;cColCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableSymbolBindingSource.Name" xml:space="preserve">
+    <value>tableSymbolBindingSource</value>
+  </data>
+  <data name="&gt;&gt;tableSymbolBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;symbolEditor.Name" xml:space="preserve">
+    <value>symbolEditor</value>
+  </data>
+  <data name="&gt;&gt;symbolEditor.Type" xml:space="preserve">
+    <value>ElenFontEditor.Controls.SymbolEditor, ElenFontEditor, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;symbolEditor.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;symbolEditor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;AutoScaleDimensions.Name" xml:space="preserve">
+    <value>AutoScaleDimensions</value>
+  </data>
+  <data name="&gt;&gt;AutoScaleDimensions.Type" xml:space="preserve">
+    <value>System.Drawing.SizeF, System, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ClientSize.Name" xml:space="preserve">
+    <value>ClientSize</value>
+  </data>
+  <data name="&gt;&gt;ClientSize.Type" xml:space="preserve">
+    <value>System.Drawing.Size, System, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FMain</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>ExControls.ExForm, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <metadata name="cName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cIndex.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cSymbol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cWidth.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cRowCount.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cColCount.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
@@ -39,3 +40,5 @@ using System.Runtime.Versioning;
 
 // jazyk textov v Properties/Resources.resx (CA1824)
 [assembly: System.Resources.NeutralResourcesLanguage("sk")]
+
+[assembly: InternalsVisibleTo("ElenFontEditor.Tests")]

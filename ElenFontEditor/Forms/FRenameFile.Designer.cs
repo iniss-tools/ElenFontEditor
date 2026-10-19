@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRenameFile));
             this.bSave = new ExControls.ExButton();
             this.tbOldName = new ExControls.ExTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,11 +43,8 @@
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(213, 3);
+            resources.ApplyResources(this.bSave, "bSave");
             this.bSave.Name = "bSave";
-            this.bSave.Size = new System.Drawing.Size(76, 28);
-            this.bSave.TabIndex = 0;
-            this.bSave.Text = "Uložiť";
             this.bSave.UseVisualStyleBackColor = true;
             this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
@@ -56,36 +54,23 @@
             this.tbOldName.DisabledBackColor = System.Drawing.SystemColors.Control;
             this.tbOldName.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
             this.tbOldName.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbOldName.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.tbOldName, "tbOldName");
             this.tbOldName.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.tbOldName.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbOldName.HintText = null;
-            this.tbOldName.Location = new System.Drawing.Point(97, 8);
             this.tbOldName.Name = "tbOldName";
             this.tbOldName.ReadOnly = true;
-            this.tbOldName.Size = new System.Drawing.Size(373, 20);
-            this.tbOldName.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(8, 5);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Aktuálny názov:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(8, 31);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 26);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Nový názov:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel1
@@ -98,16 +83,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tbOldName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tbNewName, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(478, 102);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tbNewName
             // 
@@ -115,35 +97,24 @@
             this.tbNewName.DisabledBackColor = System.Drawing.SystemColors.Control;
             this.tbNewName.DisabledBorderColor = System.Drawing.SystemColors.InactiveBorder;
             this.tbNewName.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbNewName.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.tbNewName, "tbNewName");
             this.tbNewName.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.tbNewName.HintForeColor = System.Drawing.SystemColors.GrayText;
-            this.tbNewName.HintText = "Max. 32 znakov";
-            this.tbNewName.Location = new System.Drawing.Point(97, 34);
             this.tbNewName.Name = "tbNewName";
-            this.tbNewName.Size = new System.Drawing.Size(373, 20);
-            this.tbNewName.TabIndex = 3;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.AutoSize = true;
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.Controls.Add(this.bStorno);
             this.flowLayoutPanel1.Controls.Add(this.bSave);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(97, 60);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(373, 34);
-            this.flowLayoutPanel1.TabIndex = 4;
             // 
             // bStorno
             // 
             this.bStorno.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bStorno.Location = new System.Drawing.Point(295, 3);
+            resources.ApplyResources(this.bStorno, "bStorno");
             this.bStorno.Name = "bStorno";
-            this.bStorno.Size = new System.Drawing.Size(75, 28);
-            this.bStorno.TabIndex = 1;
-            this.bStorno.Text = "Zrušiť";
             this.bStorno.UseVisualStyleBackColor = true;
             this.bStorno.Click += new System.EventHandler(this.bStorno_Click);
             // 
@@ -161,7 +132,7 @@
             this.Name = "FRenameFile";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Premenovať súbor";
+            resources.ApplyResources(this, "$this");
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);

@@ -42,11 +42,18 @@ public class FontSymbol
         set => SetRow(row,column, value);
     }
 
-    public FontSymbol(int index, int width, TableFont font)
+    public FontSymbol(int index, int width, TableFont font) : this(index, width, font.Height, font.MatriciesCount, font)
+    {
+    }
+
+    /// <summary>
+    /// Znak s danym rozmerom matice (obnova kroku spat).
+    /// </summary>
+    internal FontSymbol(int index, int width, int rows, int columns, TableFont font)
     {
         Width = width;
-        Rows = font.Height;
-        Columns = font.MatriciesCount;
+        Rows = rows;
+        Columns = columns;
         Font = font;
         Index = index;
         Char = ((char) index).ToString(CultureInfo.CurrentCulture);

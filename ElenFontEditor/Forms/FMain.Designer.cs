@@ -42,6 +42,9 @@ namespace ElenFontEditor.Forms
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmimSave = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimUndo = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmimRedo = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmimFontManager = new ToolsCore.Icons.IconToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmimRenameFile = new ToolsCore.Icons.IconToolStripMenuItem();
@@ -55,6 +58,9 @@ namespace ElenFontEditor.Forms
             this.tssbRecent = new ToolsCore.Icons.IconToolStripDropDownButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbSave = new ToolsCore.Icons.IconToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.tssbUndo = new ToolsCore.Icons.IconToolStripSplitButton();
+            this.tssbRedo = new ToolsCore.Icons.IconToolStripSplitButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbAppSettings = new ToolsCore.Icons.IconToolStripButton();
             this.tsbInfoApp = new ToolsCore.Icons.IconToolStripButton();
@@ -95,27 +101,21 @@ namespace ElenFontEditor.Forms
             // titleBar
             // 
             this.titleBar.Controls.Add(this.menuStripMain);
-            this.titleBar.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.titleBar, "titleBar");
             this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(1007, 32);
-            this.titleBar.TabIndex = 0;
             // 
             // menuStripMain
             // 
             this.menuStripMain.BackColor = System.Drawing.SystemColors.Control;
-            this.menuStripMain.Dock = System.Windows.Forms.DockStyle.Left;
+            resources.ApplyResources(this.menuStripMain, "menuStripMain");
             this.menuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiFile,
             this.tsmiEdit,
             this.tsmiSettings,
             this.tsmiHelp});
-            this.menuStripMain.Location = new System.Drawing.Point(36, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStripMain.Size = new System.Drawing.Size(260, 32);
-            this.menuStripMain.TabIndex = 0;
-            this.menuStripMain.Text = "menuStrip1";
             // 
             // tsmiFile
             // 
@@ -126,105 +126,115 @@ namespace ElenFontEditor.Forms
             this.toolStripSeparator2,
             this.tsmimSave});
             this.tsmiFile.Name = "tsmiFile";
-            this.tsmiFile.Size = new System.Drawing.Size(50, 20);
-            this.tsmiFile.Text = "&Súbor";
+            resources.ApplyResources(this.tsmiFile, "tsmiFile");
             // 
             // tsmimNew
             // 
             this.tsmimNew.Name = "tsmimNew";
             this.tsmimNew.IconName = "document";
             this.tsmimNew.IconBadge = "add";
-            this.tsmimNew.Size = new System.Drawing.Size(121, 22);
-            this.tsmimNew.Text = "&Nový...";
+            resources.ApplyResources(this.tsmimNew, "tsmimNew");
             // 
             // tsmimOpen
             // 
             this.tsmimOpen.Name = "tsmimOpen";
             this.tsmimOpen.IconName = "folder-open";
-            this.tsmimOpen.Size = new System.Drawing.Size(121, 22);
-            this.tsmimOpen.Text = "&Otvoriť";
+            resources.ApplyResources(this.tsmimOpen, "tsmimOpen");
             // 
             // tsmimRecent
             // 
             this.tsmimRecent.Name = "tsmimRecent";
             this.tsmimRecent.IconName = "history";
-            this.tsmimRecent.Size = new System.Drawing.Size(121, 22);
-            this.tsmimRecent.Text = "&Nedávne";
+            resources.ApplyResources(this.tsmimRecent, "tsmimRecent");
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(118, 6);
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // tsmimSave
             // 
             this.tsmimSave.Enabled = false;
             this.tsmimSave.Name = "tsmimSave";
             this.tsmimSave.IconName = "save";
-            this.tsmimSave.Size = new System.Drawing.Size(121, 22);
-            this.tsmimSave.Text = "&Uložiť";
+            resources.ApplyResources(this.tsmimSave, "tsmimSave");
             // 
             // tsmiEdit
             // 
             this.tsmiEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmimUndo,
+            this.tsmimRedo,
+            this.toolStripSeparator7,
             this.tsmimFontManager,
             this.toolStripSeparator6,
             this.tsmimRenameFile});
             this.tsmiEdit.Enabled = false;
             this.tsmiEdit.Name = "tsmiEdit";
-            this.tsmiEdit.Size = new System.Drawing.Size(58, 20);
-            this.tsmiEdit.Text = "&Upraviť";
-            // 
+            resources.ApplyResources(this.tsmiEdit, "tsmiEdit");
+            //
+            // tsmimUndo
+            //
+            this.tsmimUndo.Enabled = false;
+            this.tsmimUndo.Name = "tsmimUndo";
+            this.tsmimUndo.IconName = "undo";
+            resources.ApplyResources(this.tsmimUndo, "tsmimUndo");
+            //
+            // tsmimRedo
+            //
+            this.tsmimRedo.Enabled = false;
+            this.tsmimRedo.Name = "tsmimRedo";
+            this.tsmimRedo.IconName = "redo";
+            resources.ApplyResources(this.tsmimRedo, "tsmimRedo");
+            //
+            // toolStripSeparator7
+            //
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
+            //
             // tsmimFontManager
             // 
             this.tsmimFontManager.Enabled = false;
             this.tsmimFontManager.Name = "tsmimFontManager";
             this.tsmimFontManager.IconName = "text-font";
-            this.tsmimFontManager.Size = new System.Drawing.Size(181, 22);
-            this.tsmimFontManager.Text = "&Správa písiem";
+            resources.ApplyResources(this.tsmimFontManager, "tsmimFontManager");
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(178, 6);
+            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
             // 
             // tsmimRenameFile
             // 
             this.tsmimRenameFile.Enabled = false;
             this.tsmimRenameFile.Name = "tsmimRenameFile";
             this.tsmimRenameFile.IconName = "rename";
-            this.tsmimRenameFile.Size = new System.Drawing.Size(181, 22);
-            this.tsmimRenameFile.Text = "&Premenovať súbor...";
+            resources.ApplyResources(this.tsmimRenameFile, "tsmimRenameFile");
             // 
             // tsmiSettings
             // 
             this.tsmiSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmimAppSettings});
             this.tsmiSettings.Name = "tsmiSettings";
-            this.tsmiSettings.Size = new System.Drawing.Size(77, 20);
-            this.tsmiSettings.Text = "&Nastavenia";
+            resources.ApplyResources(this.tsmiSettings, "tsmiSettings");
             // 
             // tsmimAppSettings
             // 
             this.tsmimAppSettings.Name = "tsmimAppSettings";
             this.tsmimAppSettings.IconName = "settings";
-            this.tsmimAppSettings.Size = new System.Drawing.Size(197, 22);
-            this.tsmimAppSettings.Text = "Nastavenia &programu...";
+            resources.ApplyResources(this.tsmimAppSettings, "tsmimAppSettings");
             // 
             // tsmiHelp
             // 
             this.tsmiHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmimInfoApp});
             this.tsmiHelp.Name = "tsmiHelp";
-            this.tsmiHelp.Size = new System.Drawing.Size(73, 20);
-            this.tsmiHelp.Text = "&Pomocník";
+            resources.ApplyResources(this.tsmiHelp, "tsmiHelp");
             // 
             // tsmimInfoApp
             // 
             this.tsmimInfoApp.Name = "tsmimInfoApp";
             this.tsmimInfoApp.IconName = "info";
-            this.tsmimInfoApp.Size = new System.Drawing.Size(138, 22);
-            this.tsmimInfoApp.Text = "&O programe";
+            resources.ApplyResources(this.tsmimInfoApp, "tsmimInfoApp");
             // 
             // toolStripMain
             // 
@@ -237,6 +247,9 @@ namespace ElenFontEditor.Forms
             this.tssbRecent,
             this.toolStripSeparator1,
             this.tsbSave,
+            this.toolStripSeparator8,
+            this.tssbUndo,
+            this.tssbRedo,
             this.toolStripSeparator5,
             this.tsbAppSettings,
             this.tsbInfoApp,
@@ -246,12 +259,9 @@ namespace ElenFontEditor.Forms
             this.toolStripSeparator4,
             this.tslFont,
             this.tscomboFonts});
-            this.toolStripMain.Location = new System.Drawing.Point(0, 32);
+            resources.ApplyResources(this.toolStripMain, "toolStripMain");
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.toolStripMain.Size = new System.Drawing.Size(1007, 27);
-            this.toolStripMain.TabIndex = 1;
-            this.toolStripMain.Text = "toolStripMain";
             // 
             // tsbNew
             // 
@@ -259,29 +269,26 @@ namespace ElenFontEditor.Forms
             this.tsbNew.Name = "tsbNew";
             this.tsbNew.IconName = "document";
             this.tsbNew.IconBadge = "add";
-            this.tsbNew.Size = new System.Drawing.Size(24, 24);
-            this.tsbNew.Text = "Nový súbor...";
+            resources.ApplyResources(this.tsbNew, "tsbNew");
             // 
             // tsbOpen
             // 
             this.tsbOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbOpen.Name = "tsbOpen";
             this.tsbOpen.IconName = "folder-open";
-            this.tsbOpen.Size = new System.Drawing.Size(24, 24);
-            this.tsbOpen.Text = "Otvoriť";
+            resources.ApplyResources(this.tsbOpen, "tsbOpen");
             // 
             // tssbRecent
             // 
             this.tssbRecent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tssbRecent.Name = "tssbRecent";
             this.tssbRecent.IconName = "history";
-            this.tssbRecent.Size = new System.Drawing.Size(33, 24);
-            this.tssbRecent.Text = "Nedávne";
+            resources.ApplyResources(this.tssbRecent, "tssbRecent");
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // tsbSave
             // 
@@ -289,34 +296,54 @@ namespace ElenFontEditor.Forms
             this.tsbSave.Enabled = false;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.IconName = "save";
-            this.tsbSave.Size = new System.Drawing.Size(24, 24);
-            this.tsbSave.Text = "Uložiť";
-            // 
+            resources.ApplyResources(this.tsbSave, "tsbSave");
+            //
+            // toolStripSeparator8
+            //
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
+            //
+            // tssbUndo
+            //
+            this.tssbUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tssbUndo.Enabled = false;
+            this.tssbUndo.Name = "tssbUndo";
+            this.tssbUndo.IconName = "undo";
+            resources.ApplyResources(this.tssbUndo, "tssbUndo");
+            this.tssbUndo.DropDownOpening += new System.EventHandler(this.tssbUndo_DropDownOpening);
+            //
+            // tssbRedo
+            //
+            this.tssbRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tssbRedo.Enabled = false;
+            this.tssbRedo.Name = "tssbRedo";
+            this.tssbRedo.IconName = "redo";
+            resources.ApplyResources(this.tssbRedo, "tssbRedo");
+            this.tssbRedo.DropDownOpening += new System.EventHandler(this.tssbRedo_DropDownOpening);
+            //
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
             // 
             // tsbAppSettings
             // 
             this.tsbAppSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbAppSettings.Name = "tsbAppSettings";
             this.tsbAppSettings.IconName = "settings";
-            this.tsbAppSettings.Size = new System.Drawing.Size(24, 24);
-            this.tsbAppSettings.Text = "Nastavenia programu";
+            resources.ApplyResources(this.tsbAppSettings, "tsbAppSettings");
             // 
             // tsbInfoApp
             // 
             this.tsbInfoApp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbInfoApp.Name = "tsbInfoApp";
             this.tsbInfoApp.IconName = "info";
-            this.tsbInfoApp.Size = new System.Drawing.Size(24, 24);
-            this.tsbInfoApp.Text = "Informácie o programe";
+            resources.ApplyResources(this.tsbInfoApp, "tsbInfoApp");
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // tsbRenameFile
             // 
@@ -324,8 +351,7 @@ namespace ElenFontEditor.Forms
             this.tsbRenameFile.Enabled = false;
             this.tsbRenameFile.Name = "tsbRenameFile";
             this.tsbRenameFile.IconName = "rename";
-            this.tsbRenameFile.Size = new System.Drawing.Size(24, 24);
-            this.tsbRenameFile.Text = "Premenovať súbor";
+            resources.ApplyResources(this.tsbRenameFile, "tsbRenameFile");
             // 
             // tsbFontManager
             // 
@@ -333,19 +359,17 @@ namespace ElenFontEditor.Forms
             this.tsbFontManager.Enabled = false;
             this.tsbFontManager.Name = "tsbFontManager";
             this.tsbFontManager.IconName = "text-font";
-            this.tsbFontManager.Size = new System.Drawing.Size(24, 24);
-            this.tsbFontManager.Text = "Správa písiem";
+            resources.ApplyResources(this.tsbFontManager, "tsbFontManager");
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             // 
             // tslFont
             // 
             this.tslFont.Name = "tslFont";
-            this.tslFont.Size = new System.Drawing.Size(43, 24);
-            this.tslFont.Text = "Písmo:";
+            resources.ApplyResources(this.tslFont, "tslFont");
             // 
             // tscomboFonts
             // 
@@ -354,7 +378,7 @@ namespace ElenFontEditor.Forms
             this.tscomboFonts.Enabled = false;
             this.tscomboFonts.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.tscomboFonts.Name = "tscomboFonts";
-            this.tscomboFonts.Size = new System.Drawing.Size(150, 24);
+            resources.ApplyResources(this.tscomboFonts, "tscomboFonts");
             this.tscomboFonts.SelectedIndexChanged += new System.EventHandler(this.tscomboFonts_SelectedIndexChanged);
             // 
             // statusStripMain
@@ -364,35 +388,29 @@ namespace ElenFontEditor.Forms
             this.toolStripStatusLabel3,
             this.tsslArray,
             this.tsslPosition});
-            this.statusStripMain.Location = new System.Drawing.Point(0, 469);
+            resources.ApplyResources(this.statusStripMain, "statusStripMain");
             this.statusStripMain.Name = "statusStripMain";
-            this.statusStripMain.Size = new System.Drawing.Size(1007, 22);
             this.statusStripMain.SizingGrip = false;
-            this.statusStripMain.TabIndex = 3;
-            this.statusStripMain.Text = "statusStrip1";
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(937, 17);
+            resources.ApplyResources(this.toolStripStatusLabel3, "toolStripStatusLabel3");
             this.toolStripStatusLabel3.Spring = true;
             // 
             // tsslArray
             // 
             this.tsslArray.Name = "tsslArray";
-            this.tsslArray.Size = new System.Drawing.Size(33, 17);
-            this.tsslArray.Text = "Pole:";
+            resources.ApplyResources(this.tsslArray, "tsslArray");
             // 
             // tsslPosition
             // 
             this.tsslPosition.Name = "tsslPosition";
-            this.tsslPosition.Size = new System.Drawing.Size(22, 17);
-            this.tsslPosition.Text = "0:0";
+            resources.ApplyResources(this.tsslPosition, "tsslPosition");
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 59);
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -404,9 +422,7 @@ namespace ElenFontEditor.Forms
             // 
             this.splitContainer1.Panel2.Controls.Add(this.symbolEditor);
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 5, 5, 5);
-            this.splitContainer1.Size = new System.Drawing.Size(1007, 410);
             this.splitContainer1.SplitterDistance = 296;
-            this.splitContainer1.TabIndex = 2;
             // 
             // dgvSymbols
             // 
@@ -423,39 +439,34 @@ namespace ElenFontEditor.Forms
             this.cRowCount,
             this.cColCount});
             this.dgvSymbols.DataSource = this.tableSymbolBindingSource;
-            this.dgvSymbols.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSymbols.Location = new System.Drawing.Point(5, 5);
+            resources.ApplyResources(this.dgvSymbols, "dgvSymbols");
             this.dgvSymbols.MultiSelect = false;
             this.dgvSymbols.Name = "dgvSymbols";
             this.dgvSymbols.RowHeadersVisible = false;
             this.dgvSymbols.RowHeadersWidth = 51;
             this.dgvSymbols.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSymbols.Size = new System.Drawing.Size(291, 408);
-            this.dgvSymbols.TabIndex = 0;
+            this.dgvSymbols.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSymbols_CellValueChanged);
             this.dgvSymbols.SelectionChanged += new System.EventHandler(this.dgvSymbols_SelectionChanged);
             // 
             // dialogOpenBinFile
             // 
-            this.dialogOpenBinFile.Filter = "Bin. súbory|*.bin|All files|*.*";
-            this.dialogOpenBinFile.Title = "Otvoriť binárny súbor";
+            resources.ApplyResources(this.dialogOpenBinFile, "dialogOpenBinFile");
             // 
             // dialogSaveNewFile
             // 
             this.dialogSaveNewFile.CreatePrompt = true;
             this.dialogSaveNewFile.DefaultExt = "bin";
-            this.dialogSaveNewFile.Filter = "Bin. súbory|*.bin";
+            resources.ApplyResources(this.dialogSaveNewFile, "dialogSaveNewFile");
             this.dialogSaveNewFile.OverwritePrompt = false;
-            this.dialogSaveNewFile.Title = "Zadajte názov nového súboru";
             // 
             // cName
             // 
             this.cName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cName.DataPropertyName = "Char";
-            this.cName.HeaderText = "Znak";
+            resources.ApplyResources(this.cName, "cName");
             this.cName.MinimumWidth = 6;
             this.cName.Name = "cName";
             this.cName.ReadOnly = true;
-            this.cName.Width = 57;
             // 
             // cIndex
             // 
@@ -463,44 +474,40 @@ namespace ElenFontEditor.Forms
             dataGridViewCellStyle1.Format = "N0";
             dataGridViewCellStyle1.NullValue = null;
             this.cIndex.DefaultCellStyle = dataGridViewCellStyle1;
-            this.cIndex.HeaderText = "Index";
+            resources.ApplyResources(this.cIndex, "cIndex");
             this.cIndex.MinimumWidth = 6;
             this.cIndex.Name = "cIndex";
             this.cIndex.ReadOnly = true;
-            this.cIndex.Width = 50;
             // 
             // cSymbol
             // 
             this.cSymbol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cSymbol.DataPropertyName = "Image";
-            this.cSymbol.HeaderText = "Symbol";
+            resources.ApplyResources(this.cSymbol, "cSymbol");
             this.cSymbol.MinimumWidth = 6;
             this.cSymbol.Name = "cSymbol";
             this.cSymbol.ReadOnly = true;
-            this.cSymbol.Width = 47;
             // 
             // cWidth
             // 
             this.cWidth.DataPropertyName = "Width";
-            this.cWidth.HeaderText = "Šírka";
+            resources.ApplyResources(this.cWidth, "cWidth");
             this.cWidth.MinimumWidth = 6;
             this.cWidth.Name = "cWidth";
-            this.cWidth.Width = 50;
             // 
             // cRowCount
             // 
             this.cRowCount.DataPropertyName = "Rows";
-            this.cRowCount.HeaderText = "Počet riadkov";
+            resources.ApplyResources(this.cRowCount, "cRowCount");
             this.cRowCount.MinimumWidth = 6;
             this.cRowCount.Name = "cRowCount";
             this.cRowCount.ReadOnly = true;
-            this.cRowCount.Width = 50;
             // 
             // cColCount
             // 
             this.cColCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.cColCount.DataPropertyName = "Columns";
-            this.cColCount.HeaderText = "Počet stĺpcov";
+            resources.ApplyResources(this.cColCount, "cColCount");
             this.cColCount.MinimumWidth = 6;
             this.cColCount.Name = "cColCount";
             this.cColCount.ReadOnly = true;
@@ -513,17 +520,14 @@ namespace ElenFontEditor.Forms
             // 
             this.symbolEditor.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.symbolEditor.BorderColor = System.Drawing.Color.White;
-            this.symbolEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.symbolEditor, "symbolEditor");
             this.symbolEditor.HeaderBackColor = System.Drawing.Color.Gray;
             this.symbolEditor.HeaderForeColor = System.Drawing.Color.White;
-            this.symbolEditor.Location = new System.Drawing.Point(0, 5);
             this.symbolEditor.Margin = new System.Windows.Forms.Padding(4);
             this.symbolEditor.Name = "symbolEditor";
             this.symbolEditor.PoweredOffColor = System.Drawing.Color.Black;
             this.symbolEditor.PoweredOnColor = System.Drawing.Color.Yellow;
             this.symbolEditor.SelectedColor = System.Drawing.Color.DodgerBlue;
-            this.symbolEditor.Size = new System.Drawing.Size(702, 408);
-            this.symbolEditor.TabIndex = 0;
             this.symbolEditor.SymbolChanged += new System.EventHandler(this.symbolEditor_SymbolChanged);
             this.symbolEditor.MouseMove += new System.Windows.Forms.MouseEventHandler(this.symbolEditor_MouseMove);
             // 
@@ -540,7 +544,7 @@ namespace ElenFontEditor.Forms
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "FMain";
-            this.Text = "ElenFontEditor";
+            resources.ApplyResources(this, "$this");
             this.UseCompositedPainting = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
@@ -607,6 +611,12 @@ namespace ElenFontEditor.Forms
         private ToolsCore.Icons.IconToolStripMenuItem tsmimRenameFile;
         private ToolsCore.Icons.IconToolStripButton tsbRenameFile;
         private ToolsCore.Icons.IconToolStripDropDownButton tssbRecent;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimUndo;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimRedo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private ToolsCore.Icons.IconToolStripSplitButton tssbUndo;
+        private ToolsCore.Icons.IconToolStripSplitButton tssbRedo;
         private System.Windows.Forms.SaveFileDialog dialogSaveNewFile;
         private System.Windows.Forms.DataGridViewTextBoxColumn cIndex;
         private System.Windows.Forms.DataGridViewTextBoxColumn cName;

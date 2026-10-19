@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Xml.Serialization;
+using ElenFontEditor.Properties;
 using ToolsCore.XML;
 
 namespace ElenFontEditor.XML;
@@ -11,15 +12,16 @@ public record DesktopColumns()
 {
     private static readonly Type ClassType = typeof(DesktopColumns);
 
+    // nazov stlpca sa cita az pri pouziti - konfiguracia sa nacita skor, nez sa nastavi jazyk programu
     [XmlIgnore]
-    private static readonly Dictionary<string, (string name, int order, int minWidth, bool visible)> Props = new()
+    private static readonly Dictionary<string, (Func<string> name, int order, int minWidth, bool visible)> Props = new()
     {
-        [nameof(Index)] = ("Index", 0, 50, true),
-        [nameof(Char)] = ("Znak", 1, 60, true),
-        [nameof(Symbol)] = ("Symbol", 2, 50, true),
-        [nameof(Width)] = ("Šírka", 3, 50, true),
-        [nameof(RowCount)] = ("Počet riadkov", 4, 50, true),
-        [nameof(ColCount)] = ("Počet stĺpcov", 5, 50, true)
+        [nameof(Index)] = (() => Resources.Column_Index, 0, 50, true),
+        [nameof(Char)] = (() => Resources.Column_Char, 1, 60, true),
+        [nameof(Symbol)] = (() => Resources.Column_Symbol, 2, 50, true),
+        [nameof(Width)] = (() => Resources.Column_Width, 3, 50, true),
+        [nameof(RowCount)] = (() => Resources.Column_RowCount, 4, 50, true),
+        [nameof(ColCount)] = (() => Resources.Column_ColCount, 5, 50, true)
     };
 
     #region Properties
@@ -118,6 +120,9 @@ public record DesktopColumns()
     {
         var properties = ClassType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
         var ordered = properties.Select(prop => (DesktopColumn)prop.GetValue(this)!).ToList();
+        // nazvy v aktualnom jazyku programu
+        foreach (var column in ordered)
+            column.Name = Props[column.PropertyName].name();
         return ordered.OrderBy(i => i.Order).ToList();
     }
 
@@ -132,7 +137,7 @@ public record DesktopColumns()
     }
 
     private static DesktopColumn InitColumn(string propname)
-        => new(Props[propname].name, propname, Props[propname].order, Props[propname].minWidth, Props[propname].visible);
+        => new(Props[propname].name(), propname, Props[propname].order, Props[propname].minWidth, Props[propname].visible);
 
     private static void AssignColumnProps(ref DesktopColumn? obj, string propname)
     {
@@ -142,7 +147,7 @@ public record DesktopColumns()
         }
         else
         {
-            obj.Name = Props[propname].name;
+            obj.Name = Props[propname].name();
             obj.PropertyName = propname;
         }
     }

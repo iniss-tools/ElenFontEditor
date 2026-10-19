@@ -154,4 +154,85 @@
   <data name="Cmd_AppSettings" xml:space="preserve">
     <value>Nastavenia programu</value>
   </data>
+  <data name="Cmd_Undo" xml:space="preserve">
+    <value>Späť</value>
+  </data>
+  <data name="Cmd_Redo" xml:space="preserve">
+    <value>Znova</value>
+  </data>
+  <data name="History_UndoFormat" xml:space="preserve">
+    <value>Späť: {0}</value>
+  </data>
+  <data name="History_RedoFormat" xml:space="preserve">
+    <value>Znova: {0}</value>
+  </data>
+  <data name="History_Change" xml:space="preserve">
+    <value>úprava súboru</value>
+  </data>
+  <data name="History_EditSymbol" xml:space="preserve">
+    <value>úprava znaku {0} v písme {1}</value>
+  </data>
+  <data name="History_SymbolWidth" xml:space="preserve">
+    <value>šírka znaku {0} v písme {1}</value>
+  </data>
+  <data name="History_SymbolChar" xml:space="preserve">
+    <value>„{0}“</value>
+  </data>
+  <data name="History_SymbolIndex" xml:space="preserve">
+    <value>č. {0}</value>
+  </data>
+  <data name="History_FontManager" xml:space="preserve">
+    <value>správa písiem</value>
+  </data>
+  <data name="History_RenameFile" xml:space="preserve">
+    <value>premenovanie súboru</value>
+  </data>
+  <data name="FontManager_NameEmpty" xml:space="preserve">
+    <value>Názov písma nemôže byť prázdny.</value>
+  </data>
+  <data name="FontManager_NameLength" xml:space="preserve">
+    <value>Názov písma môže mať najviac {0} znakov.</value>
+  </data>
+  <data name="FontManager_NameAscii" xml:space="preserve">
+    <value>Názov písma môže obsahovať len znaky bez diakritiky.</value>
+  </data>
+  <data name="FontManager_NameDuplicate" xml:space="preserve">
+    <value>Písmo s názvom {0} už v súbore je.</value>
+  </data>
+  <data name="FontManager_SizeRange" xml:space="preserve">
+    <value>Zadajte celé číslo od {0} do {1}.</value>
+  </data>
+  <data name="FontManager_TooManyFonts" xml:space="preserve">
+    <value>Súbor môže mať najviac {0} písiem.</value>
+  </data>
+  <data name="RenameFile_NameEmpty" xml:space="preserve">
+    <value>Názov súboru nemôže byť prázdny.</value>
+  </data>
+  <data name="RenameFile_NameSame" xml:space="preserve">
+    <value>Nový názov súboru je rovnaký ako pôvodný.</value>
+  </data>
+  <data name="RenameFile_InvalidPath" xml:space="preserve">
+    <value>Neplatná cesta k súboru.</value>
+  </data>
+  <data name="RenameFile_InvalidChars" xml:space="preserve">
+    <value>Názov súboru obsahuje nepovolené znaky.</value>
+  </data>
+  <data name="Column_Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Column_Char" xml:space="preserve">
+    <value>Znak</value>
+  </data>
+  <data name="Column_Symbol" xml:space="preserve">
+    <value>Symbol</value>
+  </data>
+  <data name="Column_Width" xml:space="preserve">
+    <value>Šírka</value>
+  </data>
+  <data name="Column_RowCount" xml:space="preserve">
+    <value>Počet riadkov</value>
+  </data>
+  <data name="Column_ColCount" xml:space="preserve">
+    <value>Počet stĺpcov</value>
+  </data>
 </root>
