@@ -143,10 +143,13 @@ public partial class FMain
     }
 
     /// <summary>Znak v popise kroku: tlacitelny v uvodzovkach, inak jeho cislo.</summary>
-    private static string SymbolLabel(FontSymbol symbol) =>
-        symbol.Char is [var c] && !char.IsControl(c) && !char.IsWhiteSpace(c)
+    private static string SymbolLabel(FontSymbol symbol) => SymbolLabel(symbol.Index, GlobData.Config.CharEncoding);
+
+    /// <summary>Znak s kodom <paramref name="code" /> v popise kroku - v kodovani ako stlpec Znak.</summary>
+    internal static string SymbolLabel(int code, SymbolCharset charset) =>
+        SymbolChars.Printable(code, charset) is { } c
             ? string.Format(CultureInfo.CurrentCulture, Resources.History_SymbolChar, c)
-            : string.Format(CultureInfo.CurrentCulture, Resources.History_SymbolIndex, symbol.Index);
+            : string.Format(CultureInfo.CurrentCulture, Resources.History_SymbolIndex, code);
 
     /// <summary>Popisy prikazov a tlacidiel Spat a Znova podla historie.</summary>
     private void UpdateHistoryUi()

@@ -123,4 +123,7 @@
   <data name="cboxStrictMode.Text" xml:space="preserve">
     <value>Při načítání souboru použít striktní režim (větší kontrola)</value>
   </data>
+  <data name="lCharEncoding.Text" xml:space="preserve">
+    <value>Kódování sloupce Znak:</value>
+  </data>
 </root>

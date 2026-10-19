@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using ElenFontEditor.Tools;
+﻿using ElenFontEditor.Tools;
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
@@ -17,7 +16,6 @@ public class FontSymbol
 
     public TableFont Font { get; }
     public int Index { get; }
-    public string Char { get; }
     public int Width { get; set; }
     public bool[][][] Data { get; }
     public int Rows { get; }
@@ -62,7 +60,6 @@ public class FontSymbol
         Columns = columns;
         Font = font;
         Index = index;
-        Char = ((char) index).ToString(CultureInfo.CurrentCulture);
         Data = new bool[Rows][][];
         for (var r = 0; r < Rows; r++)
         {
@@ -79,7 +76,6 @@ public class FontSymbol
         Columns = original.Columns;
         Font = original.Font;
         Index = original.Index;
-        Char = original.Char;
         Data = (bool[][][]) original.Data.Clone();
     }
 

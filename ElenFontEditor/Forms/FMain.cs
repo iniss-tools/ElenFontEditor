@@ -59,6 +59,7 @@ public partial class FMain : ExForm
         _commands.ApplyShortcuts(GlobData.Config.Shortcuts);
         UpdateCommandStates();
         UpdateHistoryUi();
+        dgvSymbols.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
         InitColumns();
         SetColumnsAutoWidth();
 
@@ -214,9 +215,17 @@ public partial class FMain : ExForm
             if (result != DialogResult.OK) 
                 return;
 
-            if (Path.GetFileNameWithoutExtension(dialogSaveNewFile.FileName).Length > 32)
+            var name = Path.GetFileNameWithoutExtension(dialogSaveNewFile.FileName);
+            if (name.Length > FontsFile.NameMaxLength)
             {
                 Utils.ShowError(Resources.FMain_FileName_Length);
+                continue;
+            }
+
+            // nazov sa zapisuje aj do hlavicky suboru v ASCII - s diakritikou by sa nezhodoval s menom suboru
+            if (!FontRules.IsAscii(name))
+            {
+                Utils.ShowError(Resources.FileName_Ascii);
                 continue;
             }
 
@@ -249,7 +258,8 @@ public partial class FMain : ExForm
             switch (result)
             {
                 case DialogResult.Yes:
-                    DoSave();
+                    if (!TrySave())
+                        return;
                     break;
                 case DialogResult.No:
                     break;
@@ -258,10 +268,7 @@ public partial class FMain : ExForm
             }
         }
 
-        AppRegistry.SetUsageOfProject(pathname);
-        AppRegistry.SetLastProject(pathname);
-        SetRecentFiles();
-
+        // novy subor sa do nedavnych dostane az ulozenim
         if (newFile)
         {
             _openedFile = new FontsFile
@@ -278,6 +285,7 @@ public partial class FMain : ExForm
             try
             {
                 _openedFile = ElenBinParser.LoadFile(pathname);
+                RememberFile(pathname);
                 OnOpenFile(_openedFile);
             }
             catch (Exception e)
@@ -289,8 +297,19 @@ public partial class FMain : ExForm
         else
         {
             _openedFile = ElenBinParser.LoadFile(pathname);
+            RememberFile(pathname);
             OnOpenFile(_openedFile);
         }
+    }
+
+    /// <summary>
+    /// Subor na disku do nedavnych a ako posledny otvoreny - len uspesne otvoreny alebo ulozeny.
+    /// </summary>
+    private void RememberFile(string pathname)
+    {
+        AppRegistry.SetUsageOfProject(pathname);
+        AppRegistry.SetLastProject(pathname);
+        SetRecentFiles();
     }
 
     private void FMain_Load(object sender, EventArgs e)
@@ -320,21 +339,48 @@ public partial class FMain : ExForm
         UpdateCommandStates();
     }
 
-    private void DoSave()
+    private void DoSave() => TrySave();
+
+    /// <summary>
+    /// Ulozi otvoreny subor. Pri chybe ju ohlasi a zmeny ostanu neulozene.
+    /// </summary>
+    /// <returns><c>true</c>, ak sa subor ulozil.</returns>
+    private bool TrySave()
     {
         FinishEdits();
         SaveCurrentSymbol();
         var file = _openedFile!;
-        ElenBinParser.SaveFile(file);
+        try
+        {
+            ElenBinParser.SaveFile(file);
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or FormatException or ArgumentException)
+        {
+            Log.Exception(e);
+            Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.FMain_SaveFailed, e.Message));
+            return false;
+        }
 
         // premenovany subor - povodny sa maze az teraz, ked je ulozeny novy
         if (_diskPath is not null && !string.Equals(Path.GetFullPath(_diskPath), Path.GetFullPath(file.PathName), StringComparison.OrdinalIgnoreCase) &&
             File.Exists(_diskPath))
-            File.Delete(_diskPath);
-        _diskPath = file.PathName;
+        {
+            try
+            {
+                File.Delete(_diskPath);
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+            {
+                // novy subor je ulozeny - povodny ostane na disku
+                Log.Exception(e);
+            }
+        }
 
+        _diskPath = file.PathName;
+        RememberFile(file.PathName);
         _history?.MarkSaved();
         Saved = true;
+        return true;
     }
 
     private void ShowFontManager()
@@ -405,8 +451,8 @@ public partial class FMain : ExForm
         switch (result)
         {
             case DialogResult.Yes:
-                DoSave();
-                e.Cancel = false;
+                // neuspesne ulozenie okno nezatvori - zmeny by sa stratili
+                e.Cancel = !TrySave();
                 break;
             case DialogResult.No:
                 e.Cancel = false;
@@ -439,9 +485,10 @@ public partial class FMain : ExForm
         if (_editingSymbol == null) 
             return;
 
+        // riadok:stlpec bodu ako v hlavickach editora (od 1)
         var cell = symbolEditor.GetCellFromPosition(e.X, e.Y);
-        if (cell != null) 
-            tsslPosition.Text = @$"{cell.Row}:{cell.Column}";
+        if (cell is { IsRowHeader: false, IsColumnHeader: false })
+            tsslPosition.Text = @$"{cell.Row + 1}:{cell.Column + 1}";
     }
 
     private void symbolEditor_SymbolChanged(object sender, EventArgs e)
@@ -474,6 +521,17 @@ public partial class FMain : ExForm
         e.ParsingApplied = true;
     }
 
+    private void dgvSymbols_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
+    {
+        // stlpec Znak je naviazany na kod znaku - text podla kodovania z nastaveni sa sklada pri kresleni,
+        // zmena nastavenia sa tak prejavi hned v otvorenom zozname
+        if (e.RowIndex < 0 || e.ColumnIndex != cName.Index || e.Value is not int code)
+            return;
+
+        e.Value = SymbolChars.Text(code, GlobData.Config.CharEncoding);
+        e.FormattingApplied = true;
+    }
+
     private void dgvSymbols_CellEndEdit(object? sender, DataGridViewCellEventArgs e)
     {
         if (e.RowIndex >= 0)
@@ -490,6 +548,10 @@ public partial class FMain : ExForm
 
     private void FMain_KeyDown(object sender, KeyEventArgs e)
     {
+        // pri pisani do bunky patria Ctrl+V a Ctrl+A textu bunky
+        if (dgvSymbols.IsCurrentCellInEditMode)
+            return;
+
         if (e is { Control: true, KeyCode: Keys.V })
         {
             symbolEditor.Paste();

@@ -213,6 +213,14 @@
   <data name="RenameFile_InvalidChars" xml:space="preserve">
     <value>Název souboru obsahuje nepovolené znaky.</value>
   </data>
+  <data name="FileName_Ascii" xml:space="preserve">
+    <value>Název souboru může obsahovat jen znaky bez diakritiky.</value>
+  </data>
+  <data name="FMain_SaveFailed" xml:space="preserve">
+    <value>Uložení souboru selhalo, změny zůstaly neuložené.
+
+{0}</value>
+  </data>
   <data name="Column_Index" xml:space="preserve">
     <value>Index</value>
   </data>
@@ -230,5 +238,11 @@
   </data>
   <data name="Column_ColCount" xml:space="preserve">
     <value>Počet sloupců</value>
+  </data>
+  <data name="Settings_CharEncoding_Win1250" xml:space="preserve">
+    <value>Windows-1250 (ELEN10, ELEN16, ELEKON)</value>
+  </data>
+  <data name="Settings_CharEncoding_Kamenicky" xml:space="preserve">
+    <value>Kód Kamenických (ELEN, ELENOLD, ELEN16Kam)</value>
   </data>
 </root>

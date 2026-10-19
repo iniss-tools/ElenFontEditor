@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FAppSettings));
             this.exGroupBox2 = new ExControls.ExGroupBox();
             this.cboxStrictMode = new ExControls.ExCheckBox();
+            this.lCharEncoding = new System.Windows.Forms.Label();
+            this.cbCharEncoding = new ExControls.ExComboBox();
             this.pGeneral.SuspendLayout();
             this.pConcreteGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionsView)).BeginInit();
@@ -65,6 +67,8 @@
             // exGroupBox2
             // 
             resources.ApplyResources(this.exGroupBox2, "exGroupBox2");
+            this.exGroupBox2.Controls.Add(this.cbCharEncoding);
+            this.exGroupBox2.Controls.Add(this.lCharEncoding);
             this.exGroupBox2.Controls.Add(this.cboxStrictMode);
             this.exGroupBox2.Name = "exGroupBox2";
             this.exGroupBox2.TabStop = false;
@@ -75,6 +79,48 @@
             this.cboxStrictMode.BoxBackColor = System.Drawing.Color.White;
             this.cboxStrictMode.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.cboxStrictMode.Name = "cboxStrictMode";
+            // 
+            // lCharEncoding
+            // 
+            resources.ApplyResources(this.lCharEncoding, "lCharEncoding");
+            this.lCharEncoding.Name = "lCharEncoding";
+            // 
+            // cbCharEncoding
+            // 
+            this.cbCharEncoding.DropDownSelectedRowBackColor = System.Drawing.SystemColors.Highlight;
+            this.cbCharEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCharEncoding.FormattingEnabled = true;
+            resources.ApplyResources(this.cbCharEncoding, "cbCharEncoding");
+            this.cbCharEncoding.Name = "cbCharEncoding";
+            this.cbCharEncoding.StyleDisabled.ArrowColor = null;
+            this.cbCharEncoding.StyleDisabled.BackColor = null;
+            this.cbCharEncoding.StyleDisabled.BorderColor = null;
+            this.cbCharEncoding.StyleDisabled.ButtonBackColor = null;
+            this.cbCharEncoding.StyleDisabled.ButtonBorderColor = null;
+            this.cbCharEncoding.StyleDisabled.ButtonRenderFirst = null;
+            this.cbCharEncoding.StyleDisabled.ForeColor = null;
+            this.cbCharEncoding.StyleHighlight.ArrowColor = null;
+            this.cbCharEncoding.StyleHighlight.BackColor = null;
+            this.cbCharEncoding.StyleHighlight.BorderColor = null;
+            this.cbCharEncoding.StyleHighlight.ButtonBackColor = null;
+            this.cbCharEncoding.StyleHighlight.ButtonBorderColor = null;
+            this.cbCharEncoding.StyleHighlight.ButtonRenderFirst = null;
+            this.cbCharEncoding.StyleHighlight.ForeColor = null;
+            this.cbCharEncoding.StyleNormal.ArrowColor = null;
+            this.cbCharEncoding.StyleNormal.BackColor = null;
+            this.cbCharEncoding.StyleNormal.BorderColor = null;
+            this.cbCharEncoding.StyleNormal.ButtonBackColor = null;
+            this.cbCharEncoding.StyleNormal.ButtonBorderColor = null;
+            this.cbCharEncoding.StyleNormal.ButtonRenderFirst = null;
+            this.cbCharEncoding.StyleNormal.ForeColor = null;
+            this.cbCharEncoding.StyleSelected.ArrowColor = null;
+            this.cbCharEncoding.StyleSelected.BackColor = null;
+            this.cbCharEncoding.StyleSelected.BorderColor = null;
+            this.cbCharEncoding.StyleSelected.ButtonBackColor = null;
+            this.cbCharEncoding.StyleSelected.ButtonBorderColor = null;
+            this.cbCharEncoding.StyleSelected.ButtonRenderFirst = null;
+            this.cbCharEncoding.StyleSelected.ForeColor = null;
+            this.cbCharEncoding.UseDarkScrollBar = false;
             // 
             // FAppSettings
             // 
@@ -97,5 +143,7 @@
 
         private ExControls.ExGroupBox exGroupBox2;
         private ExControls.ExCheckBox cboxStrictMode;
+        private System.Windows.Forms.Label lCharEncoding;
+        private ExControls.ExComboBox cbCharEncoding;
     }
 }

@@ -139,7 +139,7 @@ internal static class Program
         // okno sa otvára maximalizované - na snímke by malo šírku celej obrazovky
         main.WindowState = FormWindowState.Normal;
         main.Location = new Point(40, 40);
-        main.Size = new Size(1100, 720);
+        main.Size = new Size(1180, 720);
         Pump.Events();
 
         typeof(FMain).GetMethod("OpenFile", Any, [typeof(string), typeof(bool)])!.Invoke(main, [path, false]);

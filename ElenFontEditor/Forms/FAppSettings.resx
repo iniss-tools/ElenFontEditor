@@ -133,7 +133,7 @@
     <value>0, 6</value>
   </data>
   <data name="exGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>521, 56</value>
+    <value>521, 85</value>
   </data>
   <data name="exGroupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -155,6 +155,30 @@
   </data>
   <data name="cboxStrictMode.Text" xml:space="preserve">
     <value>Pri načítaní súboru použiť striktný režim (väčšia kontrola)</value>
+  </data>
+  <data name="lCharEncoding.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lCharEncoding.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 49</value>
+  </data>
+  <data name="lCharEncoding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 13</value>
+  </data>
+  <data name="lCharEncoding.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lCharEncoding.Text" xml:space="preserve">
+    <value>Kódovanie stĺpca Znak:</value>
+  </data>
+  <data name="cbCharEncoding.Location" type="System.Drawing.Point, System.Drawing">
+    <value>140, 45</value>
+  </data>
+  <data name="cbCharEncoding.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 21</value>
+  </data>
+  <data name="cbCharEncoding.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;exGroupBox2.Name" xml:space="preserve">
     <value>exGroupBox2</value>
@@ -178,6 +202,30 @@
     <value>exGroupBox2</value>
   </data>
   <data name="&gt;&gt;cboxStrictMode.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;lCharEncoding.Name" xml:space="preserve">
+    <value>lCharEncoding</value>
+  </data>
+  <data name="&gt;&gt;lCharEncoding.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lCharEncoding.Parent" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;lCharEncoding.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbCharEncoding.Name" xml:space="preserve">
+    <value>cbCharEncoding</value>
+  </data>
+  <data name="&gt;&gt;cbCharEncoding.Type" xml:space="preserve">
+    <value>ExControls.ExComboBox, ExControls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cbCharEncoding.Parent" xml:space="preserve">
+    <value>exGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;cbCharEncoding.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;AutoScaleDimensions.Name" xml:space="preserve">

@@ -446,6 +446,7 @@ namespace ElenFontEditor.Forms
             this.dgvSymbols.RowHeadersWidth = 51;
             this.dgvSymbols.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSymbols.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSymbols_CellEndEdit);
+            this.dgvSymbols.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvSymbols_CellFormatting);
             this.dgvSymbols.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dgvSymbols_CellParsing);
             this.dgvSymbols.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSymbols_CellValidating);
             this.dgvSymbols.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSymbols_CellValueChanged);
@@ -465,7 +466,7 @@ namespace ElenFontEditor.Forms
             // cName
             // 
             this.cName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cName.DataPropertyName = "Char";
+            this.cName.DataPropertyName = "Index";
             resources.ApplyResources(this.cName, "cName");
             this.cName.MinimumWidth = 6;
             this.cName.Name = "cName";

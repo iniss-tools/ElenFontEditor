@@ -359,6 +359,24 @@ namespace ElenFontEditor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Názov súboru môže obsahovať len znaky bez diakritiky..
+        /// </summary>
+        internal static string FileName_Ascii {
+            get {
+                return ResourceManager.GetString("FileName_Ascii", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uloženie súboru zlyhalo, zmeny ostali neuložené..
+        /// </summary>
+        internal static string FMain_SaveFailed {
+            get {
+                return ResourceManager.GetString("FMain_SaveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Index.
         /// </summary>
         internal static string Column_Index {
@@ -409,6 +427,24 @@ namespace ElenFontEditor.Properties {
         internal static string Column_ColCount {
             get {
                 return ResourceManager.GetString("Column_ColCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows-1250 (ELEN10, ELEN16, ELEKON).
+        /// </summary>
+        internal static string Settings_CharEncoding_Win1250 {
+            get {
+                return ResourceManager.GetString("Settings_CharEncoding_Win1250", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kód Kamenických (ELEN, ELENOLD, ELEN16Kam).
+        /// </summary>
+        internal static string Settings_CharEncoding_Kamenicky {
+            get {
+                return ResourceManager.GetString("Settings_CharEncoding_Kamenicky", resourceCulture);
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using ElenFontEditor.XML;
+﻿using ElenFontEditor.Entities;
+using ElenFontEditor.Properties;
+using ElenFontEditor.XML;
 using ExControls;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
@@ -31,6 +33,12 @@ public partial class FAppSettings : FAppSettingsBase
     {
         base.OnLoad();
         cboxStrictMode.Checked = Config.StrictMode;
+        cbCharEncoding.BindEnum(new Dictionary<SymbolCharset, string>
+        {
+            [SymbolCharset.Win1250] = Resources.Settings_CharEncoding_Win1250,
+            [SymbolCharset.Kamenicky] = Resources.Settings_CharEncoding_Kamenicky
+        });
+        cbCharEncoding.SelectedValue = Config.CharEncoding;
     }
 
     /// <inheritdoc />
@@ -39,6 +47,8 @@ public partial class FAppSettings : FAppSettingsBase
         Config.Shortcuts.SetFromRows(Shortcuts);
         Config.DesktopCols.SetValues(Columns);
         Config.StrictMode = cboxStrictMode.Checked;
+        if (cbCharEncoding.SelectedValue is SymbolCharset charset)
+            Config.CharEncoding = charset;
         return base.OnSaving();
     }
 

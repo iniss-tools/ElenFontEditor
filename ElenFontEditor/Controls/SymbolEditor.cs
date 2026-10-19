@@ -323,46 +323,41 @@ public sealed partial class SymbolEditor : UserControl
         if (_symbol is null)
             return;
 
-        var selectedCells = GetCellsFromSelection();
-        var firstCell = selectedCells.FirstOrDefault();
-        if (firstCell is null)
-            return; //selection is empty
+        // oznacene body (aj celym riadkom, stlpcom, rohom alebo Ctrl+A), nie posledny tahany obdlznik
+        var selected = SelectedPoints().ToArray();
+        if (selected.Length == 0)
+            return;
 
-        for (var i = 0; i < selectedCells.Length; i++)
-        {
-            var cell = selectedCells[i];
-            if (cell.IsColumnHeader || cell.IsRowHeader)
-                continue;
+        // poloha voci lavemu hornemu rohu oznacenia - pri prilepeni nikdy nevyjde nad alebo nalavo od ciela
+        var top = selected.Min(cell => cell.Row);
+        var left = selected.Min(cell => cell.Column);
+        Clipboard = selected
+            .Select(cell => new SymbolEditorCell(cell.Row - top, cell.Column - left) { Selected = true, Value = cell.Value })
+            .ToArray();
 
-            var copyCell = new SymbolEditorCell(cell.Row - firstCell.Row, cell.Column - firstCell.Column)
-            {
-                Selected = true,
-                Value = cell.Value
-            };
-
-            selectedCells[i] = copyCell;
-
-            if (resetValue)
-                cell.Value = false;
-        }
-
-        Clipboard = selectedCells;
         if (resetValue)
         {
+            foreach (var cell in selected)
+                cell.Value = false;
             OnSymbolChanged();
             Invalidate();
         }
     }
 
+    /// <summary>Oznacene body znaku bez hlaviciek riadkov a stlpcov, po riadkoch zhora.</summary>
+    private IEnumerable<SymbolEditorCell> SelectedPoints() =>
+        Cells.Cast<SymbolEditorCell>().Where(cell => cell is { Selected: true, IsRowHeader: false, IsColumnHeader: false });
+
     public void Paste()
     {
         if (_symbol is null)
             return;
-        
+
         if (Clipboard is null)
             return;
 
-        var hotCell = Cells.Cast<SymbolEditorCell>().FirstOrDefault(c => c.Selected, Cells[0, 0]);
+        // prvy oznaceny bod, inak lavy horny bod znaku
+        var hotCell = SelectedPoints().FirstOrDefault() ?? Cells[0, 0];
 
         foreach (var cell in Clipboard)
         {
@@ -378,7 +373,7 @@ public sealed partial class SymbolEditor : UserControl
             };
             Cells[row, col] = newCell;
         }
-        
+
         RecalulateCellsRectangle();
         OnSymbolChanged();
         Invalidate();

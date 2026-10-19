@@ -9,7 +9,7 @@ namespace ElenFontEditor.Forms;
 /// </summary>
 internal static class EfeCommands
 {
-    public static CommandInfo New => new("New", Resources.Cmd_New, Shortcut.CtrlShiftS);
+    public static CommandInfo New => new("New", Resources.Cmd_New, Shortcut.CtrlN);
     public static CommandInfo Open => new("Open", Resources.Cmd_Open, Shortcut.CtrlO);
     public static CommandInfo Save => new("Save", Resources.Cmd_Save, Shortcut.CtrlS);
     public static CommandInfo Undo => new("Undo", Resources.Cmd_Undo, Shortcut.CtrlZ);

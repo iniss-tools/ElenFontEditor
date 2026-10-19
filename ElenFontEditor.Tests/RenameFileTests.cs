@@ -42,6 +42,15 @@ public class RenameFileTests
     }
 
     [TestMethod]
+    [DataRow("PÍSMA_16")]
+    [DataRow("Žilina")]
+    public void NameError_Diakritika_Odmietne(string name)
+    {
+        // nazov ide aj do hlavicky suboru v ASCII
+        Assert.AreEqual(Resources.FileName_Ascii, FRenameFile.NameError(Open("TEST"), name, DiskPath("TEST")));
+    }
+
+    [TestMethod]
     public void NameError_VolnyNazov_Povoli()
     {
         var file = Open("TEST");

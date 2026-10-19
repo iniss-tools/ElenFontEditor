@@ -34,6 +34,9 @@ public partial class FRenameFile : Form
             return Resources.RenameFile_NameSame;
         if (newName.Length > FontsFile.NameMaxLength)
             return Resources.FMain_FileName_Length;
+        // nazov sa zapisuje aj do hlavicky suboru v ASCII - s diakritikou by sa nezhodoval s menom suboru
+        if (!FontRules.IsAscii(newName))
+            return Resources.FileName_Ascii;
         if (newName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
             return Resources.RenameFile_InvalidChars;
         if (NewPath(file, newName) is not { } path)

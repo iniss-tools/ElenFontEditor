@@ -26,13 +26,17 @@ internal static class FontRules
             return Resources.FontManager_NameEmpty;
         if (text.Length > TableFont.NameMaxLength)
             return string.Format(CultureInfo.CurrentCulture, Resources.FontManager_NameLength, TableFont.NameMaxLength);
-        // subor uklada nazov v ASCII
-        if (!text.All(ch => ch is >= ' ' and <= '~'))
+        if (!IsAscii(text))
             return Resources.FontManager_NameAscii;
         if (otherNames.Any(other => string.Equals(other.Trim(), text, StringComparison.Ordinal)))
             return string.Format(CultureInfo.CurrentCulture, Resources.FontManager_NameDuplicate, text);
         return null;
     }
+
+    /// <summary>
+    /// Ci je text v tlacitelnom ASCII - subor uklada nazvy suboru aj pisiem v ASCII.
+    /// </summary>
+    public static bool IsAscii(string text) => text.All(ch => ch is >= ' ' and <= '~');
 
     /// <summary>
     /// Chyba rozmeru pisma - sirka alebo vyska v bodoch od <see cref="MinSize" /> do <paramref name="max" /> - alebo null.
