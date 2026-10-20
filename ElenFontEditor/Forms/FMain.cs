@@ -65,13 +65,6 @@ public partial class FMain : ExForm
 
         tsslArray.Font = GlobData.Config.Fonts.StateRow;
         tsslPosition.Font = GlobData.Config.Fonts.StateRow;
-
-        if (GlobData.UsingStyle.HighlightStatusBar)
-        {
-            statusStripMain.BackColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
-            tsslArray.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
-            tsslPosition.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
-        }
     }
 
     /// <summary>
@@ -154,12 +147,6 @@ public partial class FMain : ExForm
         SetColumnsAutoWidth();
         Invalidate(true);
         AppInit.MsgBoxStyleInit(GlobData.UsingStyle, GlobData.Config);
-        if (GlobData.UsingStyle.HighlightStatusBar)
-        {
-            statusStripMain.BackColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
-            tsslArray.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
-            tsslPosition.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
-        }
     }
 
     private bool Saved
