@@ -20,6 +20,7 @@ internal static class EfeCommands
 
     // bez nastavitelnej skratky
     public static CommandInfo InfoApp => new(nameof(InfoApp), nameof(InfoApp), Shortcut.None);
+    public static CommandInfo CheckUpdates => new(nameof(CheckUpdates), nameof(CheckUpdates), Shortcut.None);
 
     /// <summary>
     /// Prikazy, ktorym sa v nastaveniach da zmenit skratka.

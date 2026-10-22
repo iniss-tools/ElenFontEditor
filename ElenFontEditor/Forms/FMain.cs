@@ -8,6 +8,7 @@ using ToolsCore.Commands;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.Tools;
+using ToolsCore.Updates;
 using ToolsCore.XML;
 using Utils = ToolsCore.Tools.Utils;
 
@@ -82,6 +83,7 @@ public partial class FMain : ExForm
         _commands.Add(EfeCommands.RenameFile, ShowRenameFile, opened).Bind(tsmimRenameFile, tsbRenameFile);
         _commands.Add(EfeCommands.AppSettings, ShowAppSettings).Bind(tsmimAppSettings, tsbAppSettings);
         _commands.Add(EfeCommands.InfoApp, ShowInfoApp).Bind(tsmimInfoApp, tsbInfoApp);
+        _commands.Add(EfeCommands.CheckUpdates, () => AppUpdates.CheckNow(this), () => AppUpdates.Available).Bind(tsmimCheckUpdates);
     }
 
     /// <summary>
@@ -302,6 +304,7 @@ public partial class FMain : ExForm
     private void FMain_Load(object sender, EventArgs e)
     {
         AppRegistry.RegisterJumpList(GlobalResources.RRecentFiles);
+        AppUpdates.CheckOnStartup(this, GlobData.Config);
 
         //cesta k suboru zadana ako argument ma prednost pred poslednym otvorenym suborom
         var path = Utils.GetProjectPathFromArgs();

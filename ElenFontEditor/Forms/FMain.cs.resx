@@ -159,6 +159,9 @@
   <data name="tsmimInfoApp.Text" xml:space="preserve">
     <value>&amp;O programu</value>
   </data>
+  <data name="tsmimCheckUpdates.Text" xml:space="preserve">
+    <value>&amp;Zkontrolovat aktualizace...</value>
+  </data>
   <data name="tsbNew.Text" xml:space="preserve">
     <value>Nový soubor...</value>
   </data>
