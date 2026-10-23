@@ -33,7 +33,7 @@ public record ElenFontEditorConfig : ConfigBase
     public SymbolCharset CharEncoding { get; set; }
 
     /// <inheritdoc />
-    public override string LinkAppSettingsGuide => "http://iniss.6f.sk/docs/elenfonteditor/nastavenia-programu/";
+    public override string LinkAppSettingsGuide => "https://iniss-tools.fvat.sk/docs/elenfonteditor/nastavenia-programu/";
 
     /// <summary>
     /// Kopia nastaveni (okno Nastavenia programu) - skratky a stlpce sa nesmu zdielat s povodnymi.
