@@ -11,6 +11,6 @@ internal static class Program
     {
         GlobData.Session = AppInit.Initialization<ElenFontEditorConfig, ElenFontEditorStyle>();
 
-        AppInit.Run(GlobData.Config, () => new FMain());
+        AppInit.Run(() => new FMain());
     }
 }

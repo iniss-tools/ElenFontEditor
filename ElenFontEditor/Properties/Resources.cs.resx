@@ -245,4 +245,10 @@
   <data name="Settings_CharEncoding_Kamenicky" xml:space="preserve">
     <value>Kód Kamenických (ELEN, ELENOLD, ELEN16Kam)</value>
   </data>
+  <data name="Settings_ReopenLast" xml:space="preserve">
+    <value>Při spuštění otevřít naposledy otevřený soubor písma</value>
+  </data>
+  <data name="Settings_ColumnsPage" xml:space="preserve">
+    <value>Tabulka znaků</value>
+  </data>
 </root>

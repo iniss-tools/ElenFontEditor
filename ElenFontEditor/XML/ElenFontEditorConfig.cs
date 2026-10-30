@@ -14,11 +14,6 @@ public record ElenFontEditorConfig : ConfigBase
     [XmlElement("DesktopCols")] 
     public DesktopColumns DesktopCols { get; set; } = new();
 
-    /// <summary>
-    ///     Klávesové skratky pre akcie na pracovnej ploche programu.
-    /// </summary>
-    [XmlElement("Shortcuts")] 
-    public ShortcutMap Shortcuts { get; set; } = new();
 
     /// <summary>
     ///     Nacitat data v striktnom rezime (vacsia kontrola dat pri otvarani suboru).
@@ -41,7 +36,6 @@ public record ElenFontEditorConfig : ConfigBase
     protected ElenFontEditorConfig(ElenFontEditorConfig original) : base(original)
     {
         DesktopCols = original.DesktopCols with { };
-        Shortcuts = original.Shortcuts.Clone();
         StrictMode = original.StrictMode;
         CharEncoding = original.CharEncoding;
     }

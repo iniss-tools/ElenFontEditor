@@ -17,6 +17,9 @@ namespace ElenFontEditor.Forms;
 public partial class FMain : ExForm
 {
     private readonly CommandSet _commands = new();
+
+    // poradie vyberu pisma v paneli nastrojov - bez panela je vyber v ponuke a pri zobrazeni panela sa vrati sem
+    private readonly int _fontsIndex;
     private FontsFile? _openedFile;
     private FontSymbol? _editingSymbol;
 
@@ -35,37 +38,16 @@ public partial class FMain : ExForm
         symbolEditor.BackColor = GlobSettings.UsingStyle.ControlsColorScheme.Box.BackColor;
         symbolEditor.SelectedColor = GlobSettings.UsingStyle.ControlsColorScheme.Highlight.BackColor;
 
-        switch (GlobData.Config.DesktopMenuMode)
-        {
-            case DesktopMenu.MsTs:
-                menuStripMain.Visible = true;
-                toolStripMain.Visible = true;
-                menuStripMain.Items.Remove(tscomboFonts);
-                break;
-            case DesktopMenu.TsOnly:
-                menuStripMain.Visible = false;
-                toolStripMain.Visible = true;
-                menuStripMain.Items.Remove(tscomboFonts);
-                break;
-            case DesktopMenu.MsOnly:
-                menuStripMain.Visible = true;
-                toolStripMain.Visible = false;
-                menuStripMain.Items.Add(tscomboFonts);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+        _fontsIndex = toolStripMain.Items.IndexOf(tscomboFonts);
+        ApplyToolbar();
 
         CreateCommands();
         _commands.ApplyShortcuts(GlobData.Config.Shortcuts);
         UpdateCommandStates();
         UpdateHistoryUi();
-        dgvSymbols.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
         InitColumns();
         SetColumnsAutoWidth();
 
-        tsslArray.Font = GlobData.Config.Fonts.StateRow;
-        tsslPosition.Font = GlobData.Config.Fonts.StateRow;
     }
 
     /// <summary>
@@ -84,6 +66,7 @@ public partial class FMain : ExForm
         _commands.Add(EfeCommands.AppSettings, ShowAppSettings).Bind(tsmimAppSettings, tsbAppSettings);
         _commands.Add(EfeCommands.InfoApp, ShowInfoApp).Bind(tsmimInfoApp, tsbInfoApp);
         _commands.Add(EfeCommands.CheckUpdates, () => AppUpdates.CheckNow(this), () => AppUpdates.Available).Bind(tsmimCheckUpdates);
+        _commands.Add(EfeCommands.ShowLogs, ErrorReport.OpenLogFolder).Bind(tsmimShowLogs);
     }
 
     /// <summary>
@@ -117,28 +100,45 @@ public partial class FMain : ExForm
         SetCol(cRowCount, columns.RowCount);
         SetCol(cColCount, columns.ColCount);
 
-        dgvSymbols.Columns[^1].AutoSizeMode = GlobData.Config.FitLastColumn
-            ? DataGridViewAutoSizeColumnMode.Fill
-            : DataGridViewAutoSizeColumnMode.None;
+        dgvSymbols.FillLastVisibleColumn();
     }
 
     private void SetColumnsAutoWidth()
     {
-        for (var i = 0; i < dgvSymbols.Columns.Count - 1; i++)
+        var fill = dgvSymbols.LastVisibleColumn();
+        foreach (DataGridViewColumn column in dgvSymbols.Columns)
         {
-            dgvSymbols.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            var widthCol = dgvSymbols.Columns[i].Width;
-            dgvSymbols.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvSymbols.Columns[i].Width = widthCol;
+            if (column == fill)
+                continue;
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            var widthCol = column.Width;
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            column.Width = widthCol;
+        }
+    }
+
+    /// <summary>
+    /// Zobrazi panel nastrojov podla nastaveni (ponuka je vzdy). Bez panela nastrojov sa vyber pisma presunie do ponuky.
+    /// </summary>
+    private void ApplyToolbar()
+    {
+        toolStripMain.Visible = GlobData.Config.ShowToolbar;
+
+        // polozka moze byt len v jednom ToolStripe - pridanie do jedneho ju z druheho odoberie
+        if (!GlobData.Config.ShowToolbar)
+        {
+            if (!menuStripMain.Items.Contains(tscomboFonts))
+                menuStripMain.Items.Add(tscomboFonts);
+        }
+        else if (!toolStripMain.Items.Contains(tscomboFonts))
+        {
+            toolStripMain.Items.Insert(Math.Min(_fontsIndex, toolStripMain.Items.Count), tscomboFonts);
         }
     }
 
     private void UpdateMainUI()
     {
-        var menu = GlobData.Config.DesktopMenuMode;
-        menuStripMain.Visible = menu is DesktopMenu.MsTs or DesktopMenu.MsOnly;
-        toolStripMain.Visible = menu is DesktopMenu.MsTs or DesktopMenu.TsOnly;
-        dgvSymbols.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
+        ApplyToolbar();
         symbolEditor.BackColor = GlobSettings.UsingStyle.ControlsColorScheme.Box.BackColor;
         symbolEditor.SelectedColor = GlobSettings.UsingStyle.ControlsColorScheme.Highlight.BackColor;
 
@@ -269,25 +269,15 @@ public partial class FMain : ExForm
             return;
         }
 
-        if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
-        {
-            try
-            {
-                _openedFile = ElenBinParser.LoadFile(pathname);
-                RememberFile(pathname);
-                OnOpenFile(_openedFile);
-            }
-            catch (Exception e)
-            {
-                Log.Exception(e);
-                FError.ShowError(GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage ? e.Message : e.ToString());
-            }
-        }
-        else
+        try
         {
             _openedFile = ElenBinParser.LoadFile(pathname);
             RememberFile(pathname);
             OnOpenFile(_openedFile);
+        }
+        catch (Exception e) when (ErrorReport.CatchErrors)
+        {
+            ErrorReport.Show(e, this);
         }
     }
 
@@ -406,7 +396,7 @@ public partial class FMain : ExForm
 
     private void ShowAppSettings()
     {
-        var form = new FAppSettings(GlobData.Config, GlobData.Styles);
+        var form = new FAppSettings(GlobData.Config, GlobData.Styles, _commands);
         if (form.ShowDialog() == DialogResult.OK)
         {
             UpdateMainUI();

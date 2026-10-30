@@ -16,9 +16,9 @@ public class EfeCommandsTests
     public void All_ObsahujeSpatAZnovaBezDuplicit()
     {
         var ids = EfeCommands.All.Select(c => c.Id).ToList();
-        CollectionAssert.AreEquivalent(new[] { "New", "Open", "Save", "Undo", "Redo", "FontManager", "RenameFile", "AppSettings" }, ids);
+        CollectionAssert.AreEquivalent(new[] { "New", "Open", "Save", "Undo", "Redo", "FontManager", "RenameFile", "AppSettings", "InfoApp", "CheckUpdates", "ShowLogs" }, ids);
 
-        var shortcuts = EfeCommands.All.Where(c => c.DefaultShortcut != Shortcut.None).Select(c => c.DefaultShortcut).ToList();
+        var shortcuts = EfeCommands.All.Where(c => c.DefaultKeys != Keys.None).Select(c => c.DefaultKeys).ToList();
         Assert.HasCount(shortcuts.Count, shortcuts.Distinct().ToList());
     }
 
@@ -36,8 +36,8 @@ public class EfeCommandsTests
         using var reader = new StringReader(xml);
         var config = (ElenFontEditorConfig)new XmlSerializer(typeof(ElenFontEditorConfig)).Deserialize(XmlReader.Create(reader))!;
 
-        Assert.AreEqual(Shortcut.CtrlShiftS, config.Shortcuts.Get(EfeCommands.Save));
-        Assert.AreEqual(Shortcut.CtrlZ, config.Shortcuts.Get(EfeCommands.Undo));
-        Assert.AreEqual(Shortcut.CtrlY, config.Shortcuts.Get(EfeCommands.Redo));
+        Assert.AreEqual((Keys)Shortcut.CtrlShiftS, config.Shortcuts.Get(EfeCommands.Save));
+        Assert.AreEqual((Keys)Shortcut.CtrlZ, config.Shortcuts.Get(EfeCommands.Undo));
+        Assert.AreEqual((Keys)Shortcut.CtrlY, config.Shortcuts.Get(EfeCommands.Redo));
     }
 }

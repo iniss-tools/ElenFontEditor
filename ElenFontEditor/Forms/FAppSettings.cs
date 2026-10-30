@@ -2,6 +2,7 @@
 using ElenFontEditor.Properties;
 using ElenFontEditor.XML;
 using ExControls;
+using ToolsCore.Commands;
 using ToolsCore.Forms;
 using ToolsCore.Iniss.Tools;
 using ToolsCore.XML;
@@ -13,18 +14,24 @@ public partial class FAppSettings : FAppSettingsBase
     public new ElenFontEditorConfig Config => (ElenFontEditorConfig)base.Config;
     public new Styles<ElenFontEditorStyle> Styles => (Styles<ElenFontEditorStyle>)base.Styles;
 
-    protected override IList<CmdShortcut> DefaultShortcuts => ShortcutMap.DefaultRows(EfeCommands.All);
     protected override IList<DesktopColumn> DefaultColumns => new DesktopColumns().GetValues();
 
-    public FAppSettings(ElenFontEditorConfig config, Styles<ElenFontEditorStyle> styles) 
+    /// <inheritdoc />
+    protected override string ReopenLastText => Resources.Settings_ReopenLast;
+
+    /// <inheritdoc />
+    protected override string ColumnsPageText => Resources.Settings_ColumnsPage;
+
+    /// <param name="config">nastavenia programu</param>
+    /// <param name="styles">styly programu</param>
+    /// <param name="commands">prikazy hlavneho okna - strom skratiek podla jeho ponuky; null = podla katalogu</param>
+    public FAppSettings(ElenFontEditorConfig config, Styles<ElenFontEditorStyle> styles, IEnumerable<AppCommand>? commands = null)
         : base(config, new Styles<ElenFontEditorStyle>(styles), GlobData.UsingStyle, typeof(ElenFontEditorStyle))
     {
         InitializeComponent();
 
-        Shortcuts = new ExBindingList<CmdShortcut>(Config.Shortcuts.ToRows(EfeCommands.All));
+        SetCommands(EfeCommands.All, commands);
         Columns = new ExBindingList<DesktopColumn>(Config.DesktopCols.GetValues());
-
-        dgvShortcuts.DataSource = Shortcuts;
         dgvColumns.DataSource = Columns;
     }
 
@@ -44,7 +51,6 @@ public partial class FAppSettings : FAppSettingsBase
     /// <inheritdoc />
     protected override bool OnSaving()
     {
-        Config.Shortcuts.SetFromRows(Shortcuts);
         Config.DesktopCols.SetValues(Columns);
         Config.StrictMode = cboxStrictMode.Checked;
         if (cbCharEncoding.SelectedValue is SymbolCharset charset)

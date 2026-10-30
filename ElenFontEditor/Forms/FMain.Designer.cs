@@ -53,6 +53,7 @@ namespace ElenFontEditor.Forms
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimInfoApp = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmimCheckUpdates = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimShowLogs = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsbNew = new ToolsCore.Icons.IconToolStripButton();
             this.tsbOpen = new ToolsCore.Icons.IconToolStripButton();
@@ -228,7 +229,8 @@ namespace ElenFontEditor.Forms
             // 
             this.tsmiHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmimInfoApp,
-            this.tsmimCheckUpdates});
+            this.tsmimCheckUpdates,
+            this.tsmimShowLogs});
             this.tsmiHelp.Name = "tsmiHelp";
             resources.ApplyResources(this.tsmiHelp, "tsmiHelp");
             // 
@@ -242,6 +244,11 @@ namespace ElenFontEditor.Forms
             //
             this.tsmimCheckUpdates.Name = "tsmimCheckUpdates";
             resources.ApplyResources(this.tsmimCheckUpdates, "tsmimCheckUpdates");
+            //
+            // tsmimShowLogs
+            //
+            this.tsmimShowLogs.Name = "tsmimShowLogs";
+            resources.ApplyResources(this.tsmimShowLogs, "tsmimShowLogs");
             //
             // toolStripMain
             // 
@@ -592,6 +599,7 @@ namespace ElenFontEditor.Forms
         private System.Windows.Forms.ToolStripMenuItem tsmiHelp;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimInfoApp;
         private System.Windows.Forms.ToolStripMenuItem tsmimCheckUpdates;
+        private System.Windows.Forms.ToolStripMenuItem tsmimShowLogs;
         private System.Windows.Forms.ToolStrip toolStripMain;
         private ToolsCore.Icons.IconToolStripButton tsbNew;
         private ToolsCore.Icons.IconToolStripButton tsbOpen;

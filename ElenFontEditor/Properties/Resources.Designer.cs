@@ -447,5 +447,23 @@ namespace ElenFontEditor.Properties {
                 return ResourceManager.GetString("Settings_CharEncoding_Kamenicky", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pri spustení otvoriť naposledy otvorený súbor písma.
+        /// </summary>
+        internal static string Settings_ReopenLast {
+            get {
+                return ResourceManager.GetString("Settings_ReopenLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabuľka znakov.
+        /// </summary>
+        internal static string Settings_ColumnsPage {
+            get {
+                return ResourceManager.GetString("Settings_ColumnsPage", resourceCulture);
+            }
+        }
     }
 }

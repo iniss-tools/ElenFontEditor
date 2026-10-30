@@ -18,12 +18,14 @@ internal static class EfeCommands
     public static CommandInfo RenameFile => new("RenameFile", Resources.Cmd_RenameFile, Shortcut.F2);
     public static CommandInfo AppSettings => new("AppSettings", Resources.Cmd_AppSettings, Shortcut.CtrlShiftN);
 
-    // bez nastavitelnej skratky
+    // text = identifikator: v strome skratiek sa ukaze text polozky ponuky
     public static CommandInfo InfoApp => new(nameof(InfoApp), nameof(InfoApp), Shortcut.None);
     public static CommandInfo CheckUpdates => new(nameof(CheckUpdates), nameof(CheckUpdates), Shortcut.None);
+    public static CommandInfo ShowLogs => new(nameof(ShowLogs), nameof(ShowLogs), Shortcut.None);
 
     /// <summary>
-    /// Prikazy, ktorym sa v nastaveniach da zmenit skratka.
+    /// Vsetky prikazy hlavneho okna pre nastavenia skratiek (strom ich zoradi podla ponuky okna).
     /// </summary>
-    public static IReadOnlyList<CommandInfo> All => [New, Open, Save, Undo, Redo, FontManager, RenameFile, AppSettings];
+    public static IReadOnlyList<CommandInfo> All =>
+        [New, Open, Save, Undo, Redo, FontManager, RenameFile, AppSettings, InfoApp, CheckUpdates, ShowLogs];
 }

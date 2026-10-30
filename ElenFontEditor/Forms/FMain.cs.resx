@@ -228,4 +228,7 @@
   <data name="cColCount.HeaderText" xml:space="preserve">
     <value>Počet sloupců</value>
   </data>
+  <data name="tsmimShowLogs.Text" xml:space="preserve">
+    <value>Otevřít složku s logy</value>
+  </data>
 </root>
