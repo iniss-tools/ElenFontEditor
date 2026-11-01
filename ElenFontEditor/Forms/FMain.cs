@@ -3,6 +3,7 @@ using ElenFontEditor.Entities;
 using ExControls;
 using ElenFontEditor.Properties;
 using ElenFontEditor.Tools;
+using Serilog;
 using ToolsCore;
 using ToolsCore.Commands;
 using ToolsCore.Forms;
@@ -107,7 +108,7 @@ public partial class FMain : ExForm
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException or InvalidOperationException)
         {
-            Log.Exception(e);
+            Log.Warning(e, "Nastavenia programu sa nepodarilo ulozit");
         }
     }
 
@@ -278,6 +279,7 @@ public partial class FMain : ExForm
 
         try
         {
+            Log.Information("Otvara sa subor pisiem {Path}", pathname);
             _openedFile = ElenBinParser.LoadFile(pathname);
             RememberFile(pathname);
             OnOpenFile(_openedFile);
@@ -343,7 +345,7 @@ public partial class FMain : ExForm
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException or FormatException or ArgumentException)
         {
-            Log.Exception(e);
+            Log.Error(e, "Subor pisiem {Path} sa nepodarilo ulozit", file.PathName);
             Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.FMain_SaveFailed, e.Message));
             return false;
         }
@@ -359,10 +361,11 @@ public partial class FMain : ExForm
             catch (Exception e) when (e is IOException or UnauthorizedAccessException)
             {
                 // novy subor je ulozeny - povodny ostane na disku
-                Log.Exception(e);
+                Log.Warning(e, "Povodny subor {OldPath} sa po premenovani na {Path} nepodarilo zmazat", _diskPath, file.PathName);
             }
         }
 
+        Log.Information("Subor pisiem {Path} ulozeny ({Count} pisiem)", file.PathName, file.Fonts.Count);
         _diskPath = file.PathName;
         RememberFile(file.PathName);
         _history?.MarkSaved();
