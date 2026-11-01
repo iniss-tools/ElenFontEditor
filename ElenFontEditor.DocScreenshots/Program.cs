@@ -4,6 +4,7 @@ using ElenFontEditor.Forms;
 using ElenFontEditor.XML;
 using Microsoft.Win32;
 using ToolsCore;
+using ToolsCore.XML;
 using ToolsCore.Tools;
 
 namespace ElenFontEditor.DocScreenshots;
@@ -118,7 +119,10 @@ internal static class Program
 
     private static void SetTheme(string theme)
     {
-        var style = theme == "dark" ? ElenFontEditorStyle.DefaultDarkStyle : ElenFontEditorStyle.DefaultLightStyle;
+        // zabudovana schema harnessu (svetla alebo tmava), zvolena aj na stranke Vzhlad
+        var style = GlobData.Styles[theme == "dark" ? StyleNames.Dark : StyleNames.Light];
+        GlobData.Styles.Active = style.Name;
+        GlobData.Styles.FollowSystem = false;
         GlobData.UsingStyle = style;
         AppInit.MsgBoxStyleInit(style, GlobData.Config);
     }

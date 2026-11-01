@@ -60,7 +60,6 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
                      {
                          ("nastavenia-programu", ""),
                          ("vzhlad", "pAppearance"),
-                         ("stlpce", "pDesktopColumns"),
                          ("klavesove-skratky", "pShortcuts"),
                          ("styly", "pStyles"),
                          ("pisma", "pFonts"),

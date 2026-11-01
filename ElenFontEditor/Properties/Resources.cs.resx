@@ -248,7 +248,4 @@
   <data name="Settings_ReopenLast" xml:space="preserve">
     <value>Při spuštění otevřít naposledy otevřený soubor písma</value>
   </data>
-  <data name="Settings_ColumnsPage" xml:space="preserve">
-    <value>Tabulka znaků</value>
-  </data>
 </root>

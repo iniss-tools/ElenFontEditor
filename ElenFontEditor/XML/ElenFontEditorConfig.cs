@@ -8,11 +8,6 @@ namespace ElenFontEditor.XML;
 [XmlRoot("CONFIG")]
 public record ElenFontEditorConfig : ConfigBase
 {
-    /// <summary>
-    ///     Stlpce zobrazujuce sa v tabulke na pracovnej ploche programu.
-    /// </summary>
-    [XmlElement("DesktopCols")] 
-    public DesktopColumns DesktopCols { get; set; } = new();
 
 
     /// <summary>
@@ -35,7 +30,6 @@ public record ElenFontEditorConfig : ConfigBase
     /// </summary>
     protected ElenFontEditorConfig(ElenFontEditorConfig original) : base(original)
     {
-        DesktopCols = original.DesktopCols with { };
         StrictMode = original.StrictMode;
         CharEncoding = original.CharEncoding;
     }

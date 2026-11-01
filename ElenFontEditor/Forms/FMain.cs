@@ -17,6 +17,7 @@ namespace ElenFontEditor.Forms;
 public partial class FMain : ExForm
 {
     private readonly CommandSet _commands = new();
+    private GridColumns _symbolColumns = null!;
 
     // poradie vyberu pisma v paneli nastrojov - bez panela je vyber v ponuke a pri zobrazeni panela sa vrati sem
     private readonly int _fontsIndex;
@@ -82,25 +83,32 @@ public partial class FMain : ExForm
     protected override bool ProcessCmdKey(ref Message msg, Keys keyData) =>
         _commands.ProcessShortcut(keyData) || base.ProcessCmdKey(ref msg, keyData);
 
+    /// <summary>
+    /// Tabulka znakov si pamata poradie, sirku a viditelnost stlpcov (tahanie hlavicky, ponuka na hlavicke).
+    /// </summary>
     private void InitColumns()
     {
-        static void SetCol(DataGridViewColumn column, DesktopColumn format)
+        _symbolColumns = GridColumns.Attach(dgvSymbols, "Symbols", () => GlobData.Config, SaveConfig);
+        _symbolColumns.Reset += (_, _) => SetColumnsAutoWidth();
+    }
+
+    /// <summary>
+    /// Zapise nastavenia programu (napr. po zmene stlpcov tabulky). Chyba zapisu sa len zaloguje.
+    /// </summary>
+    private static void SaveConfig()
+    {
+        try
         {
-            column.Visible = format.Visible;
-            column.MinimumWidth = format.MinWidth;
-            column.DisplayIndex = format.Order;
+            var dir = AppPaths.ConfigDir;
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
+            XmlSerialization.WriteData(PathUtils.CombinePath(dir, FileConsts.FileConfig)!, GlobData.Config);
         }
-        
-        var columns = GlobData.Config.DesktopCols;
-
-        SetCol(cIndex, columns.Index);
-        SetCol(cName, columns.Char);
-        SetCol(cSymbol, columns.Symbol);
-        SetCol(cWidth, columns.Width);
-        SetCol(cRowCount, columns.RowCount);
-        SetCol(cColCount, columns.ColCount);
-
-        dgvSymbols.FillLastVisibleColumn();
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or InvalidOperationException)
+        {
+            Log.Exception(e);
+        }
     }
 
     private void SetColumnsAutoWidth()
@@ -108,7 +116,7 @@ public partial class FMain : ExForm
         var fill = dgvSymbols.LastVisibleColumn();
         foreach (DataGridViewColumn column in dgvSymbols.Columns)
         {
-            if (column == fill)
+            if (column == fill || _symbolColumns.HasUserWidth(column))
                 continue;
             column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             var widthCol = column.Width;
@@ -143,7 +151,6 @@ public partial class FMain : ExForm
         symbolEditor.SelectedColor = GlobSettings.UsingStyle.ControlsColorScheme.Highlight.BackColor;
 
         this.ApplyThemeAndFonts();
-        InitColumns();
         _commands.ApplyShortcuts(GlobData.Config.Shortcuts);
         UpdateHistoryUi();
         SetColumnsAutoWidth();
@@ -396,11 +403,10 @@ public partial class FMain : ExForm
 
     private void ShowAppSettings()
     {
-        var form = new FAppSettings(GlobData.Config, GlobData.Styles, _commands);
-        if (form.ShowDialog() == DialogResult.OK)
-        {
-            UpdateMainUI();
-        }
+        using var form = new FAppSettings(GlobData.Config, GlobData.Styles, _commands);
+        // po kazdom ulozeni (aj tlacidlom Pouzit pri otvorenom okne)
+        form.Applied += (_, _) => UpdateMainUI();
+        form.ShowDialog();
     }
 
     private void ShowInfoApp()

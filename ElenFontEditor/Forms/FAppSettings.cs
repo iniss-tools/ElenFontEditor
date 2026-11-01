@@ -14,25 +14,20 @@ public partial class FAppSettings : FAppSettingsBase
     public new ElenFontEditorConfig Config => (ElenFontEditorConfig)base.Config;
     public new Styles<ElenFontEditorStyle> Styles => (Styles<ElenFontEditorStyle>)base.Styles;
 
-    protected override IList<DesktopColumn> DefaultColumns => new DesktopColumns().GetValues();
 
     /// <inheritdoc />
     protected override string ReopenLastText => Resources.Settings_ReopenLast;
 
-    /// <inheritdoc />
-    protected override string ColumnsPageText => Resources.Settings_ColumnsPage;
 
     /// <param name="config">nastavenia programu</param>
     /// <param name="styles">styly programu</param>
     /// <param name="commands">prikazy hlavneho okna - strom skratiek podla jeho ponuky; null = podla katalogu</param>
     public FAppSettings(ElenFontEditorConfig config, Styles<ElenFontEditorStyle> styles, IEnumerable<AppCommand>? commands = null)
-        : base(config, new Styles<ElenFontEditorStyle>(styles), GlobData.UsingStyle, typeof(ElenFontEditorStyle))
+        : base(config, new Styles<ElenFontEditorStyle>(styles), GlobData.UsingStyle)
     {
         InitializeComponent();
 
         SetCommands(EfeCommands.All, commands);
-        Columns = new ExBindingList<DesktopColumn>(Config.DesktopCols.GetValues());
-        dgvColumns.DataSource = Columns;
     }
 
     /// <inheritdoc />
@@ -51,7 +46,6 @@ public partial class FAppSettings : FAppSettingsBase
     /// <inheritdoc />
     protected override bool OnSaving()
     {
-        Config.DesktopCols.SetValues(Columns);
         Config.StrictMode = cboxStrictMode.Checked;
         if (cbCharEncoding.SelectedValue is SymbolCharset charset)
             Config.CharEncoding = charset;
@@ -61,9 +55,10 @@ public partial class FAppSettings : FAppSettingsBase
     /// <inheritdoc />
     protected override void SaveData()
     {
-        GlobData.Config = Config;
-        GlobData.UsingStyle = (ElenFontEditorStyle)UsingStyle;
-        GlobData.Styles = Styles;
+        // kopie - okno po Pouzit ostava otvorene a dalsie upravy v nom nesmu menit nastavenia programu
+        GlobData.Config = Config with { };
+        GlobData.Styles = new Styles<ElenFontEditorStyle>(Styles);
+        GlobData.UsingStyle = GlobData.Styles[UsingStyle.Name];
         
         var configsDir = ToolsCore.AppPaths.ConfigDir;
         if (!Directory.Exists(configsDir))
@@ -72,10 +67,4 @@ public partial class FAppSettings : FAppSettingsBase
         Styles<ElenFontEditorStyle>.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FileStyles)!, GlobData.Styles);
         XmlSerialization.WriteData(PathUtils.CombinePath(configsDir, ToolsCore.FileConsts.FileConfig)!, GlobData.Config);
     }
-
-    /// <inheritdoc />
-    protected override Style OnResetStyle(bool darkMode) => Styles<ElenFontEditorStyle>.GetDefaultStyle(darkMode);
-
-    /// <inheritdoc />
-    protected override Style CreateStyleInstance(string name) => new ElenFontEditorStyle {Name = name};
 }
