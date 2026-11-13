@@ -8,6 +8,7 @@ Pravidlá desktopových programov (WinForms, texty v `Resources`, ručné `*.Des
 
 - Projekty: `ElenFontEditor` (`Forms/`, `Entities/`, `History/` – kroky späť, `Tools/ElenBinParser`), `ElenFontEditor.Tests`, `ElenFontEditor.DocScreenshots` (snímky do dokumentácie).
 - Čítanie a zápis písiem len cez `ElenFontFile` v ToolsCore.Iniss (zdieľa ho aj simulátor tabúľ); špecifikácia formátu v `iniss-tools-docs/docs/iniss/formaty-suborov/` (písmá ELEN).
+- Hlavné okno má ukotviteľné panely ExControls `ExDockManager` (`Forms/FMain.Docking.cs`, spoločné časti `ToolsCore.Tools.AppDock`): návrh okna má zoznam znakov a editor v `splitContainer1`, za behu ide `dgvSymbols` do panela `Symbols` (vľavo), `symbolEditor` do `Document` a deliaci list sa zahodí. Kľúč panela je v uloženom rozložení (`ConfigBase.DockLayout`, ukladá sa pri `FormClosed`) – nemeniť; panel sa pridáva pred `ApplyThemeAndFonts`, rozloženie sa obnoví až po ňom. Testy okna (`DockingFormTests`) okno len zahodia – zatvorenie by zapísalo config.xml.
 - Príkazy hlavného okna cez katalóg `EfeCommands` (ID = názov prvku skratky v config.xml, nemeniť; zoznam stráži `EfeCommandsTests`). Úplnosť prekladu SK/CZ stráži `LocalizationTests`.
 
 ## Príkazy

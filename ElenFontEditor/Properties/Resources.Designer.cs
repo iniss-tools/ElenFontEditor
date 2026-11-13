@@ -456,5 +456,32 @@ namespace ElenFontEditor.Properties {
                 return ResourceManager.GetString("Settings_ReopenLast", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoznam znakov.
+        /// </summary>
+        internal static string Panel_Symbols {
+            get {
+                return ResourceManager.GetString("Panel_Symbols", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zobraziť panel Zoznam znakov.
+        /// </summary>
+        internal static string Cmd_ShowSymbols {
+            get {
+                return ResourceManager.GetString("Cmd_ShowSymbols", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obnoviť rozloženie okna.
+        /// </summary>
+        internal static string Cmd_ResetLayout {
+            get {
+                return ResourceManager.GetString("Cmd_ResetLayout", resourceCulture);
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ public class EfeCommandsTests
     public void All_ObsahujeSpatAZnovaBezDuplicit()
     {
         var ids = EfeCommands.All.Select(c => c.Id).ToList();
-        CollectionAssert.AreEquivalent(new[] { "New", "Open", "Save", "Undo", "Redo", "FontManager", "RenameFile", "AppSettings", "InfoApp", "CheckUpdates", "ShowLogs" }, ids);
+        CollectionAssert.AreEquivalent(new[] { "New", "Open", "Save", "Undo", "Redo", "FontManager", "RenameFile", "ShowSymbols", "ResetLayout", "AppSettings", "InfoApp", "CheckUpdates", "ShowLogs" }, ids);
 
         var shortcuts = EfeCommands.All.Where(c => c.DefaultKeys != Keys.None).Select(c => c.DefaultKeys).ToList();
         Assert.HasCount(shortcuts.Count, shortcuts.Distinct().ToList());

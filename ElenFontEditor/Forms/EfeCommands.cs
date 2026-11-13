@@ -16,6 +16,8 @@ internal static class EfeCommands
     public static CommandInfo Redo => new("Redo", Resources.Cmd_Redo, Shortcut.CtrlY);
     public static CommandInfo FontManager => new("FontManager", Resources.Cmd_FontManager, Shortcut.F1);
     public static CommandInfo RenameFile => new("RenameFile", Resources.Cmd_RenameFile, Shortcut.F2);
+    public static CommandInfo ShowSymbols => new("ShowSymbols", Resources.Cmd_ShowSymbols, Shortcut.None);
+    public static CommandInfo ResetLayout => new("ResetLayout", Resources.Cmd_ResetLayout, Shortcut.None);
     public static CommandInfo AppSettings => new("AppSettings", Resources.Cmd_AppSettings, Shortcut.CtrlShiftN);
 
     // text = identifikator: v strome skratiek sa ukaze text polozky ponuky
@@ -27,5 +29,5 @@ internal static class EfeCommands
     /// Vsetky prikazy hlavneho okna pre nastavenia skratiek (strom ich zoradi podla ponuky okna).
     /// </summary>
     public static IReadOnlyList<CommandInfo> All =>
-        [New, Open, Save, Undo, Redo, FontManager, RenameFile, AppSettings, InfoApp, CheckUpdates, ShowLogs];
+        [New, Open, Save, Undo, Redo, FontManager, RenameFile, ShowSymbols, ResetLayout, AppSettings, InfoApp, CheckUpdates, ShowLogs];
 }

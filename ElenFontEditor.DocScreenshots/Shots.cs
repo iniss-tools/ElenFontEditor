@@ -145,13 +145,15 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
         grid.FirstDisplayedScrollingRowIndex = Math.Max(0, row.Index - 3);
         Pump.Events();
 
-        // šírka panela editora podľa počtu bodov znaku (s hlavičkami riadkov a stĺpcov)
+        // šírka editora podľa počtu bodov znaku (s hlavičkami riadkov a stĺpcov) - zvyšok dostane panel zoznamu znakov
         var editor = Field<SymbolEditor>(main, "symbolEditor");
-        var split = Field<SplitContainer>(main, "splitContainer1");
-        var panel = split.Panel2;
-        var size = (panel.Height - panel.Padding.Vertical) / (editor.Cells.RowsCount + 1);
-        var width = size * (editor.Cells.ColumnsCount + 1) + panel.Padding.Horizontal;
-        split.SplitterDistance = split.Width - split.SplitterWidth - width;
+        var dock = Field<ExDockManager>(main, "_dock");
+        var document = dock.Document;
+        var size = (document.Height - document.Padding.Vertical) / (editor.Cells.RowsCount + 1);
+        var width = size * (editor.Cells.ColumnsCount + 1) + document.Padding.Horizontal;
+        // šírka zóny je v logických bodoch (96 DPI)
+        var zone = dock.GetZoneSize(ExDockSide.Left) + (int)Math.Round((document.Width - width) * 96.0 / dock.DeviceDpi);
+        dock.SetZoneSize(ExDockSide.Left, zone);
         Pump.Events();
     }
 

@@ -34,8 +34,10 @@ public partial class FMain : ExForm
     public FMain()
     {
         InitializeComponent();
+        InitDocking();
         SetRecentFiles();
         this.ApplyThemeAndFonts();
+        AppDock.Restore(_dock, GlobData.Config.DockLayout);
 
         symbolEditor.BackColor = GlobSettings.UsingStyle.ControlsColorScheme.Box.BackColor;
         symbolEditor.SelectedColor = GlobSettings.UsingStyle.ControlsColorScheme.Highlight.BackColor;
@@ -65,6 +67,7 @@ public partial class FMain : ExForm
         _commands.Add(EfeCommands.Redo, Redo, () => _history?.CanRedo == true).Bind(tsmimRedo, tssbRedo);
         _commands.Add(EfeCommands.FontManager, ShowFontManager, opened).Bind(tsmimFontManager, tsbFontManager);
         _commands.Add(EfeCommands.RenameFile, ShowRenameFile, opened).Bind(tsmimRenameFile, tsbRenameFile);
+        CreateViewCommands();
         _commands.Add(EfeCommands.AppSettings, ShowAppSettings).Bind(tsmimAppSettings, tsbAppSettings);
         _commands.Add(EfeCommands.InfoApp, ShowInfoApp).Bind(tsmimInfoApp, tsbInfoApp);
         _commands.Add(EfeCommands.CheckUpdates, () => AppUpdates.CheckNow(this), () => AppUpdates.Available).Bind(tsmimCheckUpdates);

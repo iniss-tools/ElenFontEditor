@@ -248,4 +248,13 @@
   <data name="Settings_ReopenLast" xml:space="preserve">
     <value>Při spuštění otevřít naposledy otevřený soubor písma</value>
   </data>
+  <data name="Panel_Symbols" xml:space="preserve">
+    <value>Seznam znaků</value>
+  </data>
+  <data name="Cmd_ShowSymbols" xml:space="preserve">
+    <value>Zobrazit panel Seznam znaků</value>
+  </data>
+  <data name="Cmd_ResetLayout" xml:space="preserve">
+    <value>Obnovit rozložení okna</value>
+  </data>
 </root>

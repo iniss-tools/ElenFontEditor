@@ -48,6 +48,10 @@ namespace ElenFontEditor.Forms
             this.tsmimFontManager = new ToolsCore.Icons.IconToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmimRenameFile = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmiView = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimShowSymbols = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tssView1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmimResetLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimAppSettings = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,6 +118,7 @@ namespace ElenFontEditor.Forms
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiFile,
             this.tsmiEdit,
+            this.tsmiView,
             this.tsmiSettings,
             this.tsmiHelp});
             this.menuStripMain.Name = "menuStripMain";
@@ -211,6 +216,31 @@ namespace ElenFontEditor.Forms
             this.tsmimRenameFile.Name = "tsmimRenameFile";
             this.tsmimRenameFile.IconName = "rename";
             resources.ApplyResources(this.tsmimRenameFile, "tsmimRenameFile");
+            // 
+            // tsmiView
+            // 
+            this.tsmiView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmimShowSymbols,
+            this.tssView1,
+            this.tsmimResetLayout});
+            this.tsmiView.Name = "tsmiView";
+            resources.ApplyResources(this.tsmiView, "tsmiView");
+            // 
+            // tsmimShowSymbols
+            // 
+            this.tsmimShowSymbols.Name = "tsmimShowSymbols";
+            this.tsmimShowSymbols.IconName = "table";
+            resources.ApplyResources(this.tsmimShowSymbols, "tsmimShowSymbols");
+            // 
+            // tssView1
+            // 
+            this.tssView1.Name = "tssView1";
+            resources.ApplyResources(this.tssView1, "tssView1");
+            // 
+            // tsmimResetLayout
+            // 
+            this.tsmimResetLayout.Name = "tsmimResetLayout";
+            resources.ApplyResources(this.tsmimResetLayout, "tsmimResetLayout");
             // 
             // tsmiSettings
             // 
@@ -629,6 +659,10 @@ namespace ElenFontEditor.Forms
         private System.Windows.Forms.BindingSource tableSymbolBindingSource;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimRenameFile;
+        private System.Windows.Forms.ToolStripMenuItem tsmiView;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimShowSymbols;
+        private System.Windows.Forms.ToolStripSeparator tssView1;
+        private System.Windows.Forms.ToolStripMenuItem tsmimResetLayout;
         private ToolsCore.Icons.IconToolStripButton tsbRenameFile;
         private ToolsCore.Icons.IconToolStripDropDownButton tssbRecent;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimUndo;
