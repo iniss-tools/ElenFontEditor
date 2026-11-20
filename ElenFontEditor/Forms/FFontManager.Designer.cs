@@ -124,7 +124,7 @@
             // 
             this.dgveMaxWidth.DataPropertyName = "MaxWidth";
             dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = "0";
+            dataGridViewCellStyle1.NullValue = "";
             this.dgveMaxWidth.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.dgveMaxWidth, "dgveMaxWidth");
             this.dgveMaxWidth.MinimumWidth = 6;
@@ -134,7 +134,7 @@
             // 
             this.dgveHeight.DataPropertyName = "Height";
             dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = "0";
+            dataGridViewCellStyle2.NullValue = "";
             this.dgveHeight.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.dgveHeight, "dgveHeight");
             this.dgveHeight.MinimumWidth = 6;
