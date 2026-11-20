@@ -99,6 +99,8 @@ public partial class FMain
         // obnova vytvori nove pisma a znaky - editor nesmie zapisat body do starych
         _editingSymbol = null;
         _restoring = true;
+        // pole Pismo sa pri obnove zoznamu pisiem nekresli - inak by jeho text preblikol
+        tscomboFonts.ComboBox.BeginUpdate();
         try
         {
             move(history);
@@ -106,6 +108,7 @@ public partial class FMain
         }
         finally
         {
+            tscomboFonts.ComboBox.EndUpdate();
             _restoring = false;
         }
 
@@ -123,16 +126,22 @@ public partial class FMain
         var fonts = _openedFile!.Fonts;
 
         _editingSymbol = null;
-        tscomboFonts.SelectedIndex = -1;
         if (fonts.Count == 0)
         {
+            tscomboFonts.SelectedIndex = -1;
             dgvSymbols.DataSource = null;
             symbolEditor.ClearSymbol();
             UpdateBoardPreview();
             return;
         }
 
-        tscomboFonts.SelectedIndex = Math.Clamp(fontIndex, 0, fonts.Count - 1);
+        // pisma su nove objekty - pri rovnakom poradi sa znaky naviazu priamo, vyber v poli Pismo sa nemeni
+        // (prepnutie cez -1 by v nom preblikol prazdny text)
+        var index = Math.Clamp(fontIndex, 0, fonts.Count - 1);
+        if (tscomboFonts.SelectedIndex == index)
+            ShowFontSymbols(index);
+        else
+            tscomboFonts.SelectedIndex = index;
         if (firstRow >= 0 && firstRow < dgvSymbols.RowCount)
             dgvSymbols.FirstDisplayedScrollingRowIndex = firstRow;
         if (symbolIndex < 0 || symbolIndex >= dgvSymbols.RowCount)

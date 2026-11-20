@@ -486,7 +486,13 @@ public partial class FMain : ExForm
         if (tscomboFonts.SelectedIndex == -1)
             return;
 
-        dgvSymbols.DataSource = _openedFile!.Fonts[tscomboFonts.SelectedIndex].Symbols;
+        ShowFontSymbols(tscomboFonts.SelectedIndex);
+    }
+
+    /// <summary>Znaky pisma <paramref name="index" /> v zozname znakov a v nahlade na tabuli.</summary>
+    private void ShowFontSymbols(int index)
+    {
+        dgvSymbols.DataSource = _openedFile!.Fonts[index].Symbols;
         UpdateBoardPreview();
     }
 
