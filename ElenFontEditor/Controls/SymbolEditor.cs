@@ -7,7 +7,11 @@ using ExControls;
 
 namespace ElenFontEditor.Controls;
 
-public sealed partial class SymbolEditor : UserControl
+/// <summary>
+/// Editor bodov znaku: mriezka bodov s ocislovanymi hlavickami riadkov a stlpcov. Hlavicky maju farby temy ako hlavicky
+/// tabuliek, cisla v nich sa zmensuju podla velkosti policka.
+/// </summary>
+public sealed partial class SymbolEditor : UserControl, IThemeable
 {
     private FontSymbol? _symbol;
 
@@ -21,6 +25,8 @@ public sealed partial class SymbolEditor : UserControl
     private Color _selectedColor;
     private Color _headerBackColor;
     private Color _headerForeColor;
+    private Color _headerBorderColor;
+    private Color _selectedForeColor = Color.White;
     private Color _poweredOffColor;
     private Color _poweredOnColor;
     private Color _borderColor;
@@ -35,6 +41,7 @@ public sealed partial class SymbolEditor : UserControl
         _selectedColor = Color.DodgerBlue;
         _headerBackColor = Color.Gray;
         _headerForeColor = Color.White;
+        _headerBorderColor = Color.White;
         _poweredOffColor = Color.Black;
         _poweredOnColor = Color.Yellow;
         _borderColor = Color.White;
@@ -80,6 +87,20 @@ public sealed partial class SymbolEditor : UserControl
             if (_headerForeColor == value)
                 return;
             _headerForeColor = value;
+            Invalidate();
+        }
+    }
+
+    [DefaultValue(typeof(Color), nameof(Color.White))]
+    [ExCategory(CategoryType.Appearance)]
+    public Color HeaderBorderColor
+    {
+        get => _headerBorderColor;
+        set
+        {
+            if (_headerBorderColor == value)
+                return;
+            _headerBorderColor = value;
             Invalidate();
         }
     }
@@ -138,6 +159,24 @@ public sealed partial class SymbolEditor : UserControl
             _headerFont = value ?? _defaultHeaderFont;
             Invalidate();
         }
+    }
+
+    /// <summary>
+    /// Farby podla temy: hlavicky ako hlavicky tabuliek (vo vlastnom style farby tlacidiel, v systemovom systemove),
+    /// plocha okolo mriezky ako pole a vyber farbou zvyraznenia. Body (svieti, nesvieti) ostavaju ako na tabuli.
+    /// </summary>
+    public void ApplyTheme(ExTheme theme)
+    {
+        ArgumentNullException.ThrowIfNull(theme);
+        HeaderBackColor = theme.UseSystemStyle ? SystemColors.Control : theme.ButtonBackColor;
+        HeaderForeColor = theme.UseSystemStyle ? SystemColors.ControlText : theme.ButtonForeColor;
+        HeaderBorderColor = theme.UseSystemStyle ? SystemColors.ControlDark : theme.BorderColor;
+        BackColor = theme.BoxBackColor;
+        SelectedColor = theme.HighlightBackColor;
+        _selectedForeColor = theme.HighlightForeColor;
+        // kontextova ponuka sa otvara rucne (nie je ContextMenuStrip prvku) - tema ju sama nenajde
+        ExThemer.Apply(contextMenu, theme);
+        Invalidate();
     }
 
     private bool ShouldSerializeHeaderFont()
@@ -201,14 +240,16 @@ public sealed partial class SymbolEditor : UserControl
         if (_symbol is null)
             return;
 
-        e.Graphics.FillRectangle(new SolidBrush(_poweredOffColor), 0, 0, (Cells.ColumnsCount + 1) * ColumnSize, (Cells.RowsCount + 1) * RowSize);
+        using (var off = new SolidBrush(_poweredOffColor))
+            e.Graphics.FillRectangle(off, 0, 0, (Cells.ColumnsCount + 1) * ColumnSize, (Cells.RowsCount + 1) * RowSize);
 
         using var header = new SolidBrush(_headerBackColor);
         using var headerSel = new SolidBrush(_selectedColor);
-        using var borderString = new SolidBrush(_headerForeColor);
+        using var headerPen = new Pen(_headerBorderColor);
         using var onBrush = new SolidBrush(_poweredOnColor);
         using var borderPen = new Pen(_borderColor);
         using var borderPenSel = new Pen(_selectedColor, 2);
+        using var headerFont = HeaderFontFor(ColumnSize, RowSize);
 
         for (var r = -1; r < Cells.RowsCount; r++)
         {
@@ -230,14 +271,16 @@ public sealed partial class SymbolEditor : UserControl
             if (cell.IsColumnHeader || cell.IsRowHeader)
             {
                 g.FillRectangle(cell.Selected ? headerSel : header, cell.Bounds);
-                if (cell.IsColumnHeader ^ cell.IsRowHeader)
+                // cislo riadka alebo stlpca od 1; pri prilis malom policku sa nekresli
+                if (cell.IsColumnHeader ^ cell.IsRowHeader && headerFont is not null)
                 {
-                    if (cell.IsColumnHeader)
-                        g.DrawString((cell.Column + 1).ToString(CultureInfo.InvariantCulture), _headerFont, borderString, cell.Bounds);
-                    else if (cell.IsRowHeader) 
-                        g.DrawString((cell.Row + 1).ToString(CultureInfo.InvariantCulture), _headerFont, borderString, cell.Bounds);
+                    var number = (cell.IsColumnHeader ? cell.Column + 1 : cell.Row + 1).ToString(CultureInfo.InvariantCulture);
+                    TextRenderer.DrawText(g, number, headerFont, cell.Bounds, cell.Selected ? _selectedForeColor : _headerForeColor,
+                        TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.NoPadding |
+                        TextFormatFlags.SingleLine | TextFormatFlags.NoClipping);
                 }
-                g.DrawRectangle(borderPen, cell.Bounds);
+
+                g.DrawRectangle(headerPen, cell.Bounds);
             }
             else
             {
@@ -249,6 +292,31 @@ public sealed partial class SymbolEditor : UserControl
                 g.DrawRectangle(borderPen, cell.Bounds);
             }
         }
+    }
+
+    /// <summary>
+    /// Pismo cisel hlaviciek pre policko <paramref name="width" /> × <paramref name="height" />: najviac
+    /// <see cref="HeaderFont" />, mensie tak, aby sa dvojciferne cislo zmestilo cele; null = policko je na cislo
+    /// prilis male.
+    /// </summary>
+    private Font? HeaderFontFor(int width, int height)
+    {
+        const int minPixels = 5;
+        var maxPixels = _headerFont.SizeInPoints * DeviceDpi / 72f;
+        var pixels = Math.Min(maxPixels, height * 0.75f);
+        if (pixels < minPixels || width < minPixels)
+            return null;
+
+        // dvojciferne cislo s bodom okraja z kazdej strany
+        var font = new Font(_headerFont.FontFamily, pixels, _headerFont.Style, GraphicsUnit.Pixel);
+        var text = TextRenderer.MeasureText("88", font, Size.Empty, TextFormatFlags.NoPadding | TextFormatFlags.SingleLine);
+        var scale = Math.Min((width - 2f) / Math.Max(1, text.Width), (height - 2f) / Math.Max(1, text.Height));
+        if (scale >= 1)
+            return font;
+
+        font.Dispose();
+        pixels *= scale;
+        return pixels < minPixels ? null : new Font(_headerFont.FontFamily, pixels, _headerFont.Style, GraphicsUnit.Pixel);
     }
 
     public SymbolEditorCell? GetCellFromPosition(int x, int y)
