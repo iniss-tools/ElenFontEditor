@@ -61,7 +61,7 @@ public partial class FMain : ExForm
     {
         Func<bool> opened = () => _openedFile is not null;
         _commands.Add(EfeCommands.New, ShowNew).Bind(tsmimNew, tsbNew);
-        _commands.Add(EfeCommands.Open, () => OpenFile()).Bind(tsmimOpen, tsbOpen);
+        _commands.Add(EfeCommands.Open, ShowOpen).Bind(tsmimOpen, tsbOpen);
         _commands.Add(EfeCommands.Save, DoSave, opened).Bind(tsmimSave, tsbSave);
         _commands.Add(EfeCommands.Undo, Undo, () => _history?.CanUndo == true).Bind(tsmimUndo, tssbUndo);
         _commands.Add(EfeCommands.Redo, Redo, () => _history?.CanRedo == true).Bind(tsmimRedo, tssbRedo);
@@ -207,12 +207,11 @@ public partial class FMain : ExForm
         }
     }
 
-    private void ShowNew()
+    private async void ShowNew()
     {
         while (true)
         {
-            var result = dialogSaveNewFile.ShowDialog(this);
-            if (result != DialogResult.OK) 
+            if (await dialogSaveNewFile.ShowDialogAsync(this) != DialogResult.OK || IsDisposed)
                 return;
 
             var name = Path.GetFileNameWithoutExtension(dialogSaveNewFile.FileName);
@@ -240,10 +239,9 @@ public partial class FMain : ExForm
         }
     }
 
-    private void OpenFile()
+    private async void ShowOpen()
     {
-        var result = dialogOpenBinFile.ShowDialog(this);
-        if (result != DialogResult.OK) 
+        if (await dialogOpenBinFile.ShowDialogAsync(this) != DialogResult.OK || IsDisposed)
             return;
 
         OpenFile(dialogOpenBinFile.FileName);
