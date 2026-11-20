@@ -483,5 +483,410 @@ namespace ElenFontEditor.Properties {
                 return ResourceManager.GetString("Cmd_ResetLayout", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor {0} sa nepodarilo otvoriť.  {1}.
+        /// </summary>
+        internal static string FMain_OpenFailed {
+            get {
+                return ResourceManager.GetString("FMain_OpenFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo {0} má šírku {1} bodov. ElenFontEditor upravuje písma so šírkou najviac {2} bodov..
+        /// </summary>
+        internal static string FMain_FontTooWide {
+            get {
+                return ResourceManager.GetString("FMain_FontTooWide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Náhľad na tabuli.
+        /// </summary>
+        internal static string Panel_BoardPreview {
+            get {
+                return ResourceManager.GetString("Panel_BoardPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Náhľad na tabuli.
+        /// </summary>
+        internal static string Cmd_ShowBoardPreview {
+            get {
+                return ResourceManager.GetString("Cmd_ShowBoardPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R 612 Košice 14:35.
+        /// </summary>
+        internal static string BoardPreview_DefaultText {
+            get {
+                return ResourceManager.GetString("BoardPreview_DefaultText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bez farby.
+        /// </summary>
+        internal static string BoardPreview_Color0 {
+            get {
+                return ResourceManager.GetString("BoardPreview_Color0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Červená.
+        /// </summary>
+        internal static string BoardPreview_Color1 {
+            get {
+                return ResourceManager.GetString("BoardPreview_Color1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zelená.
+        /// </summary>
+        internal static string BoardPreview_Color2 {
+            get {
+                return ResourceManager.GetString("BoardPreview_Color2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Žltá.
+        /// </summary>
+        internal static string BoardPreview_Color3 {
+            get {
+                return ResourceManager.GetString("BoardPreview_Color3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text má šírku {0} bodov..
+        /// </summary>
+        internal static string BoardPreview_TextWidth {
+            get {
+                return ResourceManager.GetString("BoardPreview_TextWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Na tabuľu so šírkou {0} bodov sa nezmestí..
+        /// </summary>
+        internal static string BoardPreview_TooWide {
+            get {
+                return ResourceManager.GetString("BoardPreview_TooWide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo nemá znaky {0}..
+        /// </summary>
+        internal static string BoardPreview_Missing {
+            get {
+                return ResourceManager.GetString("BoardPreview_Missing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Súbor nemá žiadne písmo..
+        /// </summary>
+        internal static string BoardPreview_NoFont {
+            get {
+                return ResourceManager.GetString("BoardPreview_NoFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importovať z písma.
+        /// </summary>
+        internal static string Cmd_ImportFont {
+            get {
+                return ResourceManager.GetString("Cmd_ImportFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importovať z obrázka.
+        /// </summary>
+        internal static string Cmd_ImportImage {
+            get {
+                return ResourceManager.GetString("Cmd_ImportImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to import z písma {0}.
+        /// </summary>
+        internal static string History_ImportFont {
+            get {
+                return ResourceManager.GetString("History_ImportFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to import z obrázka {0}.
+        /// </summary>
+        internal static string History_ImportImage {
+            get {
+                return ResourceManager.GetString("History_ImportImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import z písma Windows.
+        /// </summary>
+        internal static string Import_TitleFont {
+            get {
+                return ResourceManager.GetString("Import_TitleFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import z obrázka.
+        /// </summary>
+        internal static string Import_TitleImage {
+            get {
+                return ResourceManager.GetString("Import_TitleImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyhladené s prahom.
+        /// </summary>
+        internal static string Import_RenderSmooth {
+            get {
+                return ResourceManager.GetString("Import_RenderSmooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bodové (hinting písma).
+        /// </summary>
+        internal static string Import_RenderHinted {
+            get {
+                return ResourceManager.GetString("Import_RenderHinted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kód.
+        /// </summary>
+        internal static string Import_ColCode {
+            get {
+                return ResourceManager.GetString("Import_ColCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Znak.
+        /// </summary>
+        internal static string Import_ColChar {
+            get {
+                return ResourceManager.GetString("Import_ColChar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nový.
+        /// </summary>
+        internal static string Import_ColNew {
+            get {
+                return ResourceManager.GetString("Import_ColNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Šírka.
+        /// </summary>
+        internal static string Import_ColWidth {
+            get {
+                return ResourceManager.GetString("Import_ColWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pôvodný.
+        /// </summary>
+        internal static string Import_ColOld {
+            get {
+                return ResourceManager.GetString("Import_ColOld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poznámka.
+        /// </summary>
+        internal static string Import_ColNote {
+            get {
+                return ResourceManager.GetString("Import_ColNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to písmo znak nemá.
+        /// </summary>
+        internal static string Import_NoteNotInFont {
+            get {
+                return ResourceManager.GetString("Import_NoteNotInFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to kódovanie nemá znak.
+        /// </summary>
+        internal static string Import_NoteNoChar {
+            get {
+                return ResourceManager.GetString("Import_NoteNoChar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ostane, nie je prázdny.
+        /// </summary>
+        internal static string Import_NoteNotEmpty {
+            get {
+                return ResourceManager.GetString("Import_NoteNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mimo obrázka.
+        /// </summary>
+        internal static string Import_NoteOutside {
+            get {
+                return ResourceManager.GetString("Import_NoteOutside", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importuje sa {0} znakov..
+        /// </summary>
+        internal static string Import_Summary {
+            get {
+                return ResourceManager.GetString("Import_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo nemá {0} znakov..
+        /// </summary>
+        internal static string Import_SummaryNotInFont {
+            get {
+                return ResourceManager.GetString("Import_SummaryNotInFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} znakov ostane, nie sú prázdne..
+        /// </summary>
+        internal static string Import_SummaryNotEmpty {
+            get {
+                return ResourceManager.GetString("Import_SummaryNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} kódov, kódovanie {1}..
+        /// </summary>
+        internal static string Import_RangeInfo {
+            get {
+                return ResourceManager.GetString("Import_RangeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kód znaku:.
+        /// </summary>
+        internal static string Import_CodeLabel {
+            get {
+                return ResourceManager.GetString("Import_CodeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Od kódu:.
+        /// </summary>
+        internal static string Import_FromLabel {
+            get {
+                return ResourceManager.GetString("Import_FromLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písma (*.ttf;*.otf)|*.ttf;*.otf.
+        /// </summary>
+        internal static string Import_FontFilter {
+            get {
+                return ResourceManager.GetString("Import_FontFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obrázky (*.png;*.bmp;*.gif;*.jpg)|*.png;*.bmp;*.gif;*.jpg;*.jpeg.
+        /// </summary>
+        internal static string Import_ImageFilter {
+            get {
+                return ResourceManager.GetString("Import_ImageFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Písmo zo súboru {0} sa nepodarilo načítať. Program načíta písma TrueType a OpenType s obrysmi TrueType..
+        /// </summary>
+        internal static string Import_FontFileFailed {
+            get {
+                return ResourceManager.GetString("Import_FontFileFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obrázok {0} sa nepodarilo načítať.  {1}.
+        /// </summary>
+        internal static string Import_ImageFailed {
+            get {
+                return ResourceManager.GetString("Import_ImageFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vyberte súbor s obrázkom..
+        /// </summary>
+        internal static string Import_NoImage {
+            get {
+                return ResourceManager.GetString("Import_NoImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nie je čo importovať..
+        /// </summary>
+        internal static string Import_Nothing {
+            get {
+                return ResourceManager.GetString("Import_Nothing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to kódovanie Windows-1250.
+        /// </summary>
+        internal static string Import_CharsetWin1250 {
+            get {
+                return ResourceManager.GetString("Import_CharsetWin1250", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to kód Kamenických.
+        /// </summary>
+        internal static string Import_CharsetKamenicky {
+            get {
+                return ResourceManager.GetString("Import_CharsetKamenicky", resourceCulture);
+            }
+        }
     }
 }

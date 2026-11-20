@@ -240,4 +240,13 @@
   <data name="tsmimResetLayout.Text" xml:space="preserve">
     <value>&amp;Obnovit rozložení okna</value>
   </data>
+  <data name="tsmimShowBoardPreview.Text" xml:space="preserve">
+    <value>&amp;Náhled na tabuli</value>
+  </data>
+  <data name="tsmimImportFont.Text" xml:space="preserve">
+    <value>&amp;Importovat z písma...</value>
+  </data>
+  <data name="tsmimImportImage.Text" xml:space="preserve">
+    <value>Importovat z &amp;obrázku...</value>
+  </data>
 </root>

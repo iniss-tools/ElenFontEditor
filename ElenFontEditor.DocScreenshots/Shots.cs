@@ -2,7 +2,9 @@ using System.Reflection;
 using ElenFontEditor.Controls;
 using ElenFontEditor.Entities;
 using ElenFontEditor.Forms;
+using ElenFontEditor.Import;
 using ExControls;
+using ToolsCore.Iniss.Elen;
 
 namespace ElenFontEditor.DocScreenshots;
 
@@ -26,6 +28,8 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
     public int Run(string path)
     {
         log.Add($"krok: otvorenie hlavného okna ({theme})");
+        // náhľad na tabuli s predvoleným textom - snímka náhľadu mení text v nastaveniach a druhá téma by ho prevzala
+        GlobData.Config.BoardPreview = new ElenFontEditor.XML.BoardPreviewSettings();
         var main = Program.OpenMain(path);
 
         try
@@ -52,6 +56,50 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
             Shot("ukladanie/premenovanie-suboru", () => new FRenameFile(file, Field<string?>(main, "_diskPath")), form =>
             {
                 Field<ExTextBox>(form, "tbNewName").Text = "PISMA_16_1250";
+                Unselect(form);
+            });
+
+            // náhľad na tabuli: vyšší panel a kratší text (väčšie body), upravovaný znak K je v texte orámovaný
+            Shot("nahlad-na-tabuli/nahlad-na-tabuli", main, _ =>
+            {
+                Field<ExDockManager>(main, "_dock").SetZoneSize(ExDockSide.Bottom, 250);
+                var preview = Field<BoardPreview>(main, "_boardPreview");
+                ((TextBox)preview.GetType().GetField("tbText", Any)!.GetValue(preview)!).Text = "Košice 7:15";
+                SelectSymbol(main, BoldFont, 'K');
+                PointAt(main, 6, 4);
+            }, dispose: false);
+
+            // import z písma Windows do nového písma 10 × 16 bodov
+            Shot("import-znakov/import-z-pisma", () => new FImportSymbols(file, ImportSource.Font, BoldFont, 'A', SymbolCharset.Win1250), form =>
+            {
+                Resize(form, 1000, 760);
+                Field<ExRadioButton>(form, "rbNewFont").Checked = true;
+                Field<ExTextBox>(form, "tbNewName").Text = "ARIAL_16";
+                Field<ExNumericUpDown>(form, "nudNewWidth").Value = 10;
+                Refresh(form);
+                ShowResultFrom(form, 'A');
+                Unselect(form);
+            });
+
+            // import mriežky znakov z obrázka do nového písma 6 × 10 bodov
+            var sheet = SaveSheet(Path.Combine(Path.GetDirectoryName(path)!, DemoFonts.Small + ".bin"));
+            Shot("import-znakov/import-z-obrazka", () => new FImportSymbols(file, ImportSource.Image, BoldFont, 'A', SymbolCharset.Win1250), form =>
+            {
+                Resize(form, 1000, 760);
+                var image = new Bitmap(sheet);
+                form.GetType().GetField("_image", Any)!.SetValue(form, image);
+                form.GetType().GetField("_imagePath", Any)!.SetValue(form, sheet);
+                Field<ExTextBox>(form, "tbImageFile").Text = sheet;
+                Field<ExRadioButton>(form, "rbGrid").Checked = true;
+                form.GetType().GetMethod("GuessGrid", Any)!.Invoke(form, [image]);
+                Field<ExNumericUpDown>(form, "nudScale").Value = SheetScale;
+                Field<ExNumericUpDown>(form, "nudFrom").Value = 32;
+                Field<ExRadioButton>(form, "rbNewFont").Checked = true;
+                Field<ExTextBox>(form, "tbNewName").Text = "OBRAZOK_10";
+                Field<ExNumericUpDown>(form, "nudNewWidth").Value = 6;
+                Field<ExNumericUpDown>(form, "nudNewHeight").Value = 10;
+                Refresh(form);
+                ShowResultFrom(form, 'A');
                 Unselect(form);
             });
 
@@ -84,6 +132,63 @@ internal sealed class Shots(Program.Options options, string theme, List<string> 
     }
 
     private void Shot(string name, Func<Form> create, Action<Form>? setup = null) => Shot(name, create(), setup);
+
+    /// <summary>Pixelov obrázka na bod v mriežke znakov z ukážkového písma.</summary>
+    private const int SheetScale = 3;
+
+    /// <summary>
+    /// Obrázok so znakmi 0x20–0xFF ukážkového písma v mriežke 16 × 14 (tmavé body na bielom, bod = 3 × 3 px) vedľa
+    /// súboru písiem – zdroj pre snímku importu z obrázka.
+    /// </summary>
+    private static string SaveSheet(string fontFile)
+    {
+        var font = ElenFontFile.Load(fontFile).Fonts[0];
+        var cellWidth = font.MaxWidth * SheetScale;
+        var cellHeight = font.Height * SheetScale;
+        using var image = new Bitmap(16 * cellWidth, 14 * cellHeight);
+        using (var g = Graphics.FromImage(image))
+        {
+            g.Clear(Color.White);
+            for (var code = 32; code < 256; code++)
+            {
+                var glyph = font.Glyphs[code];
+                var x0 = (code - 32) % 16 * cellWidth;
+                var y0 = (code - 32) / 16 * cellHeight;
+                for (var y = 0; y < font.Height; y++)
+                    for (var x = 0; x < glyph.Width && x < font.MaxWidth; x++)
+                        if (glyph.IsSet(x, y))
+                            g.FillRectangle(Brushes.Black, x0 + x * SheetScale, y0 + y * SheetScale, SheetScale, SheetScale);
+            }
+        }
+
+        var path = Path.Combine(Path.GetDirectoryName(fontFile)!, "znaky-6x10.png");
+        image.Save(path, System.Drawing.Imaging.ImageFormat.Png);
+        return path;
+    }
+
+    /// <summary>Zoznam výsledku importu od znaku <paramref name="symbol" /> bez vybraného riadka.</summary>
+    private static void ShowResultFrom(Form form, char symbol)
+    {
+        var grid = Field<DataGridView>(form, "dgvResult");
+        grid.FirstDisplayedScrollingRowIndex = symbol - 32;
+        grid.CurrentCell = null;
+        grid.ClearSelection();
+    }
+
+    /// <summary>Okno vo veľkosti pre snímku (pri 96 DPI).</summary>
+    private static void Resize(Form form, int width, int height)
+    {
+        form.Size = new Size(width, height);
+        Pump.Events();
+    }
+
+    /// <summary>Okno importu: výsledok hneď, bez čakania na časovač.</summary>
+    private static void Refresh(Form form)
+    {
+        Pump.Events();
+        form.GetType().GetMethod("UpdateResult", Any)!.Invoke(form, null);
+        Pump.Events();
+    }
 
     private void Shot(string name, Form form, Action<Form>? setup = null, bool dispose = true)
     {

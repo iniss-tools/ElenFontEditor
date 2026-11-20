@@ -22,6 +22,12 @@ public record ElenFontEditorConfig : ConfigBase
     [XmlElement("CharEncoding"), DefaultValue(SymbolCharset.Win1250)]
     public SymbolCharset CharEncoding { get; set; }
 
+    /// <summary>
+    ///     Panel Nahlad na tabuli - ukazkovy text a vzhlad.
+    /// </summary>
+    [XmlElement("BoardPreview")]
+    public BoardPreviewSettings BoardPreview { get; set; } = new();
+
     /// <inheritdoc />
     public override string LinkAppSettingsGuide => "https://iniss-tools.fvat.sk/docs/elenfonteditor/nastavenia-programu/";
 
@@ -32,6 +38,7 @@ public record ElenFontEditorConfig : ConfigBase
     {
         StrictMode = original.StrictMode;
         CharEncoding = original.CharEncoding;
+        BoardPreview = original.BoardPreview.Clone();
     }
 
     /// <summary>

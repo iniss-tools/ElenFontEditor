@@ -48,8 +48,12 @@ namespace ElenFontEditor.Forms
             this.tsmimFontManager = new ToolsCore.Icons.IconToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmimRenameFile = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tssEditImport = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmimImportFont = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmimImportImage = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmiView = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimShowSymbols = new ToolsCore.Icons.IconToolStripMenuItem();
+            this.tsmimShowBoardPreview = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tssView1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmimResetLayout = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -174,7 +178,10 @@ namespace ElenFontEditor.Forms
             this.toolStripSeparator7,
             this.tsmimFontManager,
             this.toolStripSeparator6,
-            this.tsmimRenameFile});
+            this.tsmimRenameFile,
+            this.tssEditImport,
+            this.tsmimImportFont,
+            this.tsmimImportImage});
             this.tsmiEdit.Enabled = false;
             this.tsmiEdit.Name = "tsmiEdit";
             resources.ApplyResources(this.tsmiEdit, "tsmiEdit");
@@ -217,10 +224,31 @@ namespace ElenFontEditor.Forms
             this.tsmimRenameFile.IconName = "rename";
             resources.ApplyResources(this.tsmimRenameFile, "tsmimRenameFile");
             // 
+            // tssEditImport
+            // 
+            this.tssEditImport.Name = "tssEditImport";
+            resources.ApplyResources(this.tssEditImport, "tssEditImport");
+            // 
+            // tsmimImportFont
+            // 
+            this.tsmimImportFont.Enabled = false;
+            this.tsmimImportFont.Name = "tsmimImportFont";
+            this.tsmimImportFont.IconName = "text-font";
+            this.tsmimImportFont.IconBadge = "add";
+            resources.ApplyResources(this.tsmimImportFont, "tsmimImportFont");
+            // 
+            // tsmimImportImage
+            // 
+            this.tsmimImportImage.Enabled = false;
+            this.tsmimImportImage.Name = "tsmimImportImage";
+            this.tsmimImportImage.IconName = "import";
+            resources.ApplyResources(this.tsmimImportImage, "tsmimImportImage");
+            // 
             // tsmiView
             // 
             this.tsmiView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmimShowSymbols,
+            this.tsmimShowBoardPreview,
             this.tssView1,
             this.tsmimResetLayout});
             this.tsmiView.Name = "tsmiView";
@@ -231,6 +259,12 @@ namespace ElenFontEditor.Forms
             this.tsmimShowSymbols.Name = "tsmimShowSymbols";
             this.tsmimShowSymbols.IconName = "table";
             resources.ApplyResources(this.tsmimShowSymbols, "tsmimShowSymbols");
+            // 
+            // tsmimShowBoardPreview
+            // 
+            this.tsmimShowBoardPreview.Name = "tsmimShowBoardPreview";
+            this.tsmimShowBoardPreview.IconName = "eye";
+            resources.ApplyResources(this.tsmimShowBoardPreview, "tsmimShowBoardPreview");
             // 
             // tssView1
             // 
@@ -661,6 +695,10 @@ namespace ElenFontEditor.Forms
         private ToolsCore.Icons.IconToolStripMenuItem tsmimRenameFile;
         private System.Windows.Forms.ToolStripMenuItem tsmiView;
         private ToolsCore.Icons.IconToolStripMenuItem tsmimShowSymbols;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimShowBoardPreview;
+        private System.Windows.Forms.ToolStripSeparator tssEditImport;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimImportFont;
+        private ToolsCore.Icons.IconToolStripMenuItem tsmimImportImage;
         private System.Windows.Forms.ToolStripSeparator tssView1;
         private System.Windows.Forms.ToolStripMenuItem tsmimResetLayout;
         private ToolsCore.Icons.IconToolStripButton tsbRenameFile;

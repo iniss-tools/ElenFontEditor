@@ -21,6 +21,8 @@
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 		<!-- Slovenčina je v hlavnej zostave, preložená je len čeština. -->
 		<SatelliteResourceLanguages>cs</SatelliteResourceLanguages>
+		<!-- [LibraryImport] (GDI pre import pisma Windows) generuje kod s ukazovatelmi -->
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="fnt.ico" />

@@ -45,12 +45,34 @@ public sealed class DockingFormTests
     {
         using var form = MainWindow();
 
-        CollectionAssert.AreEqual(new[] { "Symbols" }, Dock(form).Panels.Select(panel => panel.Key).ToArray());
+        CollectionAssert.AreEqual(new[] { "Symbols", "BoardPreview" }, Dock(form).Panels.Select(panel => panel.Key).ToArray());
         Assert.AreSame(Panel(form, "Symbols"), Field<DataGridView>(form, "dgvSymbols").Parent);
         Assert.AreSame(Dock(form).Document, Field<SymbolEditor>(form, "symbolEditor").Parent);
         Assert.AreEqual(ExDockSide.Left, Panel(form, "Symbols").Side);
         Assert.IsTrue(Panel(form, "Symbols").IsShown);
         Assert.IsTrue(Field<SplitContainer>(form, "splitContainer1").IsDisposed, "deliaci list navrhu sa zahodi");
+        Assert.AreEqual(ExDockSide.Bottom, Panel(form, "BoardPreview").Side);
+        Assert.AreSame(Panel(form, "BoardPreview"), Field<BoardPreview>(form, "_boardPreview").Parent);
+    }
+
+    [STATestMethod]
+    public void Rozlozenie_StarsieBezNahladu_NahladOstaneDole()
+    {
+        // rozlozenie ulozene verziou bez panela nahladu - panel ostane, kam ho pridalo okno
+        string layout;
+        using (var first = MainWindow())
+        {
+            Dock(first).RemovePanel(Panel(first, "BoardPreview"));
+            layout = Dock(first).SaveLayout();
+        }
+
+        using var form = MainWindow(layout);
+        Assert.IsTrue(Panel(form, "BoardPreview").IsShown);
+        Assert.AreEqual(ExDockSide.Bottom, Panel(form, "BoardPreview").Side);
+
+        Dock(form).HidePanel(Panel(form, "BoardPreview"));
+        Field<CommandSet>(form, "_commands")["ShowBoardPreview"].Execute();
+        Assert.IsTrue(Panel(form, "BoardPreview").IsShown);
     }
 
     [STATestMethod]

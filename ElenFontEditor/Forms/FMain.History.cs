@@ -59,6 +59,7 @@ public partial class FMain
         // body upravovaneho znaku su zatial len v editore
         SaveCurrentSymbol();
         _history.Commit(label);
+        UpdateBoardPreview();
         Saved = _history.IsSaved;
         UpdateHistoryUi();
     }
@@ -127,6 +128,7 @@ public partial class FMain
         {
             dgvSymbols.DataSource = null;
             symbolEditor.ClearSymbol();
+            UpdateBoardPreview();
             return;
         }
 

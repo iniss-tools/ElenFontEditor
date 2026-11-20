@@ -257,4 +257,143 @@
   <data name="Cmd_ResetLayout" xml:space="preserve">
     <value>Obnovit rozložení okna</value>
   </data>
+  <data name="FMain_OpenFailed" xml:space="preserve">
+    <value>Soubor {0} se nepodařilo otevřít.
+
+{1}</value>
+  </data>
+  <data name="FMain_FontTooWide" xml:space="preserve">
+    <value>Písmo {0} má šířku {1} bodů. ElenFontEditor upravuje písma o šířce nejvýše {2} bodů.</value>
+  </data>
+  <data name="Panel_BoardPreview" xml:space="preserve">
+    <value>Náhled na tabuli</value>
+  </data>
+  <data name="Cmd_ShowBoardPreview" xml:space="preserve">
+    <value>Náhled na tabuli</value>
+  </data>
+  <data name="BoardPreview_DefaultText" xml:space="preserve">
+    <value>R 612 Děčín 14:35</value>
+  </data>
+  <data name="BoardPreview_Color0" xml:space="preserve">
+    <value>Bez barvy</value>
+  </data>
+  <data name="BoardPreview_Color1" xml:space="preserve">
+    <value>Červená</value>
+  </data>
+  <data name="BoardPreview_Color2" xml:space="preserve">
+    <value>Zelená</value>
+  </data>
+  <data name="BoardPreview_Color3" xml:space="preserve">
+    <value>Žlutá</value>
+  </data>
+  <data name="BoardPreview_TextWidth" xml:space="preserve">
+    <value>Text má šířku {0} bodů.</value>
+  </data>
+  <data name="BoardPreview_TooWide" xml:space="preserve">
+    <value>Na tabuli o šířce {0} bodů se nevejde.</value>
+  </data>
+  <data name="BoardPreview_Missing" xml:space="preserve">
+    <value>Písmo nemá znaky {0}.</value>
+  </data>
+  <data name="BoardPreview_NoFont" xml:space="preserve">
+    <value>Soubor nemá žádné písmo.</value>
+  </data>
+  <data name="Cmd_ImportFont" xml:space="preserve">
+    <value>Importovat z písma</value>
+  </data>
+  <data name="Cmd_ImportImage" xml:space="preserve">
+    <value>Importovat z obrázku</value>
+  </data>
+  <data name="History_ImportFont" xml:space="preserve">
+    <value>import z písma {0}</value>
+  </data>
+  <data name="History_ImportImage" xml:space="preserve">
+    <value>import z obrázku {0}</value>
+  </data>
+  <data name="Import_TitleFont" xml:space="preserve">
+    <value>Import z písma Windows</value>
+  </data>
+  <data name="Import_TitleImage" xml:space="preserve">
+    <value>Import z obrázku</value>
+  </data>
+  <data name="Import_RenderSmooth" xml:space="preserve">
+    <value>Vyhlazené s prahem</value>
+  </data>
+  <data name="Import_RenderHinted" xml:space="preserve">
+    <value>Bodové (hinting písma)</value>
+  </data>
+  <data name="Import_ColCode" xml:space="preserve">
+    <value>Kód</value>
+  </data>
+  <data name="Import_ColChar" xml:space="preserve">
+    <value>Znak</value>
+  </data>
+  <data name="Import_ColNew" xml:space="preserve">
+    <value>Nový</value>
+  </data>
+  <data name="Import_ColWidth" xml:space="preserve">
+    <value>Šířka</value>
+  </data>
+  <data name="Import_ColOld" xml:space="preserve">
+    <value>Původní</value>
+  </data>
+  <data name="Import_ColNote" xml:space="preserve">
+    <value>Poznámka</value>
+  </data>
+  <data name="Import_NoteNotInFont" xml:space="preserve">
+    <value>písmo znak nemá</value>
+  </data>
+  <data name="Import_NoteNoChar" xml:space="preserve">
+    <value>kódování nemá znak</value>
+  </data>
+  <data name="Import_NoteNotEmpty" xml:space="preserve">
+    <value>zůstane, není prázdný</value>
+  </data>
+  <data name="Import_NoteOutside" xml:space="preserve">
+    <value>mimo obrázek</value>
+  </data>
+  <data name="Import_Summary" xml:space="preserve">
+    <value>Importuje se {0} znaků.</value>
+  </data>
+  <data name="Import_SummaryNotInFont" xml:space="preserve">
+    <value>Písmo nemá {0} znaků.</value>
+  </data>
+  <data name="Import_SummaryNotEmpty" xml:space="preserve">
+    <value>{0} znaků zůstane, nejsou prázdné.</value>
+  </data>
+  <data name="Import_RangeInfo" xml:space="preserve">
+    <value>{0} kódů, {1}.</value>
+  </data>
+  <data name="Import_CodeLabel" xml:space="preserve">
+    <value>Kód znaku:</value>
+  </data>
+  <data name="Import_FromLabel" xml:space="preserve">
+    <value>Od kódu:</value>
+  </data>
+  <data name="Import_FontFilter" xml:space="preserve">
+    <value>Písma (*.ttf;*.otf)|*.ttf;*.otf</value>
+  </data>
+  <data name="Import_ImageFilter" xml:space="preserve">
+    <value>Obrázky (*.png;*.bmp;*.gif;*.jpg)|*.png;*.bmp;*.gif;*.jpg;*.jpeg</value>
+  </data>
+  <data name="Import_FontFileFailed" xml:space="preserve">
+    <value>Písmo ze souboru {0} se nepodařilo načíst. Program načte písma TrueType a OpenType s obrysy TrueType.</value>
+  </data>
+  <data name="Import_ImageFailed" xml:space="preserve">
+    <value>Obrázek {0} se nepodařilo načíst.
+
+{1}</value>
+  </data>
+  <data name="Import_NoImage" xml:space="preserve">
+    <value>Vyberte soubor s obrázkem.</value>
+  </data>
+  <data name="Import_Nothing" xml:space="preserve">
+    <value>Není co importovat.</value>
+  </data>
+  <data name="Import_CharsetWin1250" xml:space="preserve">
+    <value>kódování Windows-1250</value>
+  </data>
+  <data name="Import_CharsetKamenicky" xml:space="preserve">
+    <value>kód Kamenických</value>
+  </data>
 </root>

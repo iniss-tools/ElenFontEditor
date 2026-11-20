@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using ElenFontEditor.Entities;
+using ElenFontEditor.Import;
 using ExControls;
 using ElenFontEditor.Properties;
 using ElenFontEditor.Tools;
@@ -37,10 +38,8 @@ public partial class FMain : ExForm
         InitDocking();
         SetRecentFiles();
         this.ApplyThemeAndFonts();
+        // farby editora znaku (hlavicky, plocha, vyber) nastavi tema - SymbolEditor je IThemeable
         AppDock.Restore(_dock, GlobData.Config.DockLayout);
-
-        symbolEditor.BackColor = GlobSettings.UsingStyle.ControlsColorScheme.Box.BackColor;
-        symbolEditor.SelectedColor = GlobSettings.UsingStyle.ControlsColorScheme.Highlight.BackColor;
 
         _fontsIndex = toolStripMain.Items.IndexOf(tscomboFonts);
         ApplyToolbar();
@@ -51,7 +50,8 @@ public partial class FMain : ExForm
         UpdateHistoryUi();
         InitColumns();
         SetColumnsAutoWidth();
-
+        _boardPreview.LoadSettings(GlobData.Config.BoardPreview);
+        UpdateBoardPreview();
     }
 
     /// <summary>
@@ -67,6 +67,8 @@ public partial class FMain : ExForm
         _commands.Add(EfeCommands.Redo, Redo, () => _history?.CanRedo == true).Bind(tsmimRedo, tssbRedo);
         _commands.Add(EfeCommands.FontManager, ShowFontManager, opened).Bind(tsmimFontManager, tsbFontManager);
         _commands.Add(EfeCommands.RenameFile, ShowRenameFile, opened).Bind(tsmimRenameFile, tsbRenameFile);
+        _commands.Add(EfeCommands.ImportFont, () => ShowImport(ImportSource.Font), opened).Bind(tsmimImportFont);
+        _commands.Add(EfeCommands.ImportImage, () => ShowImport(ImportSource.Image), opened).Bind(tsmimImportImage);
         CreateViewCommands();
         _commands.Add(EfeCommands.AppSettings, ShowAppSettings).Bind(tsmimAppSettings, tsbAppSettings);
         _commands.Add(EfeCommands.InfoApp, ShowInfoApp).Bind(tsmimInfoApp, tsbInfoApp);
@@ -85,7 +87,24 @@ public partial class FMain : ExForm
     }
 
     protected override bool ProcessCmdKey(ref Message msg, Keys keyData) =>
-        _commands.ProcessShortcut(keyData) || base.ProcessCmdKey(ref msg, keyData);
+        (!IsTextEditKey(keyData) || !IsTyping()) && _commands.ProcessShortcut(keyData) || base.ProcessCmdKey(ref msg, keyData);
+
+    /// <summary>Klavesy upravy textu - pri pisani do textoveho pola patria jemu, nie prikazom okna.</summary>
+    private static bool IsTextEditKey(Keys keys) =>
+        keys is (Keys.Control | Keys.Z) or (Keys.Control | Keys.Y) or (Keys.Control | Keys.A) or (Keys.Control | Keys.C)
+            or (Keys.Control | Keys.V) or (Keys.Control | Keys.X);
+
+    /// <summary>
+    /// Pise sa do textoveho pola (napr. text nahladu na tabuli). Okno vidi len panel (ContainerControl), prvok v nom
+    /// treba hladat cez jeho ActiveControl.
+    /// </summary>
+    private bool IsTyping()
+    {
+        Control? control = ActiveControl;
+        while (control is ContainerControl { ActiveControl: { } inner })
+            control = inner;
+        return control is TextBoxBase or NumericUpDown || control?.Parent is NumericUpDown;
+    }
 
     /// <summary>
     /// Tabulka znakov si pamata poradie, sirku a viditelnost stlpcov (tahanie hlavicky, ponuka na hlavicke).
@@ -151,13 +170,14 @@ public partial class FMain : ExForm
     private void UpdateMainUI()
     {
         ApplyToolbar();
-        symbolEditor.BackColor = GlobSettings.UsingStyle.ControlsColorScheme.Box.BackColor;
-        symbolEditor.SelectedColor = GlobSettings.UsingStyle.ControlsColorScheme.Highlight.BackColor;
 
         this.ApplyThemeAndFonts();
         _commands.ApplyShortcuts(GlobData.Config.Shortcuts);
         UpdateHistoryUi();
         SetColumnsAutoWidth();
+        // nastavenia su po ulozeni nova kopia - nahlad zapisuje do nej; kodovanie textu sa mohlo zmenit
+        _boardPreview.LoadSettings(GlobData.Config.BoardPreview);
+        UpdateBoardPreview();
         Invalidate(true);
         AppInit.MsgBoxStyleInit(GlobData.UsingStyle, GlobData.Config);
     }
@@ -285,6 +305,12 @@ public partial class FMain : ExForm
             RememberFile(pathname);
             OnOpenFile(_openedFile);
         }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or FormatException)
+        {
+            // poskodeny alebo chybajuci subor - dovod v jazyku programu, predchadzajuci subor ostane otvoreny
+            Log.Error(e, "Subor pisiem {Path} sa nepodarilo otvorit", pathname);
+            Utils.ShowError(string.Format(CultureInfo.CurrentCulture, Resources.FMain_OpenFailed, pathname, e.Message));
+        }
         catch (Exception e) when (ErrorReport.CatchErrors)
         {
             ErrorReport.Show(e, this);
@@ -391,6 +417,41 @@ public partial class FMain : ExForm
         }
     }
 
+    /// <summary>
+    /// Import znakov z pisma Windows alebo z obrazka - vysledne pismo nahradi ciel alebo pribudne na konci suboru.
+    /// </summary>
+    private void ShowImport(ImportSource source)
+    {
+        FinishEdits();
+        SaveCurrentSymbol();
+        var file = _openedFile!;
+        var fontIndex = tscomboFonts.SelectedIndex;
+        var symbolIndex = dgvSymbols.CurrentCell?.RowIndex ?? -1;
+        var firstRow = dgvSymbols.FirstDisplayedScrollingRowIndex;
+        using var form = new FImportSymbols(file, source, fontIndex, Math.Max(0, symbolIndex), GlobData.Config.CharEncoding);
+        if (form.ShowDialog(this) != DialogResult.OK || form.Result is not { } font)
+            return;
+
+        var target = form.TargetIndex;
+        if (target < 0)
+        {
+            file.Fonts.Add(font);
+            target = file.Fonts.Count - 1;
+        }
+        else
+        {
+            file.Fonts[target] = font;
+        }
+
+        Log.Information("Import {Count} znakov ({Source} {Name}) do pisma {Font}", form.ImportedCount,
+            source == ImportSource.Font ? "pismo" : "obrazok", form.SourceName, font.Name);
+        file.Fonts.ResetBindings();
+        ShowFonts(target, symbolIndex, target == fontIndex ? firstRow : -1);
+        MarkChanged(string.Format(CultureInfo.CurrentCulture,
+            source == ImportSource.Font ? Resources.History_ImportFont : Resources.History_ImportImage, form.SourceName));
+        FlushCommit();
+    }
+
     private void ShowRenameFile()
     {
         FinishEdits();
@@ -426,6 +487,7 @@ public partial class FMain : ExForm
             return;
 
         dgvSymbols.DataSource = _openedFile!.Fonts[tscomboFonts.SelectedIndex].Symbols;
+        UpdateBoardPreview();
     }
 
 
@@ -468,6 +530,7 @@ public partial class FMain : ExForm
 
         _editingSymbol = dgvSymbols.SelectedRows[0].DataBoundItem as FontSymbol;
         symbolEditor.SetEditingSymbol(_editingSymbol);
+        _boardPreview.HighlightSymbol(_editingSymbol?.Index ?? -1);
     }
 
     private void symbolEditor_MouseMove(object sender, MouseEventArgs e)
@@ -538,8 +601,8 @@ public partial class FMain : ExForm
 
     private void FMain_KeyDown(object sender, KeyEventArgs e)
     {
-        // pri pisani do bunky patria Ctrl+V a Ctrl+A textu bunky
-        if (dgvSymbols.IsCurrentCellInEditMode)
+        // pri pisani do bunky alebo textoveho pola patria Ctrl+V a Ctrl+A textu
+        if (dgvSymbols.IsCurrentCellInEditMode || IsTyping())
             return;
 
         if (e is { Control: true, KeyCode: Keys.V })

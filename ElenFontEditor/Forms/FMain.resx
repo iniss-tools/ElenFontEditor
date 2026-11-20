@@ -6041,4 +6041,49 @@
   <data name="&gt;&gt;tsmimResetLayout.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="tsmimShowBoardPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="tsmimShowBoardPreview.Text" xml:space="preserve">
+    <value>&amp;Náhľad na tabuli</value>
+  </data>
+  <data name="&gt;&gt;tsmimShowBoardPreview.Name" xml:space="preserve">
+    <value>tsmimShowBoardPreview</value>
+  </data>
+  <data name="&gt;&gt;tsmimShowBoardPreview.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="tssEditImport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 6</value>
+  </data>
+  <data name="&gt;&gt;tssEditImport.Name" xml:space="preserve">
+    <value>tssEditImport</value>
+  </data>
+  <data name="&gt;&gt;tssEditImport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tsmimImportFont.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="tsmimImportFont.Text" xml:space="preserve">
+    <value>&amp;Importovať z písma...</value>
+  </data>
+  <data name="&gt;&gt;tsmimImportFont.Name" xml:space="preserve">
+    <value>tsmimImportFont</value>
+  </data>
+  <data name="&gt;&gt;tsmimImportFont.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="tsmimImportImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="tsmimImportImage.Text" xml:space="preserve">
+    <value>Importovať z &amp;obrázka...</value>
+  </data>
+  <data name="&gt;&gt;tsmimImportImage.Name" xml:space="preserve">
+    <value>tsmimImportImage</value>
+  </data>
+  <data name="&gt;&gt;tsmimImportImage.Type" xml:space="preserve">
+    <value>ToolsCore.Icons.IconToolStripMenuItem, ToolsCore, Culture=neutral, PublicKeyToken=null</value>
+  </data>
 </root>
