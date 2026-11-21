@@ -8,7 +8,7 @@ namespace ElenFontEditor.DocScreenshots;
 /// <summary>
 /// Ukážkové súbory písiem ELEN v kódovaní Windows-1250 pre snímky do dokumentácie. Usporiadanie je ako v bežných
 /// súboroch tabúľ (neproporčné, proporčné, tučné a písmo len s číslicami), znaky sú z bodových písiem misc-fixed
-/// (public domain), ktoré simulátor tabúľ kreslí bez písma ELEN – skutočné súbory písiem do repozitára nepatria.
+/// (public domain), ktoré StationSimulator kreslí bez písma ELEN – skutočné súbory písiem do repozitára nepatria.
 /// </summary>
 /// <remarks>
 /// Proporčné písmo vznikne orezaním prázdnych stĺpcov znaku, tučné rozšírením každého bodu o jeden doprava.
@@ -176,11 +176,11 @@ internal static partial class DemoFonts
     }
 
     /// <summary>
-    /// Súbor so znakmi písiem misc-fixed v repozitári simulátora tabúľ (hľadá sa v nadradených priečinkoch).
+    /// Súbor so znakmi písiem misc-fixed v repozitári StationSimulatora (hľadá sa v nadradených priečinkoch).
     /// </summary>
     private static string FindPixelFonts()
     {
-        var relative = Path.Combine("TableSimulator", "web", "src", "render", "pixel-fonts.data.ts");
+        var relative = Path.Combine("StationSimulator", "web", "src", "render", "pixel-fonts.data.ts");
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
         {
             var path = Path.Combine(dir.FullName, relative);
