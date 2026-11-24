@@ -74,6 +74,8 @@ public partial class FMain : ExForm
         _commands.Add(EfeCommands.InfoApp, ShowInfoApp).Bind(tsmimInfoApp, tsbInfoApp);
         _commands.Add(EfeCommands.CheckUpdates, () => AppUpdates.CheckNow(this), () => AppUpdates.Available).Bind(tsmimCheckUpdates);
         _commands.Add(EfeCommands.ShowLogs, ErrorReport.OpenLogFolder).Bind(tsmimShowLogs);
+        _commands.Add(EfeCommands.ReportBug, () => IssueReport.ReportBug()).Bind(tsmimReportBug);
+        _commands.Add(EfeCommands.SuggestFeature, IssueReport.SuggestFeature).Bind(tsmimSuggestFeature);
     }
 
     /// <summary>

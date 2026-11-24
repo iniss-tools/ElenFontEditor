@@ -27,10 +27,12 @@ internal static class EfeCommands
     public static CommandInfo InfoApp => new(nameof(InfoApp), nameof(InfoApp), Shortcut.None);
     public static CommandInfo CheckUpdates => new(nameof(CheckUpdates), nameof(CheckUpdates), Shortcut.None);
     public static CommandInfo ShowLogs => new(nameof(ShowLogs), nameof(ShowLogs), Shortcut.None);
+    public static CommandInfo ReportBug => new(nameof(ReportBug), nameof(ReportBug), Shortcut.None);
+    public static CommandInfo SuggestFeature => new(nameof(SuggestFeature), nameof(SuggestFeature), Shortcut.None);
 
     /// <summary>
     /// Vsetky prikazy hlavneho okna pre nastavenia skratiek (strom ich zoradi podla ponuky okna).
     /// </summary>
     public static IReadOnlyList<CommandInfo> All =>
-        [New, Open, Save, Undo, Redo, FontManager, RenameFile, ImportFont, ImportImage, ShowSymbols, ShowBoardPreview, ResetLayout, AppSettings, InfoApp, CheckUpdates, ShowLogs];
+        [New, Open, Save, Undo, Redo, FontManager, RenameFile, ImportFont, ImportImage, ShowSymbols, ShowBoardPreview, ResetLayout, AppSettings, InfoApp, CheckUpdates, ShowLogs, ReportBug, SuggestFeature];
 }

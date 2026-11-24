@@ -62,6 +62,8 @@ namespace ElenFontEditor.Forms
             this.tsmimInfoApp = new ToolsCore.Icons.IconToolStripMenuItem();
             this.tsmimCheckUpdates = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimShowLogs = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimReportBug = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimSuggestFeature = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsbNew = new ToolsCore.Icons.IconToolStripButton();
             this.tsbOpen = new ToolsCore.Icons.IconToolStripButton();
@@ -294,7 +296,9 @@ namespace ElenFontEditor.Forms
             this.tsmiHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmimInfoApp,
             this.tsmimCheckUpdates,
-            this.tsmimShowLogs});
+            this.tsmimShowLogs,
+            this.tsmimReportBug,
+            this.tsmimSuggestFeature});
             this.tsmiHelp.Name = "tsmiHelp";
             resources.ApplyResources(this.tsmiHelp, "tsmiHelp");
             // 
@@ -313,6 +317,16 @@ namespace ElenFontEditor.Forms
             //
             this.tsmimShowLogs.Name = "tsmimShowLogs";
             resources.ApplyResources(this.tsmimShowLogs, "tsmimShowLogs");
+            //
+            // tsmimReportBug
+            //
+            this.tsmimReportBug.Name = "tsmimReportBug";
+            resources.ApplyResources(this.tsmimReportBug, "tsmimReportBug");
+            //
+            // tsmimSuggestFeature
+            //
+            this.tsmimSuggestFeature.Name = "tsmimSuggestFeature";
+            resources.ApplyResources(this.tsmimSuggestFeature, "tsmimSuggestFeature");
             //
             // toolStripMain
             // 
@@ -664,6 +678,8 @@ namespace ElenFontEditor.Forms
         private ToolsCore.Icons.IconToolStripMenuItem tsmimInfoApp;
         private System.Windows.Forms.ToolStripMenuItem tsmimCheckUpdates;
         private System.Windows.Forms.ToolStripMenuItem tsmimShowLogs;
+        private System.Windows.Forms.ToolStripMenuItem tsmimReportBug;
+        private System.Windows.Forms.ToolStripMenuItem tsmimSuggestFeature;
         private System.Windows.Forms.ToolStrip toolStripMain;
         private ToolsCore.Icons.IconToolStripButton tsbNew;
         private ToolsCore.Icons.IconToolStripButton tsbOpen;
